@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/img"/>
+    <qresource prefix="/">
+        <file>canteen.png</file>
+        <file>canteen_original.png</file>
+        <file>KU_logo.png</file>
+    </qresource>
+</RCC>
