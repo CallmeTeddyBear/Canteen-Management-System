@@ -18,6 +18,8 @@ public:
 private slots:
     void on_pushButton_student_clicked();
 
+    void on_pushButton_staff_clicked();
+
 private:
     Ui::AddCustomerOption *ui;
 };

@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QPixmap pix("C:/Users/User/Documents/Draft/KU_logo.png");
+    QPixmap pix("C:/Users/User/Desktop/CanteenManagementSystem/KU_logo.png");
     ui->label_ku_logo->setPixmap(pix.scaled(200,200));
 
     ui->lineEdit_username->setPlaceholderText(" Enter Username");

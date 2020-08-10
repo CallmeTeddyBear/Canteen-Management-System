@@ -32,7 +32,7 @@ public:
     bool sqlOpen()
     {
         mydb = QSqlDatabase::QSqlDatabase::addDatabase("QSQLITE");
-        mydb.setDatabaseName("C:/Users/User/Documents/Draft/canteen_database.db");
+        mydb.setDatabaseName("C:/Users/User/Desktop/CanteenManagementSystem/canteen_database.db");
 
         if (!mydb.open())
         {

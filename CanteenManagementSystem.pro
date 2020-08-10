@@ -24,6 +24,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     showcustomerdataoption.cpp \
+    staffcustomeroption.cpp \
     studentcustomeroption.cpp \
     todaysspecialpopup.cpp
 
@@ -35,6 +36,7 @@ HEADERS += \
     logout.h \
     mainwindow.h \
     showcustomerdataoption.h \
+    staffcustomeroption.h \
     studentcustomeroption.h \
     todaysspecialpopup.h
 
@@ -46,6 +48,7 @@ FORMS += \
     logout.ui \
     mainwindow.ui \
     showcustomerdataoption.ui \
+    staffcustomeroption.ui \
     studentcustomeroption.ui \
     todaysspecialpopup.ui
 

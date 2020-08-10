@@ -24,11 +24,6 @@ StudentCustomerOption::StudentCustomerOption(QWidget *parent) :
 
 }
 
-StudentCustomerOption::~StudentCustomerOption()
-{
-    delete ui;
-}
-
 void StudentCustomerOption::on_pushButton_add_student_clicked()
 {
     MainWindow connect_database;
@@ -84,4 +79,9 @@ void StudentCustomerOption::on_pushButton_add_student_clicked()
 void StudentCustomerOption::on_pushButton_cancel_clicked()
 {
     this->hide();
+}
+
+StudentCustomerOption::~StudentCustomerOption()
+{
+    delete ui;
 }

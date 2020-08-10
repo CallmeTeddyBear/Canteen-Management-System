@@ -2,6 +2,7 @@
 #include "ui_addcustomeroption.h"
 
 #include "studentcustomeroption.h"
+#include "staffcustomeroption.h"
 
 AddCustomerOption::AddCustomerOption(QWidget *parent) :
     QDialog(parent),
@@ -22,4 +23,12 @@ void AddCustomerOption::on_pushButton_student_clicked()
     StudentCustomerOption student;
     student.setModal(true);
     student.exec();
+}
+
+void AddCustomerOption::on_pushButton_staff_clicked()
+{
+    this->hide();
+    StaffCustomerOption staff;
+    staff.setModal(true);
+    staff.exec();
 }
