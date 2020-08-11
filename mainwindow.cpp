@@ -25,14 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::on_pushButton_login_clicked()
 {
+    QString UserType;
     QString username = ui->lineEdit_username->text(); //variable declaration username and password
     QString password = ui->lineEdit_password->text(); //assigning text from user to variables
-
-    if (!sqlOpen())
-    {
-        qDebug() << "Failed to open the database";
-        //return;
-    }
 
     sqlOpen();
     QSqlQuery qry;
@@ -51,15 +46,16 @@ void MainWindow::on_pushButton_login_clicked()
             sqlClose(); //closes the database - it is needed to open new window
             this->hide();
 
+            UserType = "student";
             customerwindow = new CustomerWindow(this);
-            connect(this, SIGNAL(send(const QString, const QString)), customerwindow, SLOT(receive(const QString, const QString)));
-            emit send(username, password);
+            connect(this, SIGNAL(send(const QString, const QString, const QString)), customerwindow, SLOT(receive(const QString, const QString, const QString)));
+            emit send(UserType, username, password);
             customerwindow->show();
 
         }
         else
         {
-            qry.prepare("SELECT * FROM Admin WHERE Username = '"+username+"' and Password = '"+password+"'");
+            qry.prepare("SELECT * FROM Staff WHERE Username = '"+username+"' and Password = '"+password+"'");
             if (qry.exec())
             {
                 int count;
@@ -70,24 +66,48 @@ void MainWindow::on_pushButton_login_clicked()
                 }
                 if (count == 1)
                 {
-                    sqlClose(); //closes the database - it is needed to open new window
+                    sqlClose();
                     this->hide();
 
-                    adminwindow = new AdminWindow(this);//this means this main window or this class which acts as a parent
-                    connect(this, SIGNAL(send(const QString, const QString)), adminwindow, SLOT(receive(const QString, const QString)));
-                    emit send(username, password);
-                    adminwindow->show();
-
+                    UserType = "staff";
+                    customerwindow = new CustomerWindow(this);
+                    connect(this, SIGNAL(send(const QString, const QString, const QString)), customerwindow, SLOT(receive(const QString, const QString, const QString)));
+                    emit send(UserType, username, password);
+                    customerwindow->show();
                 }
                 else
                 {
-                    QMessageBox::warning(this, "Login", "Username and Password is not correct");
+                    qry.prepare("SELECT * FROM Admin WHERE Username = '"+username+"' and Password = '"+password+"'");
+                    if (qry.exec())
+                    {
+                        int count;
+                        count = 0;
+                        while(qry.next())
+                        {
+                            count++;
+                        }
+                        if (count == 1)
+                        {
+                            sqlClose(); //closes the database - it is needed to open new window
+                            this->hide();
+
+                            UserType = "admin";
+                            adminwindow = new AdminWindow(this);//this means this main window or this class which acts as a parent
+                            connect(this, SIGNAL(send(const QString, const QString)), adminwindow, SLOT(receive(const QString, const QString)));
+                            emit send(UserType, username, password);
+                            adminwindow->show();
+
+                        }
+                        else
+                        {
+                        QMessageBox::warning(this, "Login", "Username and Password is not correct");
+                        }
+                    }
                 }
             }
         }
     }
 }
-
 
 MainWindow::~MainWindow()
 {

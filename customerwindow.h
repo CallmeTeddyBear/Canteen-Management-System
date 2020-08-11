@@ -16,7 +16,7 @@ public:
     ~CustomerWindow();
 
 public slots:
-    void receive(QString username, QString password);
+    void receive(QString UserType, QString username, QString password);
 
 private slots:
     void on_pushButton_logout_clicked();

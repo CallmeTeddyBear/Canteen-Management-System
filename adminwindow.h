@@ -26,6 +26,8 @@ private slots:
 
     void on_pushButton_logout_clicked();
 
+    void on_pushButton_showBalance_clicked();
+
 public slots:
     void receive(QString username, QString password);
 

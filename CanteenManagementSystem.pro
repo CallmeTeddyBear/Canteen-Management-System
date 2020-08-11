@@ -16,40 +16,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    addcustomeroption.cpp \
+    addstaff.cpp \
+    addstudent.cpp \
     admintodaysspecial.cpp \
     adminwindow.cpp \
     customerwindow.cpp \
     logout.cpp \
     main.cpp \
     mainwindow.cpp \
+    showbalance.cpp \
     showcustomerdataoption.cpp \
-    staffcustomeroption.cpp \
-    studentcustomeroption.cpp \
+    studentstaffoption.cpp \
     todaysspecialpopup.cpp
 
 HEADERS += \
-    addcustomeroption.h \
+    addstaff.h \
+    addstudent.h \
     admintodaysspecial.h \
     adminwindow.h \
     customerwindow.h \
     logout.h \
     mainwindow.h \
+    showbalance.h \
     showcustomerdataoption.h \
-    staffcustomeroption.h \
-    studentcustomeroption.h \
+    studentstaffoption.h \
     todaysspecialpopup.h
 
 FORMS += \
-    addcustomeroption.ui \
+    addstaff.ui \
+    addstudent.ui \
     admintodaysspecial.ui \
     adminwindow.ui \
     customerwindow.ui \
     logout.ui \
     mainwindow.ui \
+    showbalance.ui \
     showcustomerdataoption.ui \
-    staffcustomeroption.ui \
-    studentcustomeroption.ui \
+    studentstaffoption.ui \
     todaysspecialpopup.ui
 
 # Default rules for deployment.

@@ -3,6 +3,9 @@
 
 #include <QDialog>
 
+#include "mainwindow.h"
+#include "adminwindow.h"
+
 namespace Ui {
 class Logout;
 }
@@ -15,8 +18,15 @@ public:
     explicit Logout(QWidget *parent = nullptr);
     ~Logout();
 
+private slots:
+    void on_pushButton_yes_clicked();
+
+    void on_pushButton_2_no_clicked();
+
 private:
     Ui::Logout *ui;
+    //MainWindow *mainwindow;
+    //AdminWindow *adminwindow;
 };
 
 #endif // LOGOUT_H

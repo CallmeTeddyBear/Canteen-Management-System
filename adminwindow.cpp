@@ -1,9 +1,11 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
 
-#include "addcustomeroption.h"
+#include "studentstaffoption.h"
 #include "showcustomerdataoption.h"
 #include "admintodaysspecial.h"
+#include "logout.h"
+#include "showbalance.h"
 
 #include <QDebug>
 
@@ -43,11 +45,6 @@ void AdminWindow::receive(QString username, QString password)
     }
 }
 
-AdminWindow::~AdminWindow()
-{
-    delete ui;
-}
-
 void AdminWindow::on_pushButton_todays_special_clicked()
 {
     AdminTodaysSpecial todayspecial;
@@ -57,7 +54,7 @@ void AdminWindow::on_pushButton_todays_special_clicked()
 
 void AdminWindow::on_pushButton_add_customer_clicked()
 {
-    AddCustomerOption customerOption;
+    StudentStaffOption customerOption;
     customerOption.setModal(true);
     customerOption.exec();
 }
@@ -81,6 +78,19 @@ void AdminWindow::on_pushButton_addBalance_clicked()
 
 void AdminWindow::on_pushButton_logout_clicked()
 {
-    this->hide();
-    parentWidget()->show();
+    Logout logout_dialog;
+    logout_dialog.setModal(true);
+    logout_dialog.exec();
+}
+
+void AdminWindow::on_pushButton_showBalance_clicked()
+{
+    ShowBalance balance;
+    balance.setModal(true);
+    balance.exec();
+}
+
+AdminWindow::~AdminWindow()
+{
+    delete ui;
 }
