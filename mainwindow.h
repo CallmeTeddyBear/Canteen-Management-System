@@ -47,7 +47,8 @@ public:
     }
 
 signals:
-    void send(const QString UserType, const QString username, const QString password);
+    void send_customer(const QString UserType, const QString username, const QString password);
+    void send_admin(const QString username, const QString password);
 
 private slots:
     void on_pushButton_login_clicked();

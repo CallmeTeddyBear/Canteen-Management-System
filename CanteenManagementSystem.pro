@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addbalance.cpp \
     addstaff.cpp \
     addstudent.cpp \
     admintodaysspecial.cpp \
@@ -26,10 +27,12 @@ SOURCES += \
     mainwindow.cpp \
     showbalance.cpp \
     showcustomerdataoption.cpp \
+    showfoodmenu.cpp \
     studentstaffoption.cpp \
     todaysspecialpopup.cpp
 
 HEADERS += \
+    addbalance.h \
     addstaff.h \
     addstudent.h \
     admintodaysspecial.h \
@@ -39,10 +42,12 @@ HEADERS += \
     mainwindow.h \
     showbalance.h \
     showcustomerdataoption.h \
+    showfoodmenu.h \
     studentstaffoption.h \
     todaysspecialpopup.h
 
 FORMS += \
+    addbalance.ui \
     addstaff.ui \
     addstudent.ui \
     admintodaysspecial.ui \
@@ -52,6 +57,7 @@ FORMS += \
     mainwindow.ui \
     showbalance.ui \
     showcustomerdataoption.ui \
+    showfoodmenu.ui \
     studentstaffoption.ui \
     todaysspecialpopup.ui
 

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+
 namespace Ui {
 class CustomerWindow;
 }
@@ -16,7 +17,7 @@ public:
     ~CustomerWindow();
 
 public slots:
-    void receive(QString UserType, QString username, QString password);
+    void receive_customer(QString UserType, QString username, QString password);
 
 private slots:
     void on_pushButton_logout_clicked();

@@ -86,103 +86,17 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_todays_special">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>320</y>
-      <width>181</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Today's Special</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_add_customer">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>320</y>
-      <width>181</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Add Customer</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>1130</x>
-      <y>150</y>
-      <width>181</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Edit Food Items</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_showcustomerdata">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>320</y>
-      <width>241</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Show Customer's Data</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_account_settings">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>570</y>
-      <width>181</width>
-      <height>91</height>
+      <x>1570</x>
+      <y>780</y>
+      <width>231</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
      <string>Account Settings</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_addBalance">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>700</y>
-      <width>181</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Balance</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_logout">
@@ -212,65 +126,216 @@
      <string>Log Out</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>80</y>
-      <width>381</width>
-      <height>131</height>
+      <x>0</x>
+      <y>280</y>
+      <width>351</width>
+      <height>751</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>56</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: none;</string>
+     <string notr="true">QWidget
+{
+	background-color: rgb(255, 255, 255);
+	border-color: rgb(0, 0, 0);
+	border-style: solid;
+	border-width: 5px;
+}
+
+QPushButton:hover
+{
+	
+	background-color: rgb(0, 0, 255);
+}
+</string>
     </property>
-    <property name="text">
-     <string>ADMIN</string>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
     </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="pushButton_showBalance">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Show Customer Balance</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_showcustomerdata">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Show Customer's Data</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_add_customer">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>160</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Add Customer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_foodMenu">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>240</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Food Menu</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_todays_special">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>320</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Today's Special</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_addBalance">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>400</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Add Balance</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>231</width>
-      <height>221</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1671</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QWidget #widget
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>50</y>
+       <width>381</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>56</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: none;</string>
+     </property>
+     <property name="text">
+      <string>ADMIN</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>231</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget #widget
 {
 	background-color: none;
 	border-image: url(:/KU_logo.png);
 }</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_showBalance">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>430</y>
-      <width>241</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Show Customer Balance</string>
-    </property>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

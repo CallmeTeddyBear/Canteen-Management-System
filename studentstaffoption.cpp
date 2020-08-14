@@ -10,6 +10,7 @@ StudentStaffOption::StudentStaffOption(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlag(Qt::WindowContextHelpButtonHint,false);
+    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::CustomizeWindowHint);
 }
 
 void StudentStaffOption::on_pushButton_student_clicked()

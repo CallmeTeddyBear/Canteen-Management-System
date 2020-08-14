@@ -48,8 +48,8 @@ void MainWindow::on_pushButton_login_clicked()
 
             UserType = "student";
             customerwindow = new CustomerWindow(this);
-            connect(this, SIGNAL(send(const QString, const QString, const QString)), customerwindow, SLOT(receive(const QString, const QString, const QString)));
-            emit send(UserType, username, password);
+            connect(this, SIGNAL(send_customer(const QString, const QString, const QString)), customerwindow, SLOT(receive_customer(const QString, const QString, const QString)));
+            emit send_customer(UserType, username, password);
             customerwindow->show();
 
         }
@@ -71,8 +71,8 @@ void MainWindow::on_pushButton_login_clicked()
 
                     UserType = "staff";
                     customerwindow = new CustomerWindow(this);
-                    connect(this, SIGNAL(send(const QString, const QString, const QString)), customerwindow, SLOT(receive(const QString, const QString, const QString)));
-                    emit send(UserType, username, password);
+                    connect(this, SIGNAL(send_customer(const QString, const QString, const QString)), customerwindow, SLOT(receive_customer(const QString, const QString, const QString)));
+                    emit send_customer(UserType, username, password);
                     customerwindow->show();
                 }
                 else
@@ -91,10 +91,9 @@ void MainWindow::on_pushButton_login_clicked()
                             sqlClose(); //closes the database - it is needed to open new window
                             this->hide();
 
-                            UserType = "admin";
                             adminwindow = new AdminWindow(this);//this means this main window or this class which acts as a parent
-                            connect(this, SIGNAL(send(const QString, const QString)), adminwindow, SLOT(receive(const QString, const QString)));
-                            emit send(UserType, username, password);
+                            connect(this, SIGNAL(send_admin(const QString, const QString)), adminwindow, SLOT(receive_admin(const QString, const QString)));
+                            emit send_admin(username, password);
                             adminwindow->show();
 
                         }

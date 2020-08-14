@@ -16,7 +16,7 @@ public:
     ~TodaysSpecialPopUp();
 
 public slots:
-    void receive(QString todays_special);
+    //void receive(QString todays_special);
 
 private:
     Ui::TodaysSpecialPopUp *ui;

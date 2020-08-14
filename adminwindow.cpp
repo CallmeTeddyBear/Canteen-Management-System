@@ -6,6 +6,7 @@
 #include "admintodaysspecial.h"
 #include "logout.h"
 #include "showbalance.h"
+#include "showfoodmenu.h"
 
 #include <QDebug>
 
@@ -17,7 +18,7 @@ AdminWindow::AdminWindow(QWidget *parent) :
 
 }
 
-void AdminWindow::receive(QString username, QString password)
+void AdminWindow::receive_admin(QString username, QString password)
 {
 
     MainWindow connect_database;
@@ -62,10 +63,6 @@ void AdminWindow::on_pushButton_add_customer_clicked()
 
 void AdminWindow::on_pushButton_showcustomerdata_clicked()
 {
-//    QString addoption()
-//    {
-//        return "add_Student";
-//    }
     ShowCustomerDataOption showDataOption;
     showDataOption.setModal(true);
     showDataOption.exec();
@@ -73,14 +70,24 @@ void AdminWindow::on_pushButton_showcustomerdata_clicked()
 
 void AdminWindow::on_pushButton_addBalance_clicked()
 {
+    QString addType = "balance";
+
+
+    StudentStaffOption option;
+    option.setModal(true);
+//    connect(this, SIGNAL(send_addBalance(const QString)), option, SLOT(receive_addBalance(const QString)));
+//    emit send_addBalance(addType);
+    option.exec();
 
 }
 
 void AdminWindow::on_pushButton_logout_clicked()
 {
-    Logout logout_dialog;
-    logout_dialog.setModal(true);
-    logout_dialog.exec();
+    this->hide();
+    parentWidget()->show();
+//    Logout logout_dialog;
+//    logout_dialog.setModal(true);
+//    logout_dialog.exec();
 }
 
 void AdminWindow::on_pushButton_showBalance_clicked()
@@ -90,7 +97,16 @@ void AdminWindow::on_pushButton_showBalance_clicked()
     balance.exec();
 }
 
+void AdminWindow::on_pushButton_foodMenu_clicked()
+{
+    ShowFoodMenu menu;
+    menu.setModal(true);
+    menu.exec();
+}
+
 AdminWindow::~AdminWindow()
 {
     delete ui;
 }
+
+

@@ -25,8 +25,8 @@ private slots:
 
 private:
     Ui::Logout *ui;
-    //MainWindow *mainwindow;
-    //AdminWindow *adminwindow;
+    MainWindow *mainwindow;
+    AdminWindow *adminwindow;
 };
 
 #endif // LOGOUT_H

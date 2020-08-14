@@ -10,12 +10,37 @@ TodaysSpecialPopUp::TodaysSpecialPopUp(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlag(Qt::WindowContextHelpButtonHint,false);
+
+    MainWindow connect_database;
+
+    if (!connect_database.sqlOpen())
+    {
+        qDebug() << "Failed to open the database";
+        return;
+    }
+
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM TodaysSpecial");
+
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->label_showtodaysspecial->setText(qry.value(0).toString());
+        }
+        connect_database.sqlClose();
+    }
+
+
 }
 
-void TodaysSpecialPopUp::receive(QString popup)
-{
-    ui->label_showtodaysspecial->setText(popup);
-}
+//void TodaysSpecialPopUp::receive(QString todays_special)
+//{
+//    ui->label_showtodaysspecial->setText(todays_special);
+//}
 
 TodaysSpecialPopUp::~TodaysSpecialPopUp()
 {

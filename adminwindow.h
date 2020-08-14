@@ -28,12 +28,14 @@ private slots:
 
     void on_pushButton_showBalance_clicked();
 
+    void on_pushButton_foodMenu_clicked();
+
 public slots:
-    void receive(QString username, QString password);
+    void receive_admin(QString username, QString password);
+    //void send_addBalance(const QString addType);
 
 private:
     Ui::AdminWindow *ui;
-    //MainWindow *mainwindow;
 };
 
 #endif // ADMINWINDOW_H

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "mainwindow.h"
+#include "todaysspecialpopup.h"
 
 namespace Ui {
 class AdminTodaysSpecial;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::AdminTodaysSpecial *ui;
+    TodaysSpecialPopUp *popup;
 };
 
 #endif // ADMINTODAYSSPECIAL_H

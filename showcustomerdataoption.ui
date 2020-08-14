@@ -28,6 +28,9 @@
    <property name="text">
     <string>Close</string>
    </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">

@@ -17,18 +17,24 @@ ShowCustomerDataOption::ShowCustomerDataOption(QWidget *parent) :
 
     connect_database.sqlOpen();
 
-    QSqlQuery* qry = new QSqlQuery(connect_database.mydb);
+    QSqlQuery* qry_student = new QSqlQuery(connect_database.mydb);
     QSqlQuery* qry_staff = new QSqlQuery(connect_database.mydb);
+//    QSqlTableModel* qry_staff = new QSqlTableModel();
 
-    qry->prepare("SELECT * FROM Student");
-    qry->exec();
-    modal_student->setQuery(*qry);
+    qry_student->prepare("SELECT * FROM Student");
+    qry_student->exec();
+    modal_student->setQuery(*qry_student);
     ui->tableView->setModel(modal_student);
 
     qry_staff->prepare("SELECT * FROM Staff");
     qry_staff->exec();
     modal_staff->setQuery(*qry_staff);
     ui->tableView_2->setModel(modal_staff);
+
+//    qry_staff->setTable("Staff");
+//    qry_staff->select();
+//    ui->tableView_2->setModel(qry_staff);
+
 
     connect_database.sqlClose();
     qDebug() << (modal_student->rowCount());
