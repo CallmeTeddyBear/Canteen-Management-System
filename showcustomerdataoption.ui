@@ -10,6 +10,18 @@
     <height>675</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>914</width>
+    <height>675</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>914</width>
+    <height>675</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Customer Info</string>
   </property>

@@ -15,6 +15,14 @@ public:
     explicit DeleteCustomer(QWidget *parent = nullptr);
     ~DeleteCustomer();
 
+public slots:
+    void receive_details(QString customerType, QString username, QString password);
+
+private slots:
+    void on_pushButton_cancel_clicked();
+
+    void on_pushButton_deleteCustomer_clicked();
+
 private:
     Ui::DeleteCustomer *ui;
 };

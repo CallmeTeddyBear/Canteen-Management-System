@@ -35,7 +35,7 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
 
         if (qry.exec())
         {
-            qint8 studentID;
+            int studentID;
 
             while(qry.next())
             {

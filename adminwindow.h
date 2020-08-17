@@ -34,8 +34,14 @@ private slots:
 
     void on_pushButton_deleteCustomer_clicked();
 
+    void on_pushButton_account_settings_clicked();
+
+    void on_pushButton_side_clicked();
+
+    void on_pushButton_side_close_clicked();
+
 signals:
-//    void send_addType(const QString addType);
+    void send(const QString data);
 
 public slots:
     void receive_admin(QString username, QString password);

@@ -8,7 +8,7 @@
 #include "showbalance.h"
 #include "showfoodmenu.h"
 #include "deletecustomer.h"
-#include "addbalancelogin.h"
+#include "admincustomerlogin.h"
 
 #include <QDebug>
 
@@ -68,13 +68,6 @@ void AdminWindow::on_pushButton_add_customer_clicked()
     option.exec();
 }
 
-void AdminWindow::on_pushButton_addBalance_clicked()
-{
-    AddBalanceLogin login;
-    login.setModal(true);
-    login.exec();
-}
-
 void AdminWindow::on_pushButton_logout_clicked()
 {
     this->hide();
@@ -103,14 +96,45 @@ void AdminWindow::on_pushButton_discountOffer_clicked()
 
 }
 
+void AdminWindow::on_pushButton_addBalance_clicked()
+{
+    QString data = "addbalance";
+    AdminCustomerLogin *login = new AdminCustomerLogin();
+    login->setModal(true);
+    login->show();
+
+    connect(this, SIGNAL(send(const QString)), login, SLOT(receive(const QString)));
+    emit send(data);
+}
+
 void AdminWindow::on_pushButton_deleteCustomer_clicked()
 {
-    DeleteCustomer customer;
-    customer.setModal(true);
-    customer.exec();
+    QString data = "deletecustomer";
+    AdminCustomerLogin *login = new AdminCustomerLogin();
+    login->setModal(true);
+    login->show();
+
+    connect(this, SIGNAL(send(const QString)), login, SLOT(receive(const QString)));
+    emit send(data);
+}
+
+void AdminWindow::on_pushButton_account_settings_clicked()
+{
+
 }
 
 AdminWindow::~AdminWindow()
 {
     delete ui;
+}
+
+
+void AdminWindow::on_pushButton_side_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void AdminWindow::on_pushButton_side_close_clicked()
+{
+   ui->stackedWidget->setCurrentIndex(0);
 }

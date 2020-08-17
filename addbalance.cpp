@@ -2,6 +2,8 @@
 #include "ui_addbalance.h"
 #include "mainwindow.h"
 
+#include <QMessageBox>
+
 AddBalance::AddBalance(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddBalance)
@@ -13,6 +15,9 @@ AddBalance::AddBalance(QWidget *parent) :
 
 void AddBalance::receive_details(QString customerType, QString username, QString password)
 {
+    Type = customerType;
+    Username = username;
+    Password = password;
     MainWindow connect_database;
 
     if (!connect_database.sqlOpen())
@@ -25,9 +30,9 @@ void AddBalance::receive_details(QString customerType, QString username, QString
 
     //connect_database.sqlOpen();
 
-    if (customerType == "student")
+    if (Type == "student")
     {
-        qry.prepare("SELECT * FROM Student WHERE Username = '"+username+"' AND Password = '"+password+"'");
+        qry.prepare("SELECT * FROM Student WHERE Username = '"+Username+"' AND Password = '"+Password+"'");
 
         if (qry.exec())
         {
@@ -38,6 +43,7 @@ void AddBalance::receive_details(QString customerType, QString username, QString
                 ui->label_showName->setText(qry.value(1).toString());
 
                 studentID = qry.value(0).toInt();
+                ID = studentID;
             }
 
             qry.prepare("SELECT * FROM Student_Balance WHERE Student_ID = (:StudentID)");
@@ -47,15 +53,16 @@ void AddBalance::receive_details(QString customerType, QString username, QString
             {
                 while(qry.next())
                 {
-                    ui->label_showCurrentBalance->setText(qry.value(2).toString());
+                    currentBalance = qry.value(2).toInt();
+                    ui->label_showCurrentBalance->setText(QString::number(currentBalance));
                 }
             }
         }
     }
 
-    if (customerType == "staff")
+    if (Type == "staff")
     {
-        qry.prepare("SELECT * FROM Staff WHERE Username = '"+username+"' AND Password = '"+password+"'");
+        qry.prepare("SELECT * FROM Staff WHERE Username = '"+Username+"' AND Password = '"+Password+"'");
 
         if (qry.exec())
         {
@@ -65,6 +72,7 @@ void AddBalance::receive_details(QString customerType, QString username, QString
                 ui->label_showName->setText(qry.value(1).toString());
 
                 staffID = qry.value(0).toInt();
+                ID = staffID;
             }
 
             qry.prepare("SELECT * FROM Staff_Balance WHERE Staff_ID = (:StaffID)");
@@ -74,6 +82,7 @@ void AddBalance::receive_details(QString customerType, QString username, QString
             {
                 while(qry.next())
                 {
+                    currentBalance = qry.value(2).toInt();
                     ui->label_showCurrentBalance->setText(qry.value(2).toString());
                 }
             }
@@ -84,6 +93,62 @@ void AddBalance::receive_details(QString customerType, QString username, QString
 
 void AddBalance::on_pushButton_addBalance_clicked()
 {
+    int amount, newBalance;
+    amount = ui->lineEdit_addAmount->text().toInt();
+
+    newBalance = amount + currentBalance;
+    currentBalance = newBalance;
+    qDebug() << "New Amount: " << newBalance;
+
+    MainWindow connect_database;
+
+    if (!connect_database.sqlOpen())
+    {
+        qDebug() << "Failed to open the database";
+        return;
+    }
+
+    QSqlQuery qry;
+    //connect_database.sqlOpen();
+
+    qDebug() << "Type: " << Type;
+    qDebug() << "ID: " << ID;
+
+    if (Type == "student")
+    {
+        qry.prepare("UPDATE Student_Balance SET Balance = (:balance) WHERE Student_ID = (:ID)");
+        qry.bindValue(":balance", newBalance);
+        qry.bindValue(":ID", ID);
+
+        if (qry.exec())
+        {
+                ui->label_showCurrentBalance->setText(QString::number(currentBalance));
+                QMessageBox::information(this, "Success", "Amount has been added");
+                ui->lineEdit_addAmount->setText("");
+        }
+        else
+        {
+            QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
+        }
+    }
+
+    if (Type == "staff")
+    {
+        qry.prepare("UPDATE Staff_Balance SET Balance = (:balance) WHERE Staff_ID = (:ID)");
+        qry.bindValue(":balance", newBalance);
+        qry.bindValue(":ID", ID);
+
+        if (qry.exec())
+        {
+                ui->label_showCurrentBalance->setText(QString::number(currentBalance));
+                QMessageBox::information(this, "Success", "Amount has been added");
+                ui->lineEdit_addAmount->setText("");
+        }
+        else
+        {
+            QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
+        }
+    }
 
 }
 

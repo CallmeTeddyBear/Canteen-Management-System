@@ -3,7 +3,7 @@
 
 #include "addstudent.h"
 #include "addstaff.h"
-#include "addbalancelogin.h"
+#include "admincustomerlogin.h"
 
 StudentStaffOption::StudentStaffOption(QWidget *parent) :
     QDialog(parent),

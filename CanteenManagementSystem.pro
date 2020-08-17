@@ -17,9 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     addbalance.cpp \
-    addbalancelogin.cpp \
     addstaff.cpp \
     addstudent.cpp \
+    admincustomerlogin.cpp \
     admintodaysspecial.cpp \
     adminwindow.cpp \
     customerwindow.cpp \
@@ -35,9 +35,9 @@ SOURCES += \
 
 HEADERS += \
     addbalance.h \
-    addbalancelogin.h \
     addstaff.h \
     addstudent.h \
+    admincustomerlogin.h \
     admintodaysspecial.h \
     adminwindow.h \
     customerwindow.h \
@@ -52,9 +52,9 @@ HEADERS += \
 
 FORMS += \
     addbalance.ui \
-    addbalancelogin.ui \
     addstaff.ui \
     addstudent.ui \
+    admincustomerlogin.ui \
     admintodaysspecial.ui \
     adminwindow.ui \
     customerwindow.ui \

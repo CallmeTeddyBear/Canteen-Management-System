@@ -25,6 +25,9 @@ public slots:
 
 private:
     Ui::AddBalance *ui;
+    int currentBalance;
+    int ID;
+    QString Type, Username, Password;
 };
 
 #endif // BALANCE_H

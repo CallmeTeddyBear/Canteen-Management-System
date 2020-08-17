@@ -10,6 +10,18 @@
     <height>565</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>553</width>
+    <height>565</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>553</width>
+    <height>565</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Add Staff</string>
   </property>
