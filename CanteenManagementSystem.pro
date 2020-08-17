@@ -17,11 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     addbalance.cpp \
+    addbalancelogin.cpp \
     addstaff.cpp \
     addstudent.cpp \
     admintodaysspecial.cpp \
     adminwindow.cpp \
     customerwindow.cpp \
+    deletecustomer.cpp \
     logout.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -33,11 +35,13 @@ SOURCES += \
 
 HEADERS += \
     addbalance.h \
+    addbalancelogin.h \
     addstaff.h \
     addstudent.h \
     admintodaysspecial.h \
     adminwindow.h \
     customerwindow.h \
+    deletecustomer.h \
     logout.h \
     mainwindow.h \
     showbalance.h \
@@ -48,11 +52,13 @@ HEADERS += \
 
 FORMS += \
     addbalance.ui \
+    addbalancelogin.ui \
     addstaff.ui \
     addstudent.ui \
     admintodaysspecial.ui \
     adminwindow.ui \
     customerwindow.ui \
+    deletecustomer.ui \
     logout.ui \
     mainwindow.ui \
     showbalance.ui \
@@ -68,3 +74,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    canteen_database.db
+
+win32:RC_ICONS += icon.ico

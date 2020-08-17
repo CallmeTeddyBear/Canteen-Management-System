@@ -1,5 +1,5 @@
-#ifndef ADDBALANCE_H
-#define ADDBALANCE_H
+#ifndef BALANCE_H
+#define BALANCE_H
 
 #include <QDialog>
 
@@ -15,8 +15,16 @@ public:
     explicit AddBalance(QWidget *parent = nullptr);
     ~AddBalance();
 
+private slots:
+    void on_pushButton_cancel_clicked();
+
+    void on_pushButton_addBalance_clicked();
+
+public slots:
+    void receive_details(QString customerType, QString username, QString password);
+
 private:
     Ui::AddBalance *ui;
 };
 
-#endif // ADDBALANCE_H
+#endif // BALANCE_H

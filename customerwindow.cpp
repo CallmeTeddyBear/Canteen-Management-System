@@ -3,12 +3,16 @@
 
 #include "mainwindow.h"
 #include "todaysspecialpopup.h"
+#include <QTimer>
 
 CustomerWindow::CustomerWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CustomerWindow)
 {
-    ui->setupUi(this);    
+    ui->setupUi(this);
+
+    TodaysSpecialPopUp *popup = new TodaysSpecialPopUp();
+    QTimer::singleShot(1000, popup, SLOT(show()));
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
@@ -57,6 +61,7 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
     if(UserType == "staff")
     {
         qry.prepare("SELECT * FROM Staff WHERE Username = '"+username+"' AND Password = '"+password+"'");
+
         if (qry.exec())
         {
             int staffID;
@@ -73,7 +78,6 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
 
             if (qry.exec())
             {
-                qDebug() << "StaffID = " << staffID;
                 while(qry.next())
                 {
                     ui->label_showBalance->setText(qry.value(2).toString());
@@ -82,10 +86,6 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
         }
     }
     connect_database.sqlClose();
-
-    TodaysSpecialPopUp popup;
-    popup.setModal(true);
-    popup.exec();
 
 }
 

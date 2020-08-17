@@ -30,9 +30,15 @@ private slots:
 
     void on_pushButton_foodMenu_clicked();
 
+    void on_pushButton_discountOffer_clicked();
+
+    void on_pushButton_deleteCustomer_clicked();
+
+signals:
+//    void send_addType(const QString addType);
+
 public slots:
     void receive_admin(QString username, QString password);
-    //void send_addBalance(const QString addType);
 
 private:
     Ui::AdminWindow *ui;

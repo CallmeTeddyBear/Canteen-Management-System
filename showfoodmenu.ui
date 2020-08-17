@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
+    <width>799</width>
     <height>640</height>
    </rect>
   </property>
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="pushButton_close">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>584</y>
+     <x>360</x>
+     <y>590</y>
      <width>80</width>
      <height>31</height>
     </rect>
@@ -84,6 +84,26 @@
      <string>Home</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_deleteFood">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>271</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Delete Food Item</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
@@ -95,21 +115,21 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
-   <widget class="QWidget" name="page">
+   <widget class="QWidget" name="page_home">
     <widget class="QTableView" name="tableView">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>421</width>
+       <width>431</width>
        <height>511</height>
       </rect>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="page_2">
+   <widget class="QWidget" name="page_add">
     <widget class="QLabel" name="label_title">
      <property name="geometry">
       <rect>
@@ -135,8 +155,8 @@
       <rect>
        <x>30</x>
        <y>60</y>
-       <width>361</width>
-       <height>191</height>
+       <width>391</width>
+       <height>261</height>
       </rect>
      </property>
      <property name="font">
@@ -152,8 +172,8 @@
      <widget class="QPushButton" name="pushButton_addItem">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>120</y>
+        <x>150</x>
+        <y>170</y>
         <width>101</width>
         <height>41</height>
        </rect>
@@ -162,13 +182,13 @@
        <string>Add Item</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>301</width>
-        <height>71</height>
+        <x>41</x>
+        <y>32</y>
+        <width>311</width>
+        <height>109</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -194,6 +214,25 @@
         </layout>
        </item>
        <item>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_foodType">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Food Type:   </string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_foodType"/>
+         </item>
+        </layout>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label_foodPrice">
@@ -205,7 +244,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Food Price:</string>
+            <string>Food Price:  </string>
            </property>
           </widget>
          </item>
@@ -213,6 +252,83 @@
           <widget class="QLineEdit" name="lineEdit_foodPrice"/>
          </item>
         </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page">
+    <widget class="QLabel" name="label_title_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Delete Food</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>391</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="pushButton_delete">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>100</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>311</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_title_3">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Food Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox_foodName"/>
        </item>
       </layout>
      </widget>

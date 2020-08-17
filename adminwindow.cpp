@@ -7,6 +7,8 @@
 #include "logout.h"
 #include "showbalance.h"
 #include "showfoodmenu.h"
+#include "deletecustomer.h"
+#include "addbalancelogin.h"
 
 #include <QDebug>
 
@@ -20,7 +22,6 @@ AdminWindow::AdminWindow(QWidget *parent) :
 
 void AdminWindow::receive_admin(QString username, QString password)
 {
-
     MainWindow connect_database;
 
     if (!connect_database.sqlOpen())
@@ -46,6 +47,13 @@ void AdminWindow::receive_admin(QString username, QString password)
     }
 }
 
+void AdminWindow::on_pushButton_showcustomerdata_clicked()
+{
+    ShowCustomerDataOption showDataOption;
+    showDataOption.setModal(true);
+    showDataOption.exec();
+}
+
 void AdminWindow::on_pushButton_todays_special_clicked()
 {
     AdminTodaysSpecial todayspecial;
@@ -55,30 +63,16 @@ void AdminWindow::on_pushButton_todays_special_clicked()
 
 void AdminWindow::on_pushButton_add_customer_clicked()
 {
-    StudentStaffOption customerOption;
-    customerOption.setModal(true);
-    customerOption.exec();
-}
-
-
-void AdminWindow::on_pushButton_showcustomerdata_clicked()
-{
-    ShowCustomerDataOption showDataOption;
-    showDataOption.setModal(true);
-    showDataOption.exec();
+    StudentStaffOption option;
+    option.setModal(true);
+    option.exec();
 }
 
 void AdminWindow::on_pushButton_addBalance_clicked()
 {
-    QString addType = "balance";
-
-
-    StudentStaffOption option;
-    option.setModal(true);
-//    connect(this, SIGNAL(send_addBalance(const QString)), option, SLOT(receive_addBalance(const QString)));
-//    emit send_addBalance(addType);
-    option.exec();
-
+    AddBalanceLogin login;
+    login.setModal(true);
+    login.exec();
 }
 
 void AdminWindow::on_pushButton_logout_clicked()
@@ -104,9 +98,19 @@ void AdminWindow::on_pushButton_foodMenu_clicked()
     menu.exec();
 }
 
+void AdminWindow::on_pushButton_discountOffer_clicked()
+{
+
+}
+
+void AdminWindow::on_pushButton_deleteCustomer_clicked()
+{
+    DeleteCustomer customer;
+    customer.setModal(true);
+    customer.exec();
+}
+
 AdminWindow::~AdminWindow()
 {
     delete ui;
 }
-
-

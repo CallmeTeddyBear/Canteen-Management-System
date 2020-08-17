@@ -12,7 +12,6 @@ AdminTodaysSpecial::AdminTodaysSpecial(QWidget *parent) :
 
     setWindowFlag(Qt::WindowContextHelpButtonHint,false);
 
-
     MainWindow connect_database;
 
     QSqlQueryModel *  modal = new QSqlQueryModel();

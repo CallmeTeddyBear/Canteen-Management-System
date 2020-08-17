@@ -17,8 +17,10 @@ public:
 
 private slots:
     void on_pushButton_student_clicked();
-
     void on_pushButton_staff_clicked();
+
+public slots:
+//    void receive_addType(QString addType);
 
 private:
     Ui::StudentStaffOption *ui;

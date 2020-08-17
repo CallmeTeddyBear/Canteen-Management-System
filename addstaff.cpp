@@ -24,11 +24,6 @@ AddStaff::AddStaff(QWidget *parent) :
 
 }
 
-AddStaff::~AddStaff()
-{
-    delete ui;
-}
-
 void AddStaff::on_pushButton_add_staff_clicked()
 {
     MainWindow connect_database;
@@ -81,9 +76,12 @@ void AddStaff::on_pushButton_add_staff_clicked()
     }
 }
 
-
 void AddStaff::on_pushButton_cancel_clicked()
 {
     this->hide();
 }
 
+AddStaff::~AddStaff()
+{
+    delete ui;
+}

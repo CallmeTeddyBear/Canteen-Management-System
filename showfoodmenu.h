@@ -24,6 +24,10 @@ private slots:
 
     void on_pushButton_home_clicked();
 
+    void on_pushButton_deleteFood_clicked();
+
+    void on_pushButton_delete_clicked();
+
 private:
     Ui::ShowFoodMenu *ui;
 };

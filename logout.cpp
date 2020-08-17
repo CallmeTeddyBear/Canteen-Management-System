@@ -20,7 +20,6 @@ void Logout::on_pushButton_yes_clicked()
 
     adminwindow->close();
 
-
     mainwindow = new MainWindow();
     mainwindow->show();
 

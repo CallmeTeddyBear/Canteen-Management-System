@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     if(!sqlOpen())
     {
-        QMessageBox::warning(this, "ERROR", "Failed to open the database");
+        QMessageBox::critical(this, "ERROR", "Failed to open the database");
     }
  }
 
@@ -43,7 +43,7 @@ void MainWindow::on_pushButton_login_clicked()
         }
         if (count == 1)
         {
-            sqlClose(); //closes the database - it is needed to open new window
+            sqlClose();
             this->hide();
 
             UserType = "student";
@@ -99,7 +99,7 @@ void MainWindow::on_pushButton_login_clicked()
                         }
                         else
                         {
-                        QMessageBox::warning(this, "Login", "Username and Password is not correct");
+                            QMessageBox::warning(this, "Login", "Username or Password is not correct");
                         }
                     }
                 }
