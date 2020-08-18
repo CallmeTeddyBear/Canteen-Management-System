@@ -44,6 +44,10 @@ void MainWindow::on_pushButton_login_clicked()
         if (count == 1)
         {
             sqlClose();
+
+            ui->lineEdit_username->setText("");
+            ui->lineEdit_password->setText("");
+
             this->hide();
 
             UserType = "student";
@@ -51,6 +55,7 @@ void MainWindow::on_pushButton_login_clicked()
             connect(this, SIGNAL(send_customer(const QString, const QString, const QString)), customerwindow, SLOT(receive_customer(const QString, const QString, const QString)));
             emit send_customer(UserType, username, password);
             customerwindow->show();
+
 
         }
         else
@@ -67,6 +72,9 @@ void MainWindow::on_pushButton_login_clicked()
                 if (count == 1)
                 {
                     sqlClose();
+
+                    ui->lineEdit_username->setText("");
+                    ui->lineEdit_password->setText("");
                     this->hide();
 
                     UserType = "staff";
@@ -88,7 +96,10 @@ void MainWindow::on_pushButton_login_clicked()
                         }
                         if (count == 1)
                         {
-                            sqlClose(); //closes the database - it is needed to open new window
+                            sqlClose();
+
+                            ui->lineEdit_username->setText("");
+                            ui->lineEdit_password->setText("");
                             this->hide();
 
                             adminwindow = new AdminWindow(this);//this means this main window or this class which acts as a parent

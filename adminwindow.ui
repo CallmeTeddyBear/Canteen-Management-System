@@ -21,24 +21,27 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>280</y>
+      <y>270</y>
       <width>351</width>
-      <height>751</height>
+      <height>781</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QWidget
 {
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(52, 52, 52);
 	border-color: rgb(0, 0, 0);
 	border-style: solid;
 	border-width: 5px;
 }
+QPushButton
+{
+	color: rgb(255, 255, 255);
+}
 
 QPushButton:hover
 {
-	
-	background-color: rgb(0, 0, 255);
+	background-color: rgb(0, 162, 0);
 }
 </string>
     </property>
@@ -52,7 +55,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>0</y>
+       <y>210</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -72,7 +75,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>80</y>
+       <y>140</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -92,7 +95,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>160</y>
+       <y>280</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -112,7 +115,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>240</y>
+       <y>0</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -132,7 +135,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>320</y>
+       <y>70</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -152,7 +155,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>400</y>
+       <y>350</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -172,7 +175,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>480</y>
+       <y>490</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -185,14 +188,14 @@ QPushButton:hover
       </font>
      </property>
      <property name="text">
-      <string>Discount Offer</string>
+      <string>Add Discount Offer</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_deleteCustomer">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>560</y>
+       <y>420</y>
        <width>351</width>
        <height>81</height>
       </rect>
@@ -212,14 +215,20 @@ QPushButton:hover
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-10</x>
       <y>0</y>
-      <width>1911</width>
+      <width>1921</width>
       <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">QWidget 
+{
+	background-color:  rgb(65, 157, 255);
+	border-style: solid;
+	border-width: 5px;
+	border-color: rgb(0, 0, 0);
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -230,31 +239,32 @@ QPushButton:hover
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>320</x>
-       <y>50</y>
-       <width>381</width>
+       <x>410</x>
+       <y>70</y>
+       <width>1091</width>
        <height>131</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>56</pointsize>
+       <pointsize>54</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: none;</string>
+      <string notr="true">background-color: none;
+border-color: none;</string>
      </property>
      <property name="text">
-      <string>ADMIN</string>
+      <string>CANTEEN ADMIN PAGE</string>
      </property>
     </widget>
     <widget class="QWidget" name="widget" native="true">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>10</y>
+       <x>110</x>
+       <y>30</y>
        <width>231</width>
        <height>221</height>
       </rect>
@@ -304,17 +314,26 @@ QPushButton:hover
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>80</width>
-         <height>71</height>
+         <width>75</width>
+         <height>75</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(52, 52, 52);
-color: rgb(255, 255, 255);
-font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
+        <string notr="true">QPushButton
+{	
+	border-image: url(:/admin_resources/image_1.png);
+	background-color: rgb(52, 52, 52);
+	color: rgb(255, 255, 255);
+	font: 18pt &quot;MS Shell Dlg 2&quot;;
+	border-style: none;
+}
+QPushButton:hover
+{
+	background-color: rgb(97, 97, 97);
+}</string>
        </property>
        <property name="text">
-        <string>=</string>
+        <string/>
        </property>
       </widget>
      </widget>
@@ -326,7 +345,7 @@ font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
         <x>0</x>
         <y>20</y>
         <width>311</width>
-        <height>1031</height>
+        <height>1061</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -341,8 +360,8 @@ font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
       <widget class="QLabel" name="label_username">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>370</y>
+         <x>170</x>
+         <y>380</y>
          <width>151</width>
          <height>31</height>
         </rect>
@@ -429,15 +448,16 @@ color: rgb(255, 255, 255);</string>
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
+	background-color: rgb(52, 52, 52);
 	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(0, 0, 0);
 }
-
 QPushButton:hover
 {
-	
-	background-color: rgb(0, 0, 255);
+	background-color: rgb(97, 97, 97);
 }
-
 </string>
        </property>
        <property name="text">
@@ -461,7 +481,18 @@ QPushButton:hover
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
+        <string notr="true">QPushButton
+{
+	background-color: rgb(52, 52, 52);
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(0, 0, 0);
+}
+QPushButton:hover
+{
+	background-color: rgb(97, 97, 97);
+}</string>
        </property>
        <property name="text">
         <string>Account Settings</string>
@@ -473,31 +504,40 @@ QPushButton:hover
          <x>0</x>
          <y>0</y>
          <width>80</width>
-         <height>71</height>
+         <height>80</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Nirmala UI</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
+	font: 75 18pt &quot;Nirmala UI&quot;;
 	background-color: rgb(52, 52, 52);
 	color: rgb(255, 255, 255);
-	font: 18pt &quot;MS Shell Dlg 2&quot;;
+	font:bold;
 	border-style: none;
 }
 QPushButton:hover
-{
-	border-style: solid;
-	border-width: 2px;
+{	
+	background-color: rgb(225, 0, 0);
 }</string>
        </property>
        <property name="text">
-        <string>=</string>
+        <string>x</string>
        </property>
       </widget>
       <widget class="QWidget" name="widget_2" native="true">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>40</x>
          <y>120</y>
          <width>231</width>
          <height>221</height>
@@ -509,6 +549,30 @@ QPushButton:hover
 	background-color: none;
 	border-image: url(:/KU_logo.png);
 }</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_name_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>380</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: none;
+color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Username:</string>
        </property>
       </widget>
      </widget>
@@ -525,7 +589,6 @@ QPushButton:hover
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

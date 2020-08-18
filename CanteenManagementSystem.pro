@@ -19,6 +19,7 @@ SOURCES += \
     addbalance.cpp \
     addstaff.cpp \
     addstudent.cpp \
+    adminaccountsettings.cpp \
     admincustomerlogin.cpp \
     admintodaysspecial.cpp \
     adminwindow.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     addbalance.h \
     addstaff.h \
     addstudent.h \
+    adminaccountsettings.h \
     admincustomerlogin.h \
     admintodaysspecial.h \
     adminwindow.h \
@@ -54,6 +56,7 @@ FORMS += \
     addbalance.ui \
     addstaff.ui \
     addstudent.ui \
+    adminaccountsettings.ui \
     admincustomerlogin.ui \
     admintodaysspecial.ui \
     adminwindow.ui \
@@ -76,6 +79,7 @@ RESOURCES += \
     resource.qrc
 
 DISTFILES += \
+    admin_resources/image1.png \
     canteen_database.db
 
 win32:RC_ICONS += icon.ico

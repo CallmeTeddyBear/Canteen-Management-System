@@ -100,7 +100,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>120</y>
+      <y>180</y>
       <width>271</width>
       <height>61</height>
      </rect>
@@ -114,6 +114,26 @@
     </property>
     <property name="text">
      <string>Delete Food Item</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_editFood">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>271</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Edit Food Item</string>
     </property>
    </widget>
   </widget>
@@ -270,6 +290,177 @@
     </widget>
    </widget>
    <widget class="QWidget" name="page">
+    <widget class="QPushButton" name="pushButton_select">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>100</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Select</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_editFood">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>220</y>
+       <width>341</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="pushButton_makeChanges">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>180</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Make Changes</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>301</width>
+        <height>112</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_foodName_3">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Food Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_showFoodName">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QFormLayout" name="formLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_foodType_2">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Food Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_showFoodType">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_foodPrice_2">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Food Price:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_showFoodPrice">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>341</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Choose Food:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox_foodName_edit">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_delete">
     <widget class="QLabel" name="label_title_2">
      <property name="geometry">
       <rect>
@@ -290,7 +481,7 @@
       <string>Delete Food</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="groupBox_delete">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -326,7 +517,7 @@
       </property>
       <layout class="QFormLayout" name="formLayout_2">
        <item row="0" column="0">
-        <widget class="QLabel" name="label_title_3">
+        <widget class="QLabel" name="label_foodName_2">
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -340,7 +531,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QComboBox" name="comboBox_foodName"/>
+        <widget class="QComboBox" name="comboBox_foodName_delete"/>
        </item>
       </layout>
      </widget>

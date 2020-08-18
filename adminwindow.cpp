@@ -9,6 +9,7 @@
 #include "showfoodmenu.h"
 #include "deletecustomer.h"
 #include "admincustomerlogin.h"
+#include "adminaccountsettings.h"
 
 #include <QDebug>
 
@@ -120,14 +121,10 @@ void AdminWindow::on_pushButton_deleteCustomer_clicked()
 
 void AdminWindow::on_pushButton_account_settings_clicked()
 {
-
+    AdminAccountSettings settings;
+    settings.setModal(true);
+    settings.exec();
 }
-
-AdminWindow::~AdminWindow()
-{
-    delete ui;
-}
-
 
 void AdminWindow::on_pushButton_side_clicked()
 {
@@ -138,3 +135,10 @@ void AdminWindow::on_pushButton_side_close_clicked()
 {
    ui->stackedWidget->setCurrentIndex(0);
 }
+
+AdminWindow::~AdminWindow()
+{
+    delete ui;
+}
+
+

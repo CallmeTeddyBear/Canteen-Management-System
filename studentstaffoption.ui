@@ -25,14 +25,41 @@
   <property name="windowTitle">
    <string>Choose Customer Type</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+	background-color: rgb(52, 52, 52);
+}
+QLabel
+{
+	color: rgb(191, 191, 191);
+}
+QPushButton
+{
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(255, 255, 255);
+}
+QPushButton:hover
+{
+	background-color: rgb(255, 255, 255);
+	color: rgb(52, 52, 52);
+}</string>
+  </property>
   <widget class="QPushButton" name="pushButton_student">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>100</y>
+     <x>70</x>
+     <y>90</y>
      <width>111</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Student</string>
@@ -41,11 +68,16 @@
   <widget class="QPushButton" name="pushButton_staff">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>100</y>
+     <x>210</x>
+     <y>90</y>
      <width>111</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Staff</string>
@@ -54,11 +86,16 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>70</x>
      <y>40</y>
-     <width>191</width>
+     <width>231</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Select the type of customer:</string>

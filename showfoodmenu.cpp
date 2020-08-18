@@ -16,7 +16,7 @@ ShowFoodMenu::ShowFoodMenu(QWidget *parent) :
     MainWindow connect_database;
 
     QSqlQueryModel * modal_menu = new QSqlQueryModel();
-    QSqlQueryModel *  modal_delete = new QSqlQueryModel();
+    QSqlQueryModel *  modal_fooditem = new QSqlQueryModel();
 
     connect_database.sqlOpen();
 
@@ -32,15 +32,22 @@ ShowFoodMenu::ShowFoodMenu(QWidget *parent) :
     ui->comboBox_foodType->addItem("Dinner");
     ui->comboBox_foodType->addItem("Drinks");
 
+    ui->comboBox_showFoodType->addItem("Breakfast");
+    ui->comboBox_showFoodType->addItem("Lunch");
+    ui->comboBox_showFoodType->addItem("Dinner");
+    ui->comboBox_showFoodType->addItem("Drinks");
+
+
     qry->prepare("SELECT Food_Title FROM Food_Item");
     qry->exec();
-    modal_delete->setQuery(*qry);
-    ui->comboBox_foodName->setModel(modal_delete);
+    modal_fooditem->setQuery(*qry);
+    ui->comboBox_foodName_edit->setModel(modal_fooditem);
+    ui->comboBox_foodName_delete->setModel(modal_fooditem);
 
     connect_database.sqlClose();
 
     qDebug() << (modal_menu->rowCount());
-    qDebug() << (modal_delete->rowCount());
+    qDebug() << (modal_fooditem->rowCount());
 }
 
 void ShowFoodMenu::on_pushButton_home_clicked()
@@ -98,6 +105,8 @@ void ShowFoodMenu::on_pushButton_addItem_clicked()
     {
         QMessageBox::information(this, tr("Success"), tr("Food was added"));
         connect_database.sqlClose();
+        ui->lineEdit_foodName->setText("");
+        ui->lineEdit_foodPrice->setText("");
     }
     else
     {
@@ -115,9 +124,62 @@ ShowFoodMenu::~ShowFoodMenu()
     delete ui;
 }
 
-void ShowFoodMenu::on_pushButton_deleteFood_clicked()
+void ShowFoodMenu::on_pushButton_editFood_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->groupBox_editFood->hide();
+}
+
+void ShowFoodMenu::on_pushButton_select_clicked()
+{
+    ui->groupBox_editFood->show();
+
+    QString foodTitle;
+    foodTitle = ui->comboBox_foodName_edit->currentText();
+
+    qDebug() << foodTitle;
+
+    MainWindow connect_database;
+
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+foodTitle+"'");
+
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->lineEdit_showFoodName->setText(qry.value(1).toString());
+            ui->lineEdit_showFoodPrice->setText(qry.value(3).toString());
+        }
+    }
+
+    connect_database.sqlClose();
+
+}
+
+void ShowFoodMenu::on_pushButton_deleteFood_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+
+    MainWindow connect_database;
+
+    QSqlQueryModel *  modal_fooditem = new QSqlQueryModel();
+
+    connect_database.sqlOpen();
+
+    QSqlQuery* qry = new QSqlQuery(connect_database.mydb);
+
+    qry->prepare("SELECT Food_Title FROM Food_Item");
+    qry->exec();
+    modal_fooditem->setQuery(*qry);
+    ui->comboBox_foodName_delete->setModel(modal_fooditem);
+
+    connect_database.sqlClose();
+
+    qDebug() << (modal_fooditem->rowCount());
 }
 
 void ShowFoodMenu::on_pushButton_delete_clicked()
@@ -126,7 +188,7 @@ void ShowFoodMenu::on_pushButton_delete_clicked()
 
     QString foodName;
 
-    foodName = ui->comboBox_foodName->currentText();
+    foodName = ui->comboBox_foodName_delete->currentText();
 
     if (!connect_database.sqlOpen())
     {
@@ -148,4 +210,46 @@ void ShowFoodMenu::on_pushButton_delete_clicked()
     {
         QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
     }
+}
+
+
+void ShowFoodMenu::on_pushButton_makeChanges_clicked()
+{
+    QString foodName, foodType;
+    int foodPrice;
+    foodName = ui->lineEdit_showFoodName->text();
+    foodType = ui->comboBox_showFoodType->currentText();
+    foodPrice = ui->lineEdit_showFoodPrice->text().toInt();
+
+    qDebug() << foodName << foodType << foodPrice;
+
+    MainWindow connect_database;
+
+    if (!connect_database.sqlOpen())
+    {
+        qDebug() << "Failed to open the database";
+        return;
+    }
+
+    connect_database.sqlOpen();
+    QSqlQuery qry;
+
+    qry.prepare("UPDATE Food_Item SET Food_Title = (:foodtitle), Food_Type = (:foodtype), Price = (:foodprice) WHERE Food_Title = '"+foodName+"'");
+    qry.bindValue(":foodtitle", foodName);
+    qry.bindValue(":foodtype", foodType);
+    qry.bindValue(":foodprice", foodPrice);
+
+    if (qry.exec())
+    {
+        QMessageBox::information(this, tr("Success"), tr("Food Item Changed"));
+        connect_database.sqlClose();
+        ui->lineEdit_showFoodName->setText("");
+        ui->lineEdit_showFoodPrice->setText("");
+
+    }
+    else
+    {
+        QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
+    }
+
 }

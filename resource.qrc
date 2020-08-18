@@ -3,5 +3,6 @@
     <qresource prefix="/">
         <file>canteen_original.png</file>
         <file>KU_logo.png</file>
+        <file>admin_resources/image_1.png</file>
     </qresource>
 </RCC>
