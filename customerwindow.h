@@ -22,6 +22,14 @@ public slots:
 private slots:
     void on_pushButton_logout_clicked();
 
+    void on_pushButton_dinner_clicked();
+
+    void on_pushButton_lunch_clicked();
+
+    void on_pushButton_drinks_clicked();
+
+    void on_pushButton_breakfast_clicked();
+
 private:
     Ui::CustomerWindow *ui;
 };

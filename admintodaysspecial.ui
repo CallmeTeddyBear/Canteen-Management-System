@@ -25,6 +25,39 @@
   <property name="windowTitle">
    <string>Change Today's Special</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+	background-color: rgb(52, 52, 52);
+}
+QLabel
+{
+	color: rgb(191, 191, 191);
+}
+QPushButton
+{
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(255, 255, 255);
+	font-size: 18px;
+}
+QPushButton:hover
+{
+	background-color: rgb(255, 255, 255);
+	color: rgb(52, 52, 52);
+}
+QComboBox:hover
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+}
+QComboBox QAbstractItemView
+{
+	background-color: rgb(52, 52, 52);
+	color: rgb(255, 255, 255);
+}</string>
+  </property>
   <widget class="QPushButton" name="pushButton_ok">
    <property name="geometry">
     <rect>

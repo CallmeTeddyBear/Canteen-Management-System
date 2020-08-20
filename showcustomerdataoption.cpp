@@ -10,6 +10,9 @@ ShowCustomerDataOption::ShowCustomerDataOption(QWidget *parent) :
 
     setWindowFlag(Qt::WindowContextHelpButtonHint,false);
 
+    ui->tableView_student->setAlternatingRowColors(true);
+    ui->tableView_staff->setAlternatingRowColors(true);
+
     MainWindow connect_database;
 
     QSqlQueryModel * modal_student = new QSqlQueryModel();
@@ -24,12 +27,12 @@ ShowCustomerDataOption::ShowCustomerDataOption(QWidget *parent) :
     qry_student->prepare("SELECT Name, Faculty, Gender, Address, Contact_No, Username FROM Student");
     qry_student->exec();
     modal_student->setQuery(*qry_student);
-    ui->tableView->setModel(modal_student);
+    ui->tableView_student->setModel(modal_student);
 
     qry_staff->prepare("SELECT Name, Department, Gender, Address, Contact_No, Username FROM Staff");
     qry_staff->exec();
     modal_staff->setQuery(*qry_staff);
-    ui->tableView_2->setModel(modal_staff);
+    ui->tableView_staff->setModel(modal_staff);
 
 //    qry_staff->setTable("Staff");
 //    qry_staff->select();

@@ -80,6 +80,7 @@ RESOURCES += \
 
 DISTFILES += \
     admin_resources/image1.png \
-    canteen_database.db
+    canteen_database.db \
+    customer _resources/toast.jpg
 
 win32:RC_ICONS += icon.ico

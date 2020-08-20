@@ -16,7 +16,10 @@ public:
     ~AdminAccountSettings();
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_pushButton_cancel_clicked();
+
+
+    void on_pushButton_changePassword_clicked();
 
 private:
     Ui::AdminAccountSettings *ui;

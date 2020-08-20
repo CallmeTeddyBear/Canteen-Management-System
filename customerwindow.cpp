@@ -13,6 +13,8 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
 
     TodaysSpecialPopUp *popup = new TodaysSpecialPopUp();
     QTimer::singleShot(1000, popup, SLOT(show()));
+
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
@@ -87,6 +89,26 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
     }
     connect_database.sqlClose();
 
+}
+
+void CustomerWindow::on_pushButton_breakfast_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void CustomerWindow::on_pushButton_lunch_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void CustomerWindow::on_pushButton_dinner_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void CustomerWindow::on_pushButton_drinks_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
 void CustomerWindow::on_pushButton_logout_clicked()

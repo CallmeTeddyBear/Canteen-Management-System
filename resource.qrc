@@ -4,5 +4,8 @@
         <file>canteen_original.png</file>
         <file>KU_logo.png</file>
         <file>admin_resources/image_1.png</file>
+        <file>customer _resources/toast.jpg</file>
+        <file>customer _resources/rice_set.jpg</file>
+        <file>customer _resources/momo.jpg</file>
     </qresource>
 </RCC>

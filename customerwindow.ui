@@ -69,7 +69,7 @@ QPushButton:hover
       <string>Log Out</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -115,7 +115,7 @@ QPushButton:hover
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -161,7 +161,7 @@ QPushButton:hover
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -208,6 +208,244 @@ QPushButton:hover
      </layout>
     </widget>
    </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>140</y>
+      <width>1051</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame
+{
+	border-image: none;
+	background-color: rgb(255, 255, 255);
+}
+QWidget
+{
+	border-image: none;
+	background-color: rgb(255, 255, 255);
+}
+QPushButton#pushButton_toast
+{
+	border-image: url(:/customer _resources/toast.jpg);
+	border-color: black;
+	border-style: solid;
+	border-width:4px;
+}
+QPushButton#pushButton_toast:hover
+{	
+}
+QPushButton#pushButton_riceset
+{
+	border-image:url(:/customer _resources/rice_set.jpg);
+	border-color: black;
+	border-style: solid;
+	border-width:4px;
+}
+QPushButton#pushButton_momo
+{
+	border-image:url(:/customer _resources/momo.jpg);
+	border-color: black;
+	border-style: solid;
+	border-width:4px;
+}
+
+QLabel
+{
+	font-size: 20px;
+	color: rgb(0, 0, 0);
+}
+QWidget#widget_foodType
+{
+	border: 2px solid black;
+}
+QWidget#widget_foodType QPushButton
+{
+	color:rgb(0, 0, 0);	
+	font-size: 20px;
+	font: bold;
+}
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>70</y>
+       <width>891</width>
+       <height>521</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
+     <widget class="QWidget" name="breakfast">
+      <widget class="QPushButton" name="pushButton_toast">
+       <property name="geometry">
+        <rect>
+         <x>62</x>
+         <y>48</y>
+         <width>221</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_toast">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>260</y>
+         <width>50</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Toast</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="lunch">
+      <widget class="QPushButton" name="pushButton_momo">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>70</y>
+         <width>221</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_momo">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>290</y>
+         <width>55</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Momo</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="dinner">
+      <widget class="QPushButton" name="pushButton_riceset">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>60</y>
+         <width>221</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_riceset">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Rice Set</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="drinks"/>
+    </widget>
+    <widget class="QWidget" name="widget_foodType" native="true">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>10</y>
+       <width>851</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <widget class="QPushButton" name="pushButton_breakfast">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Breakfast</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_lunch">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>0</y>
+        <width>211</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lunch</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_dinner">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>0</y>
+        <width>201</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dinner</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_drinks">
+      <property name="geometry">
+       <rect>
+        <x>629</x>
+        <y>0</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Drinks</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -219,7 +457,6 @@ QPushButton:hover
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

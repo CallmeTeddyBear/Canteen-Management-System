@@ -69,6 +69,13 @@ void AddStudent::on_pushButton_add_student_clicked()
     {
         QMessageBox::information(this, tr("Success"), tr("Customer was added"));
         connect_database.sqlClose();
+        ui->lineEdit_name->setText("");
+        ui->comboBox_faculty->setCurrentIndex(0);
+        ui->lineEdit_address->setText("");
+        ui->lineEdit_contact->setText("");
+        ui->lineEdit_username->setText("");
+        ui->lineEdit_password->setText("");
+
     }
     else
     {

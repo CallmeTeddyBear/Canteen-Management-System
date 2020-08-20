@@ -16,6 +16,8 @@ public:
     ~AdminWindow();
 
 private slots:
+    void showTime();
+
     void on_pushButton_todays_special_clicked();
 
     void on_pushButton_add_customer_clicked();
@@ -48,6 +50,7 @@ public slots:
 
 private:
     Ui::AdminWindow *ui;
+    QTimer *timer_1s;
 };
 
 #endif // ADMINWINDOW_H

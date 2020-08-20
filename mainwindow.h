@@ -8,6 +8,8 @@
 #include "customerwindow.h"
 #include "adminwindow.h"
 
+#include <QDebug>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -32,10 +34,9 @@ public:
     bool sqlOpen()
     {
         mydb = QSqlDatabase::QSqlDatabase::addDatabase("QSQLITE");
-//        QString dbPath = QCoreApplication::applicationDirPath();
-//        QString Path = QDir(dbPath).filePath("canteen_database.db");
-//        mydb.setDatabaseName(Path);
-        mydb.setDatabaseName("C:/Users/User/Desktop/CanteenManagementSystem/canteen_database.db");
+        //mydb.setDatabaseName("C:/Users/User/Desktop/CanteenManagementSystem/canteen_database.db");
+        QString dbPath = QCoreApplication::applicationDirPath() + "/canteen_database.db";
+        mydb.setDatabaseName(dbPath);
 
         if (!mydb.open())
         {

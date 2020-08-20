@@ -12,6 +12,8 @@
 #include "adminaccountsettings.h"
 
 #include <QDebug>
+#include <QTimer>
+#include <QDateTime>
 
 AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,6 +21,15 @@ AdminWindow::AdminWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    timer_1s = new QTimer(this);
+    QObject::connect(timer_1s, SIGNAL(timeout()), this, SLOT(showTime()));
+    timer_1s->start(1000);
+}
+
+void AdminWindow::showTime()
+{
+    ui->label_showTime->setText(QTime::currentTime().toString("h:mm a"));
+    ui->label_showDate->setText(QDate::currentDate().toString("ddd, MMMM dd, yyyy"));
 }
 
 void AdminWindow::receive_admin(QString username, QString password)
