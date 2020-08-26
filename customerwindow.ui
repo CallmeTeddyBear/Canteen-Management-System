@@ -230,7 +230,7 @@ QWidget
 }
 QPushButton#pushButton_toast
 {
-	border-image: url(:/customer _resources/toast.jpg);
+	border-image: url(:/toast.jpg);
 	border-color: black;
 	border-style: solid;
 	border-width:4px;
@@ -240,14 +240,14 @@ QPushButton#pushButton_toast:hover
 }
 QPushButton#pushButton_riceset
 {
-	border-image:url(:/customer _resources/rice_set.jpg);
+	border-image:url(:/rice_set.jpg);
 	border-color: black;
 	border-style: solid;
 	border-width:4px;
 }
 QPushButton#pushButton_momo
 {
-	border-image:url(:/customer _resources/momo.jpg);
+	border-image:url(:/momo.jpg);
 	border-color: black;
 	border-style: solid;
 	border-width:4px;
@@ -386,18 +386,24 @@ QWidget#widget_foodType QPushButton
     <widget class="QWidget" name="widget_foodType" native="true">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>10</y>
-       <width>851</width>
+       <x>0</x>
+       <y>0</y>
+       <width>1051</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover
+{
+	background-color: rgb(0, 170, 127);
+}</string>
      </property>
      <widget class="QPushButton" name="pushButton_breakfast">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>221</width>
+        <width>271</width>
         <height>51</height>
        </rect>
       </property>
@@ -408,9 +414,9 @@ QWidget#widget_foodType QPushButton
      <widget class="QPushButton" name="pushButton_lunch">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>270</x>
         <y>0</y>
-        <width>211</width>
+        <width>261</width>
         <height>51</height>
        </rect>
       </property>
@@ -421,9 +427,9 @@ QWidget#widget_foodType QPushButton
      <widget class="QPushButton" name="pushButton_dinner">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>530</x>
         <y>0</y>
-        <width>201</width>
+        <width>261</width>
         <height>51</height>
        </rect>
       </property>
@@ -434,9 +440,9 @@ QWidget#widget_foodType QPushButton
      <widget class="QPushButton" name="pushButton_drinks">
       <property name="geometry">
        <rect>
-        <x>629</x>
+        <x>790</x>
         <y>0</y>
-        <width>221</width>
+        <width>261</width>
         <height>51</height>
        </rect>
       </property>
@@ -446,16 +452,74 @@ QWidget#widget_foodType QPushButton
      </widget>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1920</width>
-     <height>25</height>
-    </rect>
-   </property>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1481</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget
+{
+	border-image: none;
+	border: 2px solid gray;
+	background-color: rgb(0, 170, 0);;
+}
+QLabel
+{
+	border: none;
+	font-size: 28px;
+	font: bold;
+	color: rgb(0, 0, 0);
+}</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>10</y>
+       <width>151</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:none;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>45</y>
+       <width>491</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_todaysspecial">
+        <property name="text">
+         <string>Today's Special:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_showTodaysspecial">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

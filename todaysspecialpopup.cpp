@@ -37,11 +37,6 @@ TodaysSpecialPopUp::TodaysSpecialPopUp(QWidget *parent) :
 
 }
 
-//void TodaysSpecialPopUp::receive(QString todays_special)
-//{
-//    ui->label_showtodaysspecial->setText(todays_special);
-//}
-
 TodaysSpecialPopUp::~TodaysSpecialPopUp()
 {
     delete ui;

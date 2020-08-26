@@ -68,7 +68,7 @@ void AddStudent::on_pushButton_add_student_clicked()
     if (qry.exec())
     {
         QMessageBox::information(this, tr("Success"), tr("Customer was added"));
-        connect_database.sqlClose();
+
         ui->lineEdit_name->setText("");
         ui->comboBox_faculty->setCurrentIndex(0);
         ui->lineEdit_address->setText("");
@@ -76,11 +76,19 @@ void AddStudent::on_pushButton_add_student_clicked()
         ui->lineEdit_username->setText("");
         ui->lineEdit_password->setText("");
 
+        qry.prepare("INSERT INTO Student_Balance(Name, Balance) VALUES(?, ?)");
+        qry.addBindValue(name);
+        qry.addBindValue(0); //sets balance to 0
+
+        qry.exec();
+
     }
     else
     {
         QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
     }
+
+    connect_database.sqlClose();
 }
 
 void AddStudent::on_pushButton_cancel_clicked()

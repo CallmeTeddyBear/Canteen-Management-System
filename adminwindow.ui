@@ -321,7 +321,7 @@ border-color: none;</string>
        <property name="styleSheet">
         <string notr="true">QPushButton
 {	
-	border-image: url(:/admin_resources/image_1.png);
+	border-image: url(:/image_1.png);
 	background-color: rgb(52, 52, 52);
 	color: rgb(255, 255, 255);
 	font: 18pt &quot;MS Shell Dlg 2&quot;;
@@ -599,7 +599,7 @@ QLabel
 	font-size: 20px;
 }</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>39</x>
@@ -625,7 +625,7 @@ QLabel
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>350</x>

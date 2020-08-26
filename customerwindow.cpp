@@ -4,7 +4,8 @@
 #include "mainwindow.h"
 #include "todaysspecialpopup.h"
 #include <QTimer>
-
+#include <QMovie>
+//include <QSize>
 CustomerWindow::CustomerWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CustomerWindow)
@@ -15,6 +16,35 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     QTimer::singleShot(1000, popup, SLOT(show()));
 
     ui->stackedWidget->setCurrentIndex(0);
+
+    QMovie *movie = new QMovie("C:/Users/User/Desktop/CanteenManagementSystem/customer_resources/todays_special.gif");
+    movie->setScaledSize(QSize().scaled(150, 150, Qt::KeepAspectRatio));
+    ui->label->setMovie(movie);
+    movie->start();
+    connect(movie, SIGNAL(finished()), movie, SLOT(start()));
+
+    MainWindow connect_database;
+
+    if (!connect_database.sqlOpen())
+    {
+        qDebug() << "Failed to open the database";
+        return;
+    }
+
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM TodaysSpecial");
+
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->label_showTodaysspecial->setText(qry.value(0).toString());
+        }
+        connect_database.sqlClose();
+    }
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
