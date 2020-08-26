@@ -17,7 +17,7 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
 
     ui->stackedWidget->setCurrentIndex(0);
 
-    QMovie *movie = new QMovie("C:/Users/User/Desktop/CanteenManagementSystem/customer_resources/todays_special.gif");
+    QMovie *movie = new QMovie("C:/Users/User/Desktop/CanteenManagementSystem/todays_special.gif");
     movie->setScaledSize(QSize().scaled(150, 150, Qt::KeepAspectRatio));
     ui->label->setMovie(movie);
     movie->start();
