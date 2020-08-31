@@ -25,6 +25,8 @@ private slots:
 
 private:
     Ui::DeleteCustomer *ui;
+    int StudentID;
+    int StaffID;
 };
 
 #endif // DELETECUSTOMER_H

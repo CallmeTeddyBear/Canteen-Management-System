@@ -21,6 +21,8 @@ AdminWindow::AdminWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowState(Qt::WindowMaximized);
+
     timer_1s = new QTimer(this);
     QObject::connect(timer_1s, SIGNAL(timeout()), this, SLOT(showTime()));
     timer_1s->start(1000);

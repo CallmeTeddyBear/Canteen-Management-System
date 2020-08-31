@@ -3,6 +3,7 @@
 
 #include "mainwindow.h"
 #include "todaysspecialpopup.h"
+#include "customeraccountsettings.h"
 #include <QTimer>
 #include <QMovie>
 //include <QSize>
@@ -11,6 +12,8 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     ui(new Ui::CustomerWindow)
 {
     ui->setupUi(this);
+
+    setWindowState(Qt::WindowMaximized);
 
     TodaysSpecialPopUp *popup = new TodaysSpecialPopUp();
     QTimer::singleShot(1000, popup, SLOT(show()));
@@ -145,6 +148,13 @@ void CustomerWindow::on_pushButton_logout_clicked()
 {
     this->hide();
     parentWidget()->show();
+}
+
+void CustomerWindow::on_pushButton_settings_clicked()
+{
+    CustomerAccountSettings settings;
+    settings.setModal(true);
+    settings.exec();
 }
 
 CustomerWindow::~CustomerWindow()

@@ -44,6 +44,8 @@ void DeleteCustomer::receive_details(QString customerType, QString username, QSt
                 ui->label_showUsername->setText(Username);
                 ui->label_showName->setText(qry.value(1).toString());
                 ui->label_showCustomerType->setText("Student");
+
+                StudentID = qry.value(0).toInt();
             }
         }
     }
@@ -59,6 +61,8 @@ void DeleteCustomer::receive_details(QString customerType, QString username, QSt
                 ui->label_showUsername->setText(Username);
                 ui->label_showName->setText(qry.value(1).toString());
                 ui->label_showCustomerType->setText("Staff");
+
+                StaffID = qry.value(0).toInt();
             }
         }
     }
@@ -86,13 +90,18 @@ void DeleteCustomer::on_pushButton_deleteCustomer_clicked()
         if (qry.exec())
         {
             QMessageBox::information(this, tr("Success"), tr("Customer was deleted"));
-            connect_database.sqlClose();
             this->hide();
+
+            qry.prepare("DELETE FROM Student_Balance WHERE Student_ID = (:studentid)");
+            qry.bindValue(":studentid", StudentID);
+            qry.exec();
+
         }
         else
         {
             QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
         }
+        connect_database.sqlClose();
     }
     if (Type == "staff")
     {
@@ -101,14 +110,18 @@ void DeleteCustomer::on_pushButton_deleteCustomer_clicked()
         if (qry.exec())
         {
             QMessageBox::information(this, tr("Success"), tr("Customer was deleted"));
-            connect_database.sqlClose();
             this->hide();
+
+            qry.prepare("DELETE FROM Staff_Balance WHERE Staff_ID = (:staffid)");
+            qry.bindValue(":staffid", StaffID);
+            qry.exec();
         }
         else
         {
             QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
         }
     }
+    connect_database.sqlClose();
 }
 
 void DeleteCustomer::on_pushButton_cancel_clicked()

@@ -23,6 +23,7 @@ SOURCES += \
     admincustomerlogin.cpp \
     admintodaysspecial.cpp \
     adminwindow.cpp \
+    customeraccountsettings.cpp \
     customerwindow.cpp \
     deletecustomer.cpp \
     logout.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     admincustomerlogin.h \
     admintodaysspecial.h \
     adminwindow.h \
+    customeraccountsettings.h \
     customerwindow.h \
     deletecustomer.h \
     logout.h \
@@ -60,6 +62,7 @@ FORMS += \
     admincustomerlogin.ui \
     admintodaysspecial.ui \
     adminwindow.ui \
+    customeraccountsettings.ui \
     customerwindow.ui \
     deletecustomer.ui \
     logout.ui \
@@ -81,6 +84,7 @@ RESOURCES += \
 DISTFILES += \
     admin_resources/image1.png \
     canteen_database.db \
-    customer _resources/toast.jpg
+    customer _resources/toast.jpg \
+    settings.png
 
 win32:RC_ICONS += icon.ico

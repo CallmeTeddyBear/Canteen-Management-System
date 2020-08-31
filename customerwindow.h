@@ -30,6 +30,8 @@ private slots:
 
     void on_pushButton_breakfast_clicked();
 
+    void on_pushButton_settings_clicked();
+
 private:
     Ui::CustomerWindow *ui;
 };

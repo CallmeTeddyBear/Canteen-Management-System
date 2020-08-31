@@ -14,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap pix("C:/Users/User/Desktop/CanteenManagementSystem/KU_logo.png");
     ui->label_ku_logo->setPixmap(pix.scaled(200,200));
 
-    ui->lineEdit_username->setPlaceholderText(" Enter Username");
-    ui->lineEdit_password->setPlaceholderText(" Enter Password");
+    ui->lineEdit_username->setPlaceholderText(" Username");
+    ui->lineEdit_password->setPlaceholderText(" Password");
 
     if(!sqlOpen())
     {
