@@ -6,7 +6,9 @@
 #include "customeraccountsettings.h"
 #include <QTimer>
 #include <QMovie>
-//include <QSize>
+#include <QSize>
+#include <QPainter>
+
 CustomerWindow::CustomerWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CustomerWindow)
@@ -22,7 +24,7 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
 
     QMovie *movie = new QMovie("C:/Users/User/Desktop/CanteenManagementSystem/todays_special.gif");
     movie->setScaledSize(QSize().scaled(150, 150, Qt::KeepAspectRatio));
-    ui->label->setMovie(movie);
+    ui->label_gif->setMovie(movie);
     movie->start();
     connect(movie, SIGNAL(finished()), movie, SLOT(start()));
 
@@ -52,6 +54,9 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
 {
+    Username = username;
+    Usertype = UserType;
+
     MainWindow connect_database;
 
     if (!connect_database.sqlOpen())
@@ -76,6 +81,12 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
             {
                 ui->label_showUsername->setText(username);
                 ui->label_showName->setText(qry.value(1).toString());
+
+                qry.first();
+                QByteArray outByteArray = qry.value(8).toByteArray();
+                QPixmap outPixmap = QPixmap();
+                outPixmap.loadFromData(outByteArray);
+                ui->label_userPicture->setPixmap(outPixmap.scaled(210,210));
 
                 studentID = qry.value(0).toInt();
             }
@@ -104,6 +115,12 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
             {
                 ui->label_showUsername->setText(username);
                 ui->label_showName->setText(qry.value(1).toString());
+
+                qry.first();
+                QByteArray outByteArray = qry.value(8).toByteArray();
+                QPixmap outPixmap = QPixmap();
+                outPixmap.loadFromData(outByteArray);
+                ui->label_userPicture->setPixmap(outPixmap.scaled(210,210));
 
                 staffID = qry.value(0).toInt();
             }
@@ -152,9 +169,11 @@ void CustomerWindow::on_pushButton_logout_clicked()
 
 void CustomerWindow::on_pushButton_settings_clicked()
 {
-    CustomerAccountSettings settings;
-    settings.setModal(true);
-    settings.exec();
+    CustomerAccountSettings *settings = new CustomerAccountSettings(this);
+    connect(this, SIGNAL(send(const QString, const QString)), settings, SLOT(receive(const QString, const QString)));
+    emit send(Username, Usertype);
+    settings->setModal(true);
+    settings->show();
 }
 
 CustomerWindow::~CustomerWindow()

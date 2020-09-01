@@ -16,6 +16,9 @@ public:
     explicit CustomerWindow(QWidget *parent = nullptr);
     ~CustomerWindow();
 
+signals:
+    void send(const QString Username, const QString Usertype);
+
 public slots:
     void receive_customer(QString UserType, QString username, QString password);
 
@@ -34,6 +37,8 @@ private slots:
 
 private:
     Ui::CustomerWindow *ui;
+    QString Username;
+    QString Usertype;
 };
 
 #endif // CUSTOMERWINDOW_H

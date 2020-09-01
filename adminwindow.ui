@@ -188,7 +188,7 @@ QPushButton:hover
       </font>
      </property>
      <property name="text">
-      <string>Add Discount Offer</string>
+      <string>Discount Offer</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_deleteCustomer">

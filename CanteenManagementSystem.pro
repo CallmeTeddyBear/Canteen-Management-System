@@ -26,6 +26,7 @@ SOURCES += \
     customeraccountsettings.cpp \
     customerwindow.cpp \
     deletecustomer.cpp \
+    discountoffer.cpp \
     logout.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
     customeraccountsettings.h \
     customerwindow.h \
     deletecustomer.h \
+    discountoffer.h \
     logout.h \
     mainwindow.h \
     showbalance.h \
@@ -65,6 +67,7 @@ FORMS += \
     customeraccountsettings.ui \
     customerwindow.ui \
     deletecustomer.ui \
+    discountoffer.ui \
     logout.ui \
     mainwindow.ui \
     showbalance.ui \

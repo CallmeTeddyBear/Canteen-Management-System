@@ -95,8 +95,8 @@ QLabel
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>100</y>
+       <x>100</x>
+       <y>350</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -142,7 +142,7 @@ QLabel
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>230</y>
+       <y>430</y>
        <width>361</width>
        <height>30</height>
       </rect>
@@ -197,11 +197,33 @@ QLabel
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="label_userPicture">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>80</y>
+       <width>210</width>
+       <height>210</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	background-color: rgb(159, 159, 159);
+	border-radius: 105px;
+	border: 3px solid rgb(0, 0, 0);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>81</x>
-       <y>63</y>
+       <x>101</x>
+       <y>313</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -248,7 +270,7 @@ QLabel
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>140</y>
+      <y>180</y>
       <width>1051</width>
       <height>691</height>
      </rect>
@@ -322,7 +344,7 @@ QWidget#widget_foodType QPushButton
       </rect>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="breakfast">
       <widget class="QPushButton" name="pushButton_toast">
@@ -488,12 +510,12 @@ QWidget#widget_foodType QPushButton
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QWidget" name="widget_todaysspecial" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1481</width>
+      <width>761</width>
       <height>141</height>
      </rect>
     </property>
@@ -512,10 +534,10 @@ QLabel
 	color: rgb(0, 0, 0);
 }</string>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_gif">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>50</x>
        <y>10</y>
        <width>151</width>
        <height>121</height>
@@ -532,7 +554,7 @@ QLabel
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>190</x>
        <y>45</y>
        <width>491</width>
        <height>36</height>
@@ -548,6 +570,57 @@ QLabel
       </item>
       <item>
        <widget class="QLabel" name="label_showTodaysspecial">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_discountoffer" native="true">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>0</y>
+      <width>721</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget
+{
+	border-image: none;
+	border: 2px solid gray;
+	background-color: rgb(0, 170, 0);;
+}
+QLabel
+{
+	border: none;
+	font-size: 28px;
+	font: bold;
+	color: rgb(0, 0, 0);
+}</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>45</y>
+       <width>491</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_todaysspecial_2">
+        <property name="text">
+         <string>Discount Offer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_showdiscountoffer">
         <property name="text">
          <string/>
         </property>

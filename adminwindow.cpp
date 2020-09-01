@@ -10,6 +10,7 @@
 #include "deletecustomer.h"
 #include "admincustomerlogin.h"
 #include "adminaccountsettings.h"
+#include "discountoffer.h"
 
 #include <QDebug>
 #include <QTimer>
@@ -107,7 +108,9 @@ void AdminWindow::on_pushButton_foodMenu_clicked()
 
 void AdminWindow::on_pushButton_discountOffer_clicked()
 {
-
+    DiscountOffer discount;
+    discount.setModal(true);
+    discount.exec();
 }
 
 void AdminWindow::on_pushButton_addBalance_clicked()
