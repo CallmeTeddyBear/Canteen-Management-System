@@ -2,6 +2,7 @@
 #include "ui_logout.h"
 
 #include "mainwindow.h"
+#include "customerwindow.h"
 //#include <QCloseEvent>
 
 Logout::Logout(QWidget *parent) :
@@ -17,11 +18,13 @@ Logout::Logout(QWidget *parent) :
 void Logout::on_pushButton_yes_clicked()
 {
     this->hide();
+//    mainwindow = new MainWindow();
+//    mainwindow->show();
+//    CustomerWindow destroy;
+//    destroy.~CustomerWindow();
+////    adminwindow->close();
 
-    adminwindow->close();
 
-    mainwindow = new MainWindow();
-    mainwindow->show();
 
 }
 

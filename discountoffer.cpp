@@ -70,7 +70,7 @@ void DiscountOffer::on_pushButton_select_clicked()
             ui->label_showFoodname->setText(qry.value(1).toString());
             ui->label_showPrice->setText(qry.value(3).toString());
 
-            foodID = qry.value(0).toInt();
+            foodID = qry.value(0).toString();
             actualPrice = qry.value(3).toInt();
         }
     }

@@ -210,7 +210,7 @@ QLabel
       <string notr="true">QLabel
 {
 	background-color: rgb(159, 159, 159);
-	border-radius: 105px;
+	borderradius: 105px;
 	border: 3px solid rgb(0, 0, 0);
 }
 </string>
@@ -219,7 +219,7 @@ QLabel
       <string/>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>101</x>
@@ -286,36 +286,7 @@ QWidget
 	border-image: none;
 	background-color: rgb(255, 255, 255);
 }
-QPushButton#pushButton_toast
-{
-	border-image: url(:/toast.jpg);
-	border-color: black;
-	border-style: solid;
-	border-width:4px;
-}
-QPushButton#pushButton_toast:hover
-{	
-}
-QPushButton#pushButton_riceset
-{
-	border-image:url(:/rice_set.jpg);
-	border-color: black;
-	border-style: solid;
-	border-width:4px;
-}
-QPushButton#pushButton_momo
-{
-	border-image:url(:/momo.jpg);
-	border-color: black;
-	border-style: solid;
-	border-width:4px;
-}
 
-QLabel
-{
-	font-size: 20px;
-	color: rgb(0, 0, 0);
-}
 QWidget#widget_foodType
 {
 	border: 2px solid black;
@@ -343,8 +314,43 @@ QWidget#widget_foodType QPushButton
        <height>521</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+	border: 4px solid rgb(0, 0, 0);
+}
+QPushButton:hover
+{
+	border: 4px solid rgb(0, 170, 0);
+}
+QPushButton:pressed
+{
+	border: 4px solid rgb(0, 170, 0);
+}
+QPushButton#pushButton_toast
+{
+	borderimage: url(:/toast.jpg);
+	image: url(:/toast.jpg);
+}
+QPushButton#pushButton_riceset
+{
+	border-mage:url(:/rice_set.jpg);
+	image:url(:/rice_set.jpg);
+	
+}
+QPushButton#pushButton_momo
+{
+	borderimage:url(:/momo.jpg);
+	image:url(:/momo.jpg);
+}
+QLabel
+{
+	font-size: 20px;
+	color: rgb(0, 0, 0);
+}</string>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="breakfast">
       <widget class="QPushButton" name="pushButton_toast">
@@ -352,7 +358,7 @@ QWidget#widget_foodType QPushButton
         <rect>
          <x>62</x>
          <y>48</y>
-         <width>221</width>
+         <width>191</width>
          <height>191</height>
         </rect>
        </property>
@@ -383,7 +389,7 @@ QWidget#widget_foodType QPushButton
         <rect>
          <x>90</x>
          <y>70</y>
-         <width>221</width>
+         <width>191</width>
          <height>191</height>
         </rect>
        </property>
@@ -414,7 +420,7 @@ QWidget#widget_foodType QPushButton
         <rect>
          <x>60</x>
          <y>60</y>
-         <width>221</width>
+         <width>191</width>
          <height>191</height>
         </rect>
        </property>
@@ -540,7 +546,7 @@ QLabel
        <x>50</x>
        <y>10</y>
        <width>151</width>
-       <height>121</height>
+       <height>131</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -555,7 +561,7 @@ QLabel
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>45</y>
+       <y>50</y>
        <width>491</width>
        <height>36</height>
       </rect>
@@ -602,31 +608,31 @@ QLabel
 	color: rgb(0, 0, 0);
 }</string>
     </property>
-    <widget class="QWidget" name="layoutWidget_2">
+    <widget class="QLabel" name="label_todaysspecial_2">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>10</y>
+       <width>204</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Discount Offer</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_showdiscountoffer">
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>45</y>
-       <width>491</width>
-       <height>36</height>
+       <y>80</y>
+       <width>461</width>
+       <height>34</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <widget class="QLabel" name="label_todaysspecial_2">
-        <property name="text">
-         <string>Discount Offer</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_showdiscountoffer">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="text">
+      <string/>
+     </property>
     </widget>
    </widget>
   </widget>

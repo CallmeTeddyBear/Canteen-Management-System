@@ -35,6 +35,12 @@ private slots:
 
     void on_pushButton_settings_clicked();
 
+    void showTodaysSpecial_gif();
+
+    void showTodaysSpecial();
+
+    void showDiscountoffer();
+
 private:
     Ui::CustomerWindow *ui;
     QString Username;

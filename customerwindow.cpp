@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "todaysspecialpopup.h"
 #include "customeraccountsettings.h"
+#include "logout.h"
 #include <QTimer>
 #include <QMovie>
 #include <QSize>
@@ -22,34 +23,10 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
 
     ui->stackedWidget->setCurrentIndex(0);
 
-    QMovie *movie = new QMovie("C:/Users/User/Desktop/CanteenManagementSystem/todays_special.gif");
-    movie->setScaledSize(QSize().scaled(150, 150, Qt::KeepAspectRatio));
-    ui->label_gif->setMovie(movie);
-    movie->start();
-    connect(movie, SIGNAL(finished()), movie, SLOT(start()));
+    showTodaysSpecial_gif();
+    showTodaysSpecial();
+    showDiscountoffer();
 
-    MainWindow connect_database;
-
-    if (!connect_database.sqlOpen())
-    {
-        qDebug() << "Failed to open the database";
-        return;
-    }
-
-    connect_database.sqlOpen();
-
-    QSqlQuery qry;
-
-    qry.prepare("SELECT * FROM TodaysSpecial");
-
-    if (qry.exec())
-    {
-        while(qry.next())
-        {
-            ui->label_showTodaysspecial->setText(qry.value(0).toString());
-        }
-        connect_database.sqlClose();
-    }
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
@@ -141,6 +118,69 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
 
 }
 
+void CustomerWindow::showTodaysSpecial_gif()
+{
+    QMovie *movie = new QMovie("C:/Users/User/Desktop/CanteenManagementSystem/todays_special.gif");
+    movie->setScaledSize(QSize().scaled(150, 150, Qt::KeepAspectRatio));
+    ui->label_gif->setMovie(movie);
+    movie->start();
+    connect(movie, SIGNAL(finished()), movie, SLOT(start()));
+}
+
+void CustomerWindow::showTodaysSpecial()
+{
+    MainWindow connect_database;
+
+    if (!connect_database.sqlOpen())
+    {
+        qDebug() << "Failed to open the database";
+        return;
+    }
+
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM TodaysSpecial");
+
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->label_showTodaysspecial->setText(qry.value(0).toString());
+        }
+        connect_database.sqlClose();
+    }
+
+}
+
+void CustomerWindow::showDiscountoffer()
+{
+    MainWindow connect_database;
+
+    if (!connect_database.sqlOpen())
+    {
+        qDebug() << "Failed to open the database";
+        return;
+    }
+
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM Discount_Offer");
+
+    qry.exec();
+    qry.last();
+
+    QString foodname = qry.value(1).toString();
+    QString discount_price = qry.value(2).toString();
+    ui->label_showdiscountoffer->setText("Get " + foodname + " at just Rs. " + discount_price);
+
+    connect_database.sqlClose();
+
+}
+
 void CustomerWindow::on_pushButton_breakfast_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -163,8 +203,17 @@ void CustomerWindow::on_pushButton_drinks_clicked()
 
 void CustomerWindow::on_pushButton_logout_clicked()
 {
+//    CustomerWindow destroy;
+//    destroy.~CustomerWindow();
+//    MainWindow mainwin;
+//    mainwin.show();
+
+
     this->hide();
     parentWidget()->show();
+      /* Logout logout;
+       logout.setModal(true);
+       logout.exec()*/;
 }
 
 void CustomerWindow::on_pushButton_settings_clicked()

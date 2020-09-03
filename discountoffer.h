@@ -28,7 +28,7 @@ private slots:
 
 private:
     Ui::DiscountOffer *ui;
-    int foodID;
+    QString foodID;
     QString foodTitle;
     int discountPrice;
     int actualPrice;
