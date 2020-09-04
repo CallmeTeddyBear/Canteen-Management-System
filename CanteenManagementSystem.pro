@@ -23,6 +23,7 @@ SOURCES += \
     admincustomerlogin.cpp \
     admintodaysspecial.cpp \
     adminwindow.cpp \
+    checkout.cpp \
     customeraccountsettings.cpp \
     customerwindow.cpp \
     deletecustomer.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     admincustomerlogin.h \
     admintodaysspecial.h \
     adminwindow.h \
+    checkout.h \
     customeraccountsettings.h \
     customerwindow.h \
     deletecustomer.h \
@@ -64,6 +66,7 @@ FORMS += \
     admincustomerlogin.ui \
     admintodaysspecial.ui \
     adminwindow.ui \
+    checkout.ui \
     customeraccountsettings.ui \
     customerwindow.ui \
     deletecustomer.ui \

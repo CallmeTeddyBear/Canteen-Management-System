@@ -41,10 +41,27 @@ private slots:
 
     void showDiscountoffer();
 
+    void showList();
+
+    void showBreakfast();
+
+    void on_pushButton_momo_clicked();
+
+    void on_pushButton_toast_clicked();
+
+    void on_pushButton_riceset_clicked();
+
+    void on_pushButton_discardAll_clicked();
+
+    void on_pushButton_blackCoffee_clicked();
+
+    void on_pushButton_checkout_clicked();
+
 private:
     Ui::CustomerWindow *ui;
     QString Username;
     QString Usertype;
+    int table_row;
 };
 
 #endif // CUSTOMERWINDOW_H

@@ -4,11 +4,14 @@
 #include "mainwindow.h"
 #include "todaysspecialpopup.h"
 #include "customeraccountsettings.h"
+#include "checkout.h"
 #include "logout.h"
 #include <QTimer>
 #include <QMovie>
 #include <QSize>
 #include <QPainter>
+
+#include <QStandardItemModel>
 
 CustomerWindow::CustomerWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,6 +22,7 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     setWindowState(Qt::WindowMaximized);
 
     TodaysSpecialPopUp *popup = new TodaysSpecialPopUp();
+    popup->setModal(true);
     QTimer::singleShot(1000, popup, SLOT(show()));
 
     ui->stackedWidget->setCurrentIndex(0);
@@ -26,7 +30,11 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     showTodaysSpecial_gif();
     showTodaysSpecial();
     showDiscountoffer();
+    showList();
 
+    //showBreakfast();
+
+    table_row = 0;
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
@@ -117,6 +125,68 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
     connect_database.sqlClose();
 
 }
+
+void CustomerWindow::showBreakfast()
+{
+    const QSize btnSize = QSize(200, 200);
+    int i;
+    QPushButton *btn[20];
+    for (i = 0 ; i < 16; i++)
+    {
+        btn[i] = new QPushButton(centralWidget());
+
+        btn[i]->setText(QString::number(i));
+        btn[i]->setFixedSize(btnSize);
+    }
+
+    QGridLayout *btnLayout = new QGridLayout(centralWidget());
+    for(i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            btnLayout->addWidget(btn[j + i * 4], 0 + i, j);
+            btnLayout->setSpacing(0);
+        }
+    }
+    centralWidget()->setLayout(btnLayout);
+
+}
+
+void CustomerWindow::showList()
+{
+//    int rows;
+//    rows = 4;
+//    QStandardItemModel *model = new QStandardItemModel(rows, 3, this);
+//    for (int row = 0; row < rows; row++)
+//    {
+//        for (int col = 0; col < 3; col++)
+//        {
+//            QModelIndex index = model->index(row, col, QModelIndex());
+//            model->setData(index, 0);
+//        }
+//    }
+//    ui->tableView->setModel(model);
+    QStringList header;
+    header << "Food" << "Qty." << "Price";
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setHorizontalHeaderLabels(header);
+
+
+//    QString food, qty, price;
+//    food = "apple";
+//    qty = "2";
+//    price = "3";
+//    enum column
+//    {
+//        c_food, c_qty, c_price
+//    };
+
+//    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+//    int row = ui->tableWidget->rowCount() - 1;
+//    ui->tableWidget->setItem(0, 0, new QTableWidgetItem(food));
+
+}
+
 
 void CustomerWindow::showTodaysSpecial_gif()
 {
@@ -228,4 +298,52 @@ void CustomerWindow::on_pushButton_settings_clicked()
 CustomerWindow::~CustomerWindow()
 {
     delete ui;
+}
+
+void CustomerWindow::on_pushButton_toast_clicked()
+{
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    int tablerow = ui->tableWidget->rowCount() - 1;
+    ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Toast"));
+    ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(1)));
+    ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(20)));
+}
+
+void CustomerWindow::on_pushButton_momo_clicked()
+{
+        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+        int tablerow = ui->tableWidget->rowCount() - 1;
+        ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Momo"));
+        ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(1)));
+        ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(40)));
+}
+
+void CustomerWindow::on_pushButton_riceset_clicked()
+{
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    int tablerow = ui->tableWidget->rowCount() - 1;
+    ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Rice Set"));
+    ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(1)));
+    ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(60)));
+}
+
+void CustomerWindow::on_pushButton_discardAll_clicked()
+{
+    ui->tableWidget->setRowCount(0);
+}
+
+void CustomerWindow::on_pushButton_blackCoffee_clicked()
+{
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    int tablerow = ui->tableWidget->rowCount() - 1;
+    ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Black Coffee"));
+    ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(1)));
+    ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(25)));
+}
+
+void CustomerWindow::on_pushButton_checkout_clicked()
+{
+    Checkout checkout;
+    checkout.setModal(true);
+    checkout.exec();
 }
