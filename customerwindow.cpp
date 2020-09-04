@@ -35,6 +35,7 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     //showBreakfast();
 
     table_row = 0;
+
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
