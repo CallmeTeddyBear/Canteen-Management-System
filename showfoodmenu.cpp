@@ -27,16 +27,7 @@ ShowFoodMenu::ShowFoodMenu(QWidget *parent) :
     modal_menu->setQuery(*qry);
     ui->tableView->setModel(modal_menu);
 
-    ui->comboBox_foodType->addItem("Breakfast");
-    ui->comboBox_foodType->addItem("Lunch");
-    ui->comboBox_foodType->addItem("Dinner");
-    ui->comboBox_foodType->addItem("Drinks");
-
-    ui->comboBox_showFoodType->addItem("Breakfast");
-    ui->comboBox_showFoodType->addItem("Lunch");
-    ui->comboBox_showFoodType->addItem("Dinner");
-    ui->comboBox_showFoodType->addItem("Drinks");
-
+    showFoodType();
 
     qry->prepare("SELECT Food_Title FROM Food_Item");
     qry->exec();
@@ -48,6 +39,19 @@ ShowFoodMenu::ShowFoodMenu(QWidget *parent) :
 
     qDebug() << (modal_menu->rowCount());
     qDebug() << (modal_fooditem->rowCount());
+}
+
+void ShowFoodMenu::showFoodType()
+{
+    ui->comboBox_foodType->addItem("Breakfast");
+    ui->comboBox_foodType->addItem("Lunch");
+    ui->comboBox_foodType->addItem("Dinner");
+    ui->comboBox_foodType->addItem("Drinks");
+
+    ui->comboBox_showFoodType->addItem("Breakfast");
+    ui->comboBox_showFoodType->addItem("Lunch");
+    ui->comboBox_showFoodType->addItem("Dinner");
+    ui->comboBox_showFoodType->addItem("Drinks");
 }
 
 void ShowFoodMenu::on_pushButton_home_clicked()

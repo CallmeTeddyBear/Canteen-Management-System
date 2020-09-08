@@ -45,9 +45,9 @@ private slots:
 
     void showBreakfast();
 
-    void on_pushButton_momo_clicked();
+    void on_pushButton_Sandwich_clicked();
 
-    void on_pushButton_toast_clicked();
+    void on_pushButton_Toast_clicked();
 
     void on_pushButton_riceset_clicked();
 
@@ -56,6 +56,14 @@ private slots:
     void on_pushButton_blackCoffee_clicked();
 
     void on_pushButton_checkout_clicked();
+
+    void showBreakfastThumbnails();
+
+    void showLunchThumbnails();
+
+    void showDinnerThumbnails();
+
+    void showDrinksThumbnails();
 
 private:
     Ui::CustomerWindow *ui;

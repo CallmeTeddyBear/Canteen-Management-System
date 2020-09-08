@@ -26,8 +26,14 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::on_pushButton_login_clicked()
 {
     QString UserType;
-    QString username = ui->lineEdit_username->text(); //variable declaration username and password
-    QString password = ui->lineEdit_password->text(); //assigning text from user to variables
+    QString username = ui->lineEdit_username->text();
+    QString password = ui->lineEdit_password->text();
+
+//    QString raw_password = ui->lineEdit_password->text(); //assigning text from user to variables
+
+//    // PassWord Hash //
+//    QByteArray BA_password = raw_password.toUtf8(); //Changing Raw input of password to byteArray
+//    QString password = QByteArray(QCryptographicHash::hash(BA_password, QCryptographicHash::Md5).toHex()); //Converting to Hash
 
     sqlOpen();
     QSqlQuery qry;

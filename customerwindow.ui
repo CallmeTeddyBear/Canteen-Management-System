@@ -272,7 +272,7 @@ QLabel
       <x>60</x>
       <y>200</y>
       <width>1411</width>
-      <height>691</height>
+      <height>681</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -318,7 +318,7 @@ QLabel
        <x>0</x>
        <y>50</y>
        <width>1011</width>
-       <height>641</height>
+       <height>631</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -330,38 +330,6 @@ QPushButton:hover
 {
 	border: 4px solid rgb(0, 170, 0);
 }
-QPushButton:pressed
-{
-	border: 4px solid rgb(0, 170, 0);
-}
-QPushButton#pushButton_toast
-{
-	image: url(:/toast.jpg);
-}
-QPushButton#pushButton_riceset
-{
-	image:url(:/rice_set.jpg);	
-}
-QPushButton#pushButton_momo
-{
-	image:url(:/momo.jpg);
-}
-QPushButton#pushButton_blackCoffee
-{
-	image: url(:/black_coffee.jpg);
-}
-QPushButton#pushButton_blackTea
-{
-	image: url(:/black_tea.jpg);
-}
-QPushButton#pushButton_milkTea
-{
-	image: url(:/milk_tea.jpg);
-}
-QPushButton#pushButton_milkCoffee
-{
-	image: url(:/milk_coffee.jpg);
-}
 QLabel
 {
 	font-size: 20px;
@@ -372,169 +340,7 @@ QLabel
       <number>3</number>
      </property>
      <widget class="QWidget" name="breakfast">
-      <widget class="QScrollArea" name="scrollArea_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>991</width>
-         <height>621</height>
-        </rect>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents_4">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>989</width>
-          <height>619</height>
-         </rect>
-        </property>
-        <widget class="QPushButton" name="pushButton_toast">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>20</y>
-           <width>191</width>
-           <height>191</height>
-          </rect>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_toast">
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>220</y>
-           <width>61</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Toast</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="lunch">
-      <widget class="QScrollArea" name="scrollArea_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>991</width>
-         <height>621</height>
-        </rect>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents_3">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>989</width>
-          <height>619</height>
-         </rect>
-        </property>
-        <widget class="QPushButton" name="pushButton_momo">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>20</y>
-           <width>191</width>
-           <height>191</height>
-          </rect>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_momo">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>220</y>
-           <width>71</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Momo</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="dinner">
-      <widget class="QScrollArea" name="scrollArea_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>991</width>
-         <height>621</height>
-        </rect>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>989</width>
-          <height>619</height>
-         </rect>
-        </property>
-        <widget class="QPushButton" name="pushButton_riceset">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>20</y>
-           <width>191</width>
-           <height>191</height>
-          </rect>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_riceset">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>220</y>
-           <width>91</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Rice Set</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="drinks">
-      <widget class="QScrollArea" name="scrollArea">
+      <widget class="QScrollArea" name="scrollArea_Breakfast">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -552,18 +358,247 @@ QLabel
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
+       <widget class="QWidget" name="scrollAreaWidgetContents_4">
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>-138</y>
           <width>952</width>
-          <height>640</height>
+          <height>752</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="gridLayout">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="8" column="4">
+          <widget class="QLabel" name="label_Pancake">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Pancake</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="2">
-          <widget class="QPushButton" name="pushButton_milkTea">
+          <widget class="QPushButton" name="pushButton_Muffin">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QLabel" name="label_Oatmeal">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Oatmeal</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QPushButton" name="pushButton_Jerry">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="pushButton_Sandwich">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="label_Cereal">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Cereal</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_Sandwich">
+           <property name="text">
+            <string>Sandwich</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QPushButton" name="pushButton_Cereal">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLabel" name="label_Bacon">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Bacon</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QPushButton" name="pushButton_Puri_Tarkari">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QPushButton" name="pushButton_Oatmeal">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_Toast">
+           <property name="text">
+            <string>Toast</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_Muffin">
+           <property name="text">
+            <string>Muffin</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QPushButton" name="pushButton_Boiled_Egg">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -585,7 +620,860 @@ QLabel
           </widget>
          </item>
          <item row="4" column="0">
-          <widget class="QPushButton" name="pushButton_blackCoffee_7">
+          <widget class="QPushButton" name="pushButton_Croissant">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QPushButton" name="pushButton_Bacon">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="4">
+          <widget class="QPushButton" name="pushButton_Pancake">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="pushButton_Doughnut">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1" colspan="2">
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>3</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="4">
+          <widget class="QLabel" name="label_Jerry">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Jerry</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_PuriTarkari">
+           <property name="text">
+            <string>Puri Tarkari</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::NoTextInteraction</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_Croissant">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Croissant</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QLabel" name="label_BoiledEgg">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Boiled Egg</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLabel" name="label_Doughnut">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string> Doughnut</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="pushButton_Toast">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="sizeIncrement">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" rowspan="2" colspan="2">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>3</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="lunch">
+      <widget class="QScrollArea" name="scrollArea_Lunch">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>971</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>-113</y>
+          <width>952</width>
+          <height>752</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="6" column="1">
+          <widget class="QPushButton" name="pushButton_Naan">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="pushButton_Chowmein">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QPushButton" name="pushButton_Aloo_Chop">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="label_Chat">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Chat</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QLabel" name="label_Pizza">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Pizza</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_White_Sauce_Pasta">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>White Sauce Pasta</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_Chicken_Biryani">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="pushButton_Spaghetti">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLabel" name="label_Spaghetti">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Spaghetti</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="4">
+          <widget class="QLabel" name="label_Sausage">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Sausage</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QPushButton" name="pushButton_Pizza">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_Aloo_Chop">
+           <property name="text">
+            <string>Aloo Chop</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1" colspan="2">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>88</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="label_Naan">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Naan</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_Chowmein">
+           <property name="text">
+            <string>Chowmein</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLabel" name="label_Mutton_Biryani">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Mutton Biryani</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_MoMo">
+           <property name="text">
+            <string>MoMo</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_Chicken_Biryani">
+           <property name="text">
+            <string>Chicken Biryani</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="pushButton_Red_Sauce_Pasta">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="pushButton_Mutton_Biryani">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="pushButton_MoMo">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="sizeIncrement">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_Red_Sauce_Pasta">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Red Sauce Pasta</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QPushButton" name="pushButton_Chat">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QPushButton" name="pushButton_White_Sauce_Pasta">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="4">
+          <widget class="QPushButton" name="pushButton_Sausage">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>88</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="dinner">
+      <widget class="QScrollArea" name="scrollArea_Dinner">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>971</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>-113</y>
+          <width>952</width>
+          <height>752</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_Chicken_Curry">
+           <property name="text">
+            <string>Chicken Curry</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="pushButton_Roti">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1" colspan="2">
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>88</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLabel" name="label_Fish_Fry">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Fish Fry</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_Chicken_Curry">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QPushButton" name="pushButton_Daal_Fry">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -607,7 +1495,71 @@ QLabel
           </widget>
          </item>
          <item row="4" column="4">
-          <widget class="QPushButton" name="pushButton_blackCoffee_8">
+          <widget class="QLabel" name="label_Paneer_Chilli">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Paneer Chilli</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="pushButton_Egg_Curry">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="label_Rajma_Masala">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rajma Masala</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="4">
+          <widget class="QLabel" name="label_Papad">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Papad</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QPushButton" name="pushButton_Rajma_Masala">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -628,8 +1580,24 @@ QLabel
            </property>
           </widget>
          </item>
-         <item row="3" column="4">
-          <widget class="QPushButton" name="pushButton_blackCoffee_6">
+         <item row="1" column="4">
+          <widget class="QLabel" name="label_Mutton_Curry">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Mutton Curry</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="4">
+          <widget class="QPushButton" name="pushButton_Papad">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -639,7 +1607,7 @@ QLabel
            <property name="maximumSize">
             <size>
              <width>191</width>
-             <height>16777215</height>
+             <height>191</height>
             </size>
            </property>
            <property name="cursor">
@@ -651,7 +1619,7 @@ QLabel
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QPushButton" name="pushButton_blackCoffee">
+          <widget class="QPushButton" name="pushButton_Rice_Set">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -688,73 +1656,7 @@ QLabel
           </widget>
          </item>
          <item row="3" column="2">
-          <widget class="QPushButton" name="pushButton_blackCoffee_5">
-           <property name="minimumSize">
-            <size>
-             <width>191</width>
-             <height>191</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>191</width>
-             <height>191</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QPushButton" name="pushButton_blackCoffee_9">
-           <property name="minimumSize">
-            <size>
-             <width>191</width>
-             <height>191</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>191</width>
-             <height>191</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="4">
-          <widget class="QPushButton" name="pushButton_milkCoffee">
-           <property name="minimumSize">
-            <size>
-             <width>191</width>
-             <height>191</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>191</width>
-             <height>191</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="pushButton_blackTea">
+          <widget class="QPushButton" name="pushButton_Fish_Fry">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -776,7 +1678,7 @@ QLabel
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QPushButton" name="pushButton_blackCoffee_4">
+          <widget class="QPushButton" name="pushButton_Chicken_Roast">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -797,9 +1699,15 @@ QLabel
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QPushButton" name="pushButton_pepsi">
+         <item row="6" column="1">
+          <widget class="QPushButton" name="pushButton_Chana_Masala">
            <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
             <size>
              <width>191</width>
              <height>191</height>
@@ -813,8 +1721,293 @@ QLabel
            </property>
           </widget>
          </item>
-         <item row="4" column="2">
-          <widget class="QPushButton" name="pushButton_blackCoffee_10">
+         <item row="3" column="4">
+          <widget class="QPushButton" name="pushButton_Paneer_Chilli">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_Chicken_Roast">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Chicken Roast</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="pushButton_Mutton_Curry">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_Roti">
+           <property name="text">
+            <string>Roti</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_Egg_Curry">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Egg Curry</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="label_Chana_Masala">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Chana Masala</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_Daal_Fry">
+           <property name="text">
+            <string>Daal Fry</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_Rice_Set">
+           <property name="text">
+            <string>Rice Set</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
+          <spacer name="verticalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>88</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="drinks">
+      <widget class="QScrollArea" name="scrollArea_Drinks">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>971</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>-113</y>
+          <width>952</width>
+          <height>752</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="3" column="2">
+          <widget class="QPushButton" name="pushButton_Sprite">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="label_Milkshake">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Milkshake</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="label_Hot_Lemon">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Hot Lemon</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="pushButton_Milk_Coffee">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QPushButton" name="pushButton_Orange_Juice">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_Fanta">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Fanta</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QPushButton" name="pushButton_Hot_Lemon">
            <property name="minimumSize">
             <size>
              <width>191</width>
@@ -836,41 +2029,341 @@ QLabel
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLabel" name="label_riceset_10">
+          <widget class="QLabel" name="label_Milk_Tea">
            <property name="text">
             <string>Milk Tea</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1" colspan="2">
+          <spacer name="verticalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>88</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_Pepsi">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Pepsi</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QLabel" name="label_Orange_Juice">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Orange Juice</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="pushButton_Black_Coffee">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="label_riceset_3">
+          <widget class="QLabel" name="label_Black_Coffee">
+           <property name="text">
+            <string>Black Coffee</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="pushButton_Black_Tea">
            <property name="enabled">
             <bool>true</bool>
            </property>
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="sizeIncrement">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
-            <string>Black Tea</string>
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="4">
+          <widget class="QLabel" name="label_Hot_Chocolate">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Hot Chocolate</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLabel" name="label_Sprite">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Sprite</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QPushButton" name="pushButton_Milkshake">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_riceset_2">
+          <widget class="QLabel" name="label_Black_Tea">
            <property name="text">
-            <string>Black Coffee</string>
+            <string>Black Tea</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_Milk_Tea">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="pushButton_Pepsi">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QPushButton" name="pushButton_Fanta">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QPushButton" name="pushButton_Redbull">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="4">
+          <widget class="QPushButton" name="pushButton_Hot_Chocolate">
+           <property name="minimumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>191</width>
+             <height>191</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
          <item row="1" column="4">
-          <widget class="QLabel" name="label_riceset_11">
+          <widget class="QLabel" name="label_Milk_Coffee">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Milk Coffee</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
           </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_Redbull">
+           <property name="text">
+            <string>Redbull</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
+          <spacer name="verticalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>88</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -951,7 +2444,7 @@ QLabel
        <x>1010</x>
        <y>50</y>
        <width>401</width>
-       <height>601</height>
+       <height>591</height>
       </rect>
      </property>
     </widget>
@@ -959,7 +2452,7 @@ QLabel
      <property name="geometry">
       <rect>
        <x>1010</x>
-       <y>650</y>
+       <y>640</y>
        <width>201</width>
        <height>41</height>
       </rect>
@@ -981,7 +2474,7 @@ QLabel
      <property name="geometry">
       <rect>
        <x>1210</x>
-       <y>650</y>
+       <y>640</y>
        <width>201</width>
        <height>41</height>
       </rect>

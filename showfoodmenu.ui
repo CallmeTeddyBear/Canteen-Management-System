@@ -234,7 +234,7 @@ QTableView QTableCornerButton::section
 }</string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page_home">
     <widget class="QTableView" name="tableView">

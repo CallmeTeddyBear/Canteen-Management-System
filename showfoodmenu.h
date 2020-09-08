@@ -34,6 +34,8 @@ private slots:
 
     void on_pushButton_makeChanges_clicked();
 
+    void showFoodType();
+
 private:
     Ui::ShowFoodMenu *ui;
 };
