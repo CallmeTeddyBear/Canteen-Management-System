@@ -14,11 +14,18 @@ AdminAccountSettings::AdminAccountSettings(QWidget *parent) :
 
 void AdminAccountSettings::on_pushButton_changePassword_clicked()
 {
-    QString password, newPassword, newPassword2;
+    QString raw_password, currentPassword, raw_newPassword, raw_newPassword2, newPassword;
 
-    password = ui->lineEdit_password->text();
-    newPassword = ui->lineEdit_newPassword->text();
-    newPassword2 = ui->lineEdit_newPassword2->text();
+    raw_password = ui->lineEdit_password->text();
+
+    QByteArray BA_password = raw_password.toUtf8(); //Changing Raw input of password to byteArray
+    currentPassword = QByteArray(QCryptographicHash::hash(BA_password, QCryptographicHash::Md5).toHex());
+
+    raw_newPassword = ui->lineEdit_newPassword->text();
+    raw_newPassword2 = ui->lineEdit_newPassword2->text();
+
+    QByteArray BA_newPassword = raw_newPassword.toUtf8(); //Changing Raw input of password to byteArray
+    newPassword = QByteArray(QCryptographicHash::hash(BA_newPassword, QCryptographicHash::Md5).toHex());
 
     MainWindow connect_database;
 
@@ -32,7 +39,7 @@ void AdminAccountSettings::on_pushButton_changePassword_clicked()
 
     QSqlQuery qry;
 
-    qry.prepare("SELECT * FROM Admin WHERE Password = '"+password+"'");
+    qry.prepare("SELECT * FROM Admin WHERE Password = '"+currentPassword+"'");
 
     if(qry.exec())
     {
@@ -43,9 +50,9 @@ void AdminAccountSettings::on_pushButton_changePassword_clicked()
         }
         if (count == 1)
         {
-            if (newPassword == newPassword2)
+            if (raw_newPassword == raw_newPassword2)
             {
-                if(newPassword != "")
+                if(raw_newPassword != "")
                 {
                     qry.prepare("UPDATE Admin SET Password = '"+newPassword+"'");
                     if(qry.exec())

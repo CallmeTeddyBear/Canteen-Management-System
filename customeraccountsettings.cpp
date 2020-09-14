@@ -119,11 +119,19 @@ void CustomerAccountSettings::on_pushButton_changeUsername_clicked()
 
 void CustomerAccountSettings::on_pushButton_changePassword_clicked()
 {
-    QString currentpassword, newPassword, newPassword2;
+    QString raw_currentpassword, currentpassword, raw_newPassword, raw_newPassword2, newPassword;
 
-    currentpassword = ui->lineEdit_currentPassword->text();
-    newPassword = ui->lineEdit_newPassword->text();
-    newPassword2 = ui->lineEdit_newPassword2->text();
+    raw_currentpassword = ui->lineEdit_currentPassword->text();
+
+    // PassWord Hash //
+    QByteArray BA_currentpassword = raw_currentpassword.toUtf8(); //Changing Raw input of password to byteArray
+    currentpassword = QByteArray(QCryptographicHash::hash(BA_currentpassword, QCryptographicHash::Md5).toHex()); //Converting to Hash
+
+    raw_newPassword = ui->lineEdit_newPassword->text();
+    raw_newPassword2 = ui->lineEdit_newPassword2->text();
+
+    QByteArray BA_newPassword = raw_newPassword.toUtf8();
+    newPassword = QByteArray(QCryptographicHash::hash(BA_newPassword, QCryptographicHash::Md5).toHex());
 
     MainWindow connect_database;
 
@@ -150,9 +158,9 @@ void CustomerAccountSettings::on_pushButton_changePassword_clicked()
             }
             if (count == 1)
             {
-                if (newPassword == newPassword2)
+                if (raw_newPassword == raw_newPassword2)
                 {
-                    if(newPassword != "")
+                    if(raw_newPassword != "")
                     {
                         qry.prepare("UPDATE Student SET Password = '"+newPassword+"' WHERE Password = '"+currentpassword+"' AND Username = '"+username+"'");
                         if(qry.exec())
@@ -198,9 +206,9 @@ void CustomerAccountSettings::on_pushButton_changePassword_clicked()
             }
             if (count == 1)
             {
-                if (newPassword == newPassword2)
+                if (raw_newPassword == raw_newPassword2)
                 {
-                    if(newPassword != "")
+                    if(raw_newPassword != "")
                     {
                         qry.prepare("UPDATE Staff SET Password = '"+newPassword+"' WHERE Password = '"+currentpassword+"' AND Username = '"+username+"'");
                         if(qry.exec())

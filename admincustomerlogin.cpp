@@ -33,10 +33,15 @@ void AdminCustomerLogin::receive(QString data)
 
 void AdminCustomerLogin::on_pushButton_ok_clicked()
 {
-    QString username, password, customerType;
+    QString username, raw_password, customerType;
 
     username = ui->lineEdit_username->text();
-    password = ui->lineEdit_password->text();
+    raw_password = ui->lineEdit_password->text();
+
+    // PassWord Hash //
+    QByteArray BA_password = raw_password.toUtf8(); //Changing Raw input of password to byteArray
+    QString password = QByteArray(QCryptographicHash::hash(BA_password, QCryptographicHash::Md5).toHex()); //Converting to Hash
+
 
     if (ui->radioButton_student->isChecked())
     {
