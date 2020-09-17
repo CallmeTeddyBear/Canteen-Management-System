@@ -109,6 +109,30 @@ private slots:
 
     void on_pushButton_Sausage_clicked();
 
+    void on_pushButton_Rice_Set_clicked();
+
+    void on_pushButton_Roti_clicked();
+
+    void on_pushButton_Chicken_Curry_clicked();
+
+    void on_pushButton_Mutton_Curry_clicked();
+
+    void on_pushButton_Egg_Curry_clicked();
+
+    void on_pushButton_Chicken_Roast_clicked();
+
+    void on_pushButton_Fish_Fry_clicked();
+
+    void on_pushButton_Paneer_Chilli_clicked();
+
+    void on_pushButton_Daal_Fry_clicked();
+
+    void on_pushButton_Chana_Masala_clicked();
+
+    void on_pushButton_Rajma_Masala_clicked();
+
+    void on_pushButton_Papad_clicked();
+
 private:
     Ui::CustomerWindow *ui;
     QString Username;
@@ -148,7 +172,7 @@ private:
     int egg_currycount = 0;
     int chicken_roastcount = 0;
     int fish_frycount = 0;
-    int paneer_chiilicount = 0;
+    int paneer_chillicount = 0;
     int daal_frycount = 0;
     int chana_masalacount = 0;
     int rajma_masalacount = 0;
