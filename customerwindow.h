@@ -133,6 +133,30 @@ private slots:
 
     void on_pushButton_Papad_clicked();
 
+    void on_pushButton_Black_Tea_clicked();
+
+    void on_pushButton_Black_Coffee_clicked();
+
+    void on_pushButton_Milk_Tea_clicked();
+
+    void on_pushButton_Milk_Coffee_clicked();
+
+    void on_pushButton_Pepsi_clicked();
+
+    void on_pushButton_Fanta_clicked();
+
+    void on_pushButton_Sprite_clicked();
+
+    void on_pushButton_Orange_Juice_clicked();
+
+    void on_pushButton_Redbull_clicked();
+
+    void on_pushButton_Hot_Lemon_clicked();
+
+    void on_pushButton_Milkshake_clicked();
+
+    void on_pushButton_Hot_Chocolate_clicked();
+
 private:
     Ui::CustomerWindow *ui;
     QString Username;
