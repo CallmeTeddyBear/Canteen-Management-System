@@ -6,6 +6,7 @@
 #include "customeraccountsettings.h"
 #include "checkout.h"
 #include "logout.h"
+#include <QMessageBox>
 #include <QTimer>
 #include <QMovie>
 #include <QSize>
@@ -37,7 +38,7 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     showDiscountoffer();
     showList();
 
-    //showBreakfast();
+
 
     table_row = 0;
 
@@ -73,7 +74,6 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
                 ui->label_showUsername->setText(username);
                 ui->label_showName->setText(qry.value(1).toString());
 
-                //qry.first();
                 QByteArray outByteArray = qry.value(8).toByteArray();
                 QPixmap outPixmap = QPixmap();
                 outPixmap.loadFromData(outByteArray);
@@ -160,36 +160,11 @@ void CustomerWindow::showBreakfast()
 
 void CustomerWindow::showList()
 {
-//    int rows;
-//    rows = 4;
-//    QStandardItemModel *model = new QStandardItemModel(rows, 3, this);
-//    for (int row = 0; row < rows; row++)
-//    {
-//        for (int col = 0; col < 3; col++)
-//        {
-//            QModelIndex index = model->index(row, col, QModelIndex());
-//            model->setData(index, 0);
-//        }
-//    }
-//    ui->tableView->setModel(model);
+
     QStringList header;
     header << "Food" << "Qty." << "Price";
     ui->tableWidget->setColumnCount(3);
     ui->tableWidget->setHorizontalHeaderLabels(header);
-
-
-//    QString food, qty, price;
-//    food = "apple";
-//    qty = "2";
-//    price = "3";
-//    enum column
-//    {
-//        c_food, c_qty, c_price
-//    };
-
-//    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-//    int row = ui->tableWidget->rowCount() - 1;
-//    ui->tableWidget->setItem(0, 0, new QTableWidgetItem(food));
 
 }
 
@@ -305,52 +280,53 @@ CustomerWindow::~CustomerWindow()
 {
     delete ui;
 }
-int toastcount = 0;
-void CustomerWindow::on_pushButton_Toast_clicked()
-{
-    int price = 20;
-    toastcount++;
-
-    if (toastcount == 1)
-    {
-        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-        int tablerow = ui->tableWidget->rowCount() - 1;
-        ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Toast"));
-        ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(toastcount)));
-        ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
-    }
-    else
-    {
-        int tablerow = ui->tableWidget->rowCount() - 1;
-        ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(toastcount)));
-        ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * toastcount)));
-    }
-
-}
-
-void CustomerWindow::on_pushButton_Sandwich_clicked()
-{
-        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-        int tablerow = ui->tableWidget->rowCount() - 1;
-        ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Sandwich"));
-        ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(1)));
-        ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(40)));
-}
-
-void CustomerWindow::on_pushButton_riceset_clicked()
-{
-    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-    int tablerow = ui->tableWidget->rowCount() - 1;
-    ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Rice Set"));
-    ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(1)));
-    ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(60)));
-}
 
 void CustomerWindow::on_pushButton_discardAll_clicked()
 {
     ui->tableWidget->setRowCount(0);
-    toastcount = 0;
 
+    toastcount = 0; sandwichcount = 0; muffincount = 0; doughnutcount = 0;
+    croissantcount = 0; cerealcount = 0; boiled_eggcount = 0; jerrycount = 0;
+    puri_tarkaricount= 0; baconcount = 0; oatmealcount = 0; pancakecount = 0;
+
+    momocount = 0;
+    chowmeincount = 0;
+    chicken_biryanicount = 0;
+    mutton_biryanicount = 0;
+    red_sauce_pastacount = 0;
+    white_sauce_pastacount = 0;
+    spaghetticount = 0;
+    pizzacount = 0;
+    aloo_chopcount = 0;
+    naancount = 0;
+    chatcount = 0;
+    sausagecount = 0;
+
+    rice_setcount = 0;
+    roticount = 0;
+    chicken_currycount = 0;
+    mutton_currycount = 0;
+    egg_currycount = 0;
+    chicken_roastcount = 0;
+    fish_frycount = 0;
+    paneer_chiilicount = 0;
+    daal_frycount = 0;
+    chana_masalacount = 0;
+    rajma_masalacount = 0;
+    papadcount = 0;
+
+    black_teacount = 0;
+    black_coffeecount = 0;
+    milk_teacount = 0;
+    milk_coffeecount = 0;
+    pepsicount = 0;
+    fantacount = 0;
+    spritecount = 0;
+    orange_juicecount = 0;
+    redbullcount = 0;
+    hot_lemoncount = 0;
+    milkshakecount = 0;
+    hot_chocolatecount = 0;
 }
 
 void CustomerWindow::on_pushButton_blackCoffee_clicked()
@@ -1187,4 +1163,1134 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     connect_database.sqlClose();
+}
+
+void CustomerWindow::showOverflow()
+{
+    QMessageBox msg(this);
+    msg.setStyleSheet("border-image: none");
+    msg.setWindowTitle(QLatin1String("Error"));
+    msg.setIcon(QMessageBox::Icon::Warning);
+    msg.setText("You cannot select more that 12 items");
+    msg.exec();
+}
+
+///////////////////////////////Codes for Thumbnails/////////////////////////////////////
+
+void CustomerWindow::on_pushButton_Toast_clicked()
+{
+    int price = 20;
+    toastcount++;
+
+    if (toastcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Toast"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(toastcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Toast")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(toastcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * toastcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Sandwich_clicked()
+{
+    int price = 40;
+    sandwichcount++;
+
+    if (sandwichcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Sandwich"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(sandwichcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Sandwich")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(sandwichcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * sandwichcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Muffin_clicked()
+{
+    int price = 25;
+    muffincount++;
+
+    if (muffincount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Muffin"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(muffincount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Muffin")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(muffincount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * muffincount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Doughnut_clicked()
+{
+    int price = 25;
+    doughnutcount++;
+
+    if (doughnutcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Doughnut"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(doughnutcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Doughnut")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(doughnutcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * doughnutcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Croissant_clicked()
+{
+    int price = 25;
+    croissantcount++;
+
+    if (croissantcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Croissant"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(croissantcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Croissant")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(croissantcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * croissantcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Cereal_clicked()
+{
+    int price = 25;
+    cerealcount++;
+
+    if (cerealcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Cereal"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(cerealcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Cereal")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(cerealcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * cerealcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Boiled_Egg_clicked()
+{
+    int price = 25;
+    boiled_eggcount++;
+
+    if (boiled_eggcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Boiled Egg"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(boiled_eggcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Boiled Egg")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(boiled_eggcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * boiled_eggcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Jerry_clicked()
+{
+    int price = 25;
+    jerrycount++;
+
+    if (jerrycount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Jerry"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(jerrycount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Jerry")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(jerrycount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * jerrycount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Puri_Tarkari_clicked()
+{
+    int price = 25;
+    puri_tarkaricount++;
+
+    if (puri_tarkaricount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Puri Tarkari"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(puri_tarkaricount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Puri Tarkari")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(puri_tarkaricount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * puri_tarkaricount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Bacon_clicked()
+{
+    int price = 25;
+    baconcount++;
+
+    if (baconcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Bacon"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(baconcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Bacon")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(baconcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * baconcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Oatmeal_clicked()
+{
+    int price = 25;
+    oatmealcount++;
+
+    if (oatmealcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Oatmeal"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(oatmealcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Oatmeal")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(oatmealcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * oatmealcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Pancake_clicked()
+{
+    int price = 25;
+    pancakecount++;
+
+    if (pancakecount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Pancake"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(pancakecount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Pancake")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(pancakecount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * pancakecount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_MoMo_clicked()
+{
+    int price = 25;
+    momocount++;
+
+    if (momocount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("MoMo"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(momocount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "MoMo")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(momocount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * momocount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Chowmein_clicked()
+{
+    int price = 25;
+    chowmeincount++;
+
+    if (chowmeincount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Chowmein"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(chowmeincount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Chowmein")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(chowmeincount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * chowmeincount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Chicken_Biryani_clicked()
+{
+    int price = 25;
+    chicken_biryanicount++;
+
+    if (chicken_biryanicount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Chicken Biryani"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(chicken_biryanicount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Chicken Biryani")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(chicken_biryanicount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * chicken_biryanicount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Mutton_Biryani_clicked()
+{
+    int price = 25;
+    mutton_biryanicount++;
+
+    if (mutton_biryanicount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Mutton Biryani"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(mutton_biryanicount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Mutton Biryani")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(mutton_biryanicount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * mutton_biryanicount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Red_Sauce_Pasta_clicked()
+{
+    int price = 25;
+    red_sauce_pastacount++;
+
+    if (red_sauce_pastacount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Red Sauce Pasta"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(red_sauce_pastacount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Red Sauce Pata")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(red_sauce_pastacount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * red_sauce_pastacount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_White_Sauce_Pasta_clicked()
+{
+    int price = 25;
+    white_sauce_pastacount++;
+
+    if (white_sauce_pastacount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("White Sauce Pasta"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(white_sauce_pastacount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "White Sauce Pasta")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(white_sauce_pastacount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * white_sauce_pastacount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Spaghetti_clicked()
+{
+    int price = 25;
+    spaghetticount++;
+
+    if (spaghetticount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Spaghetti"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(spaghetticount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Spaghetti")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(spaghetticount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * spaghetticount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Pizza_clicked()
+{
+    int price = 25;
+    pizzacount++;
+
+    if (pizzacount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Pizza"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(pizzacount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Pizza")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(pizzacount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * pizzacount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Aloo_Chop_clicked()
+{
+    int price = 25;
+    aloo_chopcount++;
+
+    if (aloo_chopcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Aloo Chop"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(aloo_chopcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Aloo Chop")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(aloo_chopcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * aloo_chopcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Naan_clicked()
+{
+    int price = 25;
+    naancount++;
+
+    if (naancount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Naan"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(naancount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Naan")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(naancount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * naancount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Chat_clicked()
+{
+    int price = 25;
+    chatcount++;
+
+    if (chatcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Chat"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(chatcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Chat")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(chatcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * chatcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Sausage_clicked()
+{
+    int price = 25;
+    sausagecount++;
+
+    if (sausagecount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Sausage"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(sausagecount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Sausage")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(sausagecount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * sausagecount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Rice_Set_clicked()
+{
+    int price = 25;
+    rice_setcount++;
+
+    if (rice_setcount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Rice Set"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(rice_setcount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Rice Set")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(rice_setcount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * rice_setcount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
+}
+
+void CustomerWindow::on_pushButton_Roti_clicked()
+{
+    int price = 25;
+    roticount++;
+
+    if (roticount == 1)
+    {
+        int tablerow = ui->tableWidget->rowCount();
+        if(tablerow <= 11)
+        {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            int tablerow = ui->tableWidget->rowCount() - 1;
+
+            ui->tableWidget->setItem(tablerow, 0, new QTableWidgetItem("Roti"));
+            ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(roticount)));
+            ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price)));
+        }
+        else
+        {
+           showOverflow();
+        }
+    }
+    else
+    {
+        QString item;
+        int tablerow = 0;
+        do
+        {
+            int column = 0;
+            QString item;
+            item = ui->tableWidget->item(tablerow, column)->text();
+            if (item == "Roti")
+            {
+                ui->tableWidget->setItem(tablerow, 1, new QTableWidgetItem(QString::number(roticount)));
+                ui->tableWidget->setItem(tablerow, 2, new QTableWidgetItem(QString::number(price * roticount)));
+                break;
+            }
+            tablerow++;
+        }
+        while (tablerow <= 11);
+    }
 }

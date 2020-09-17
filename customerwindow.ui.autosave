@@ -337,7 +337,7 @@ QLabel
 }</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="breakfast">
       <widget class="QScrollArea" name="scrollArea_Breakfast">
@@ -874,7 +874,7 @@ QLabel
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>-159</y>
           <width>952</width>
           <height>752</height>
          </rect>

@@ -109,6 +109,10 @@ private slots:
 
     void on_pushButton_Sausage_clicked();
 
+    void on_pushButton_Rice_Set_clicked();
+    
+    void on_pushButton_Roti_clicked();
+    
 private:
     Ui::CustomerWindow *ui;
     QString Username;
