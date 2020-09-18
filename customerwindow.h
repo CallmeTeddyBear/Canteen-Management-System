@@ -18,6 +18,7 @@ public:
 
 signals:
     void send(const QString Username, const QString Usertype);
+    void send_items(const QString items);
 
 public slots:
     void receive_customer(QString UserType, QString username, QString password);
@@ -157,11 +158,15 @@ private slots:
 
     void on_pushButton_Hot_Chocolate_clicked();
 
+public:
+    void updateBalance();
+
 private:
     Ui::CustomerWindow *ui;
     QString Username;
     QString Usertype;
     int table_row;
+    int total_price;
 
     int toastcount = 0;
     int sandwichcount = 0;

@@ -18,6 +18,14 @@ public:
 private slots:
     void on_pushButton_cancel_clicked();
 
+    void on_pushButton_checkout_clicked();
+
+public:
+
+    void receive_items(QString items[12][3], int table_row);
+    void showTotal(int);
+
+
 private:
     Ui::Checkout *ui;
 };

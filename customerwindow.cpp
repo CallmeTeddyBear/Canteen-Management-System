@@ -38,10 +38,9 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
     showDiscountoffer();
     showList();
 
-
-
-    table_row = 0;
-
+    total_price = 0;
+    ui->label_total->hide();
+    ui->label_showTotal->hide();
 }
 
 void CustomerWindow::receive_customer(QString UserType, QString username, QString password)
@@ -160,7 +159,6 @@ void CustomerWindow::showBreakfast()
 
 void CustomerWindow::showList()
 {
-
     QStringList header;
     header << "Food" << "Qty." << "Price";
     ui->tableWidget->setColumnCount(3);
@@ -327,6 +325,10 @@ void CustomerWindow::on_pushButton_discardAll_clicked()
     hot_lemoncount = 0;
     milkshakecount = 0;
     hot_chocolatecount = 0;
+
+    total_price = 0;
+    ui->label_total->hide();
+    ui->label_showTotal->hide();
 }
 
 void CustomerWindow::on_pushButton_blackCoffee_clicked()
@@ -340,8 +342,34 @@ void CustomerWindow::on_pushButton_blackCoffee_clicked()
 
 void CustomerWindow::on_pushButton_checkout_clicked()
 {
+    QString items[12][3];
+    table_row = ui->tableWidget->rowCount();
+    qDebug() << "No.of row is" << table_row;
+    for(int row = 0; row <= (table_row - 1); row++)
+    {
+        for(int column = 0; column <= 2; column++)
+        {
+            items[row][column] = ui->tableWidget->item(row, column)->text();
+        }
+    }
+    for(int row = 0; row <= (table_row - 1); row++)
+    {
+        for(int column = 0; column <= 2; column++)
+        {
+            qDebug() << items[row][column] << "\t";
+        }
+        qDebug() << "\n";
+    }
+
+//    Checkout *checkout = new Checkout(this);
+//    checkout->setModal(true);
+//    connect(this, SIGNAL(send_items(const QString)), checkout, SLOT(receive_items(const QString)));
+//    emit send_items(items);
+//    checkout->show();
+
     Checkout checkout;
     checkout.setModal(true);
+    checkout.receive_items(items, table_row);
     checkout.exec();
 }
 
@@ -1218,6 +1246,22 @@ void CustomerWindow::on_pushButton_Toast_clicked()
         }
         while (tablerow <= 11);
     }
+
+    ui->label_total->show();
+    ui->label_showTotal->show();
+
+//    table_row = ui->tableWidget->rowCount();
+//    for(int row = 0; row <= table_row; row++)
+//    {
+
+//        QString food_price_string = ui->tableWidget->item(table_row, 2)->text();
+//        int food_price = food_price_string.toInt();
+
+//        //total_price = toastcount * price;
+//        //total_price = total_price + food_price;
+//    }
+//    ui->label_showTotal->setText(QString::number(total_price));
+
 }
 
 void CustomerWindow::on_pushButton_Sandwich_clicked()
@@ -3239,4 +3283,9 @@ void CustomerWindow::on_pushButton_Hot_Chocolate_clicked()
         }
         while (tablerow <= 11);
     }
+}
+
+void CustomerWindow::updateBalance()
+{
+
 }

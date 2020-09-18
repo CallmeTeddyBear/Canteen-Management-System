@@ -28,7 +28,7 @@
   <property name="styleSheet">
    <string notr="true">QWidget
 {
-	
+	border-image: none;
 	background-color: rgb(255, 255, 255);
 }
 QLabel
@@ -54,29 +54,6 @@ QPushButton#pushButton_cancel
 	background-color: rgb(255, 0, 0);
 }</string>
   </property>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>50</y>
-     <width>951</width>
-     <height>491</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>580</y>
-     <width>241</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Total:</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_checkout">
    <property name="geometry">
     <rect>
@@ -102,6 +79,42 @@ QPushButton#pushButton_cancel
    <property name="text">
     <string>Cancel</string>
    </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>50</y>
+     <width>971</width>
+     <height>451</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>520</y>
+     <width>281</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_total">
+      <property name="text">
+       <string>Total:   Rs.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_showTotal">
+      <property name="text">
+       <string>0.00</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
