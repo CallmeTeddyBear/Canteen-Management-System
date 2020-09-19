@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>898</width>
+    <width>1050</width>
     <height>742</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>1000</width>
+    <width>1080</width>
     <height>1000</height>
    </size>
   </property>
@@ -47,7 +47,7 @@ QPushButton:hover
   <widget class="QPushButton" name="pushButton_close">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>450</x>
      <y>690</y>
      <width>81</width>
      <height>31</height>
@@ -65,7 +65,7 @@ QPushButton:hover
     <rect>
      <x>40</x>
      <y>30</y>
-     <width>811</width>
+     <width>971</width>
      <height>641</height>
     </rect>
    </property>
@@ -121,7 +121,7 @@ QTableView QTableCornerButton::section
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="iconSize">
     <size>
@@ -138,7 +138,7 @@ QTableView QTableCornerButton::section
       <rect>
        <x>20</x>
        <y>20</y>
-       <width>771</width>
+       <width>931</width>
        <height>551</height>
       </rect>
      </property>
@@ -156,7 +156,7 @@ QTableView QTableCornerButton::section
       <rect>
        <x>20</x>
        <y>20</y>
-       <width>771</width>
+       <width>931</width>
        <height>551</height>
       </rect>
      </property>

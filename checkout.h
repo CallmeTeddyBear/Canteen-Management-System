@@ -22,12 +22,16 @@ private slots:
 
 public:
 
-    void receive_items(QString items[12][3], int table_row);
+    void receive_items(QString items[12][3], int table_row, QString Usertype, int userbalance, int ID);
     void showTotal(int);
 
 
 private:
     Ui::Checkout *ui;
+    int total_price;
+    QString UserType;
+    int UserBalance;
+    int UserID;
 };
 
 #endif // CHECKOUT_H

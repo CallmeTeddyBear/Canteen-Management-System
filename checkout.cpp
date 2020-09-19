@@ -18,9 +18,9 @@ Checkout::Checkout(QWidget *parent) :
     ui->tableWidget->setColumnCount(3);
     ui->tableWidget->setHorizontalHeaderLabels(header);
 
-    ui->tableWidget->setColumnWidth(0, 323);
-    ui->tableWidget->setColumnWidth(1, 323);
-    ui->tableWidget->setColumnWidth(2, 323);
+    ui->tableWidget->setColumnWidth(0, 500);
+    ui->tableWidget->setColumnWidth(1, 200);
+    ui->tableWidget->setColumnWidth(2, 269);
 
 
 }
@@ -29,7 +29,7 @@ Checkout::~Checkout()
 {
     delete ui;
 }
-void Checkout::receive_items(QString items[12][3], int table_row)//receives item from customer and displays those items selected
+void Checkout::receive_items(QString items[12][3], int table_row, QString Usertype, int userbalance, int ID)//receives item from customer and displays those items selected
 {
     for(int row = 0; row <= (table_row - 1); row++)
     {
@@ -40,14 +40,19 @@ void Checkout::receive_items(QString items[12][3], int table_row)//receives item
         }
 
     }
+
     showTotal(table_row);
+
+    UserType = Usertype;
+    UserBalance = userbalance;
+    UserID = ID;
 
 }
 
 void Checkout::showTotal(int table_row)
 {
     int price = 0;
-    int total_price = 0;
+    total_price = 0;
 
     qDebug() << "Number of row is " << table_row;
     for(int row = 0; row <= (table_row - 1); row++)
@@ -68,7 +73,7 @@ void Checkout::on_pushButton_cancel_clicked()
 void Checkout::on_pushButton_checkout_clicked()
 {
     CustomerWindow customerwindow;
-    customerwindow.updateBalance();
+    customerwindow.updateBalance(total_price, UserType, UserBalance, UserID);
     this->hide();
 
 }

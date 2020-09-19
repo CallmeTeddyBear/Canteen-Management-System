@@ -1380,7 +1380,7 @@ QLabel
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-163</y>
+          <y>0</y>
           <width>952</width>
           <height>752</height>
          </rect>
@@ -2505,47 +2505,74 @@ QLabel
       <string>Item Selected</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>1070</x>
-       <y>580</y>
-       <width>321</width>
-       <height>50</height>
+       <x>1010</x>
+       <y>570</y>
+       <width>401</width>
+       <height>71</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <widget class="QLabel" name="label_total">
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font-size: 40px;
-font: bold;</string>
-        </property>
-        <property name="text">
-         <string>Total:  Rs.</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_showTotal">
-        <property name="styleSheet">
-         <string notr="true">font-size: 40px;
-font: bold;</string>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox
+{
+border: 1px solid black;
+border-clor: rgb(40, 40, 40);
+}
+
+QHBoxLayout
+{
+	border: none;
+}</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>10</y>
+        <width>321</width>
+        <height>52</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_total">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 40px;
+font: bold;
+border: none;</string>
+         </property>
+         <property name="text">
+          <string>Total:  Rs.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_showTotal">
+         <property name="styleSheet">
+          <string notr="true">font-size: 40px;
+font: bold;
+border: none;</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="widget_todaysspecial" native="true">
@@ -2644,7 +2671,7 @@ QLabel
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>10</y>
+       <y>20</y>
        <width>204</width>
        <height>34</height>
       </rect>
@@ -2656,8 +2683,8 @@ QLabel
     <widget class="QLabel" name="label_showdiscountoffer">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>80</y>
+       <x>210</x>
+       <y>70</y>
        <width>461</width>
        <height>34</height>
       </rect>

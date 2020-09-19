@@ -44,8 +44,6 @@ private slots:
 
     void showList();
 
-    void showBreakfast();
-
     void on_pushButton_Sandwich_clicked();
 
     void on_pushButton_Toast_clicked();
@@ -159,12 +157,18 @@ private slots:
     void on_pushButton_Hot_Chocolate_clicked();
 
 public:
-    void updateBalance();
+    void updateBalance(int, QString, int, int);
+
+    void showUpdatedBalance(int);
+
+    void showTotalFoodAmount();
 
 private:
     Ui::CustomerWindow *ui;
     QString Username;
     QString Usertype;
+    int ID;
+    int userbalance;
     int table_row;
     int total_price;
 

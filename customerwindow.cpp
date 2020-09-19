@@ -22,9 +22,9 @@ CustomerWindow::CustomerWindow(QWidget *parent) :
 
     setWindowState(Qt::WindowMaximized);
 
-    TodaysSpecialPopUp *popup = new TodaysSpecialPopUp();
-    popup->setModal(true);
-    QTimer::singleShot(1000, popup, SLOT(show()));
+//    TodaysSpecialPopUp *popup = new TodaysSpecialPopUp();
+//    popup->setModal(true);
+//    QTimer::singleShot(1000, popup, SLOT(show()));
 
     ui->stackedWidget->setCurrentIndex(0);
 
@@ -79,6 +79,7 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
                 ui->label_userPicture->setPixmap(outPixmap.scaled(210,210));
 
                 studentID = qry.value(0).toInt();
+                ID = studentID;
             }
 
             qry.prepare("SELECT * FROM Student_Balance WHERE Student_ID = (:StudentID)");
@@ -88,6 +89,7 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
             {
                 while(qry.next())
                 {
+                    userbalance = qry.value(2).toInt();
                     ui->label_showBalance->setText(qry.value(2).toString());
                 }
             }
@@ -113,6 +115,7 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
                 ui->label_userPicture->setPixmap(outPixmap.scaled(210,210));
 
                 staffID = qry.value(0).toInt();
+                ID = staffID;
             }
 
             qry.prepare("SELECT * FROM Staff_Balance WHERE Staff_ID = (:Staff_ID)");
@@ -122,39 +125,13 @@ void CustomerWindow::receive_customer(QString UserType, QString username, QStrin
             {
                 while(qry.next())
                 {
+                    userbalance = qry.value(2).toInt();
                     ui->label_showBalance->setText(qry.value(2).toString());
                 }
             }
         }
     }
     connect_database.sqlClose();
-
-}
-
-void CustomerWindow::showBreakfast()
-{
-    const QSize btnSize = QSize(200, 200);
-    int i;
-    QPushButton *btn[20];
-    for (i = 0 ; i < 16; i++)
-    {
-        btn[i] = new QPushButton(centralWidget());
-
-        btn[i]->setText(QString::number(i));
-        btn[i]->setFixedSize(btnSize);
-    }
-
-    QGridLayout *btnLayout = new QGridLayout(centralWidget());
-    for(i = 0; i < 4; i++)
-    {
-        for(int j = 0; j < 4; j++)
-        {
-            btnLayout->addWidget(btn[j + i * 4], 0 + i, j);
-            btnLayout->setSpacing(0);
-        }
-    }
-    centralWidget()->setLayout(btnLayout);
-
 }
 
 void CustomerWindow::showList()
@@ -163,7 +140,9 @@ void CustomerWindow::showList()
     header << "Food" << "Qty." << "Price";
     ui->tableWidget->setColumnCount(3);
     ui->tableWidget->setHorizontalHeaderLabels(header);
-
+    ui->tableWidget->setColumnWidth(0, 200);
+    ui->tableWidget->setColumnWidth(1, 50);
+    ui->tableWidget->setColumnWidth(2, 125);
 }
 
 
@@ -352,25 +331,31 @@ void CustomerWindow::on_pushButton_checkout_clicked()
             items[row][column] = ui->tableWidget->item(row, column)->text();
         }
     }
+
     for(int row = 0; row <= (table_row - 1); row++)
     {
-        for(int column = 0; column <= 2; column++)
-        {
-            qDebug() << items[row][column] << "\t";
-        }
-        qDebug() << "\n";
+        QString price_string = ui->tableWidget->item(row, 2)->text();
+
+        int price = price_string.toInt();
+        total_price = total_price + price;
     }
+    qDebug() << "Total Price is " << total_price;
 
-//    Checkout *checkout = new Checkout(this);
-//    checkout->setModal(true);
-//    connect(this, SIGNAL(send_items(const QString)), checkout, SLOT(receive_items(const QString)));
-//    emit send_items(items);
-//    checkout->show();
-
-    Checkout checkout;
-    checkout.setModal(true);
-    checkout.receive_items(items, table_row);
-    checkout.exec();
+    if (userbalance >= total_price)
+    {
+        Checkout checkout;
+        checkout.setModal(true);
+        checkout.receive_items(items, table_row, Usertype, userbalance, ID);
+        checkout.exec();
+    }
+    else
+    {
+        QMessageBox msg(this);
+        msg.setStyleSheet("border-image: none");
+        msg.setIcon(QMessageBox::Icon::Warning);
+        msg.setText("You have insufficient balance");
+        msg.exec();
+    }
 }
 
 void CustomerWindow::showBreakfastThumbnails()
@@ -480,7 +465,7 @@ void CustomerWindow::showBreakfastThumbnails()
     }
 
     //Boiled Egg
-    breakfast_foodTitle = "Boiled_Egg";
+    breakfast_foodTitle = "Boiled Egg";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+breakfast_foodTitle+"'");
 
     if (qry.exec())
@@ -512,7 +497,7 @@ void CustomerWindow::showBreakfastThumbnails()
     }
 
     //Puri Tarkari
-    breakfast_foodTitle = "Puri_Tarkari";
+    breakfast_foodTitle = "Puri Tarkari";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+breakfast_foodTitle+"'");
 
     if (qry.exec())
@@ -621,7 +606,7 @@ void CustomerWindow::showLunchThumbnails()
     }
 
     //Chicken Biryani
-    lunch_foodTitle = "Chicken_Biryani";
+    lunch_foodTitle = "Chicken Biryani";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+lunch_foodTitle+"'");
 
     if (qry.exec())
@@ -637,7 +622,7 @@ void CustomerWindow::showLunchThumbnails()
     }
 
     //Mutton Biryani
-    lunch_foodTitle = "Mutton_Biryani";
+    lunch_foodTitle = "Mutton Biryani";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+lunch_foodTitle+"'");
 
     if (qry.exec())
@@ -653,7 +638,7 @@ void CustomerWindow::showLunchThumbnails()
     }
 
     //Red Sauce Pasta
-    lunch_foodTitle = "Red_Sauce_Pasta";
+    lunch_foodTitle = "Red Sauce Pasta";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+lunch_foodTitle+"'");
 
     if (qry.exec())
@@ -669,7 +654,7 @@ void CustomerWindow::showLunchThumbnails()
     }
 
     //White Sauce Pasta
-    lunch_foodTitle = "White_Sauce_Pasta";
+    lunch_foodTitle = "White Sauce Pasta";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+lunch_foodTitle+"'");
 
     if (qry.exec())
@@ -701,7 +686,7 @@ void CustomerWindow::showLunchThumbnails()
     }
 
     //Aloo Chop
-    lunch_foodTitle = "Aloo_Chop";
+    lunch_foodTitle = "Aloo Chop";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+lunch_foodTitle+"'");
 
     if (qry.exec())
@@ -794,7 +779,7 @@ void CustomerWindow::showDinnerThumbnails()
     QString dinner_foodTitle;
 
     //Rice Set
-    dinner_foodTitle = "Rice_Set";
+    dinner_foodTitle = "Rice Set";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -826,7 +811,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Chicken Curry
-    dinner_foodTitle = "Chicken_Curry";
+    dinner_foodTitle = "Chicken Curry";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -842,7 +827,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Mutton Curry
-    dinner_foodTitle = "Mutton_Curry";
+    dinner_foodTitle = "Mutton Curry";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -858,7 +843,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Egg Curry
-    dinner_foodTitle = "Egg_Curry";
+    dinner_foodTitle = "Egg Curry";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -874,7 +859,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Chicken Roast
-    dinner_foodTitle = "Chicken_Roast";
+    dinner_foodTitle = "Chicken Roast";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -890,7 +875,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Fish Fry
-    dinner_foodTitle = "Fish_Fry";
+    dinner_foodTitle = "Fish Fry";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -906,7 +891,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Paneer_Chilli
-    dinner_foodTitle = "Paneer_Chilli";
+    dinner_foodTitle = "Paneer Chilli";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -922,7 +907,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Daal Fry
-    dinner_foodTitle = "Daal_Fry";
+    dinner_foodTitle = "Daal Fry";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -938,7 +923,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Chana Masala
-    dinner_foodTitle = "Chana_Masala";
+    dinner_foodTitle = "Chana Masala";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -954,7 +939,7 @@ void CustomerWindow::showDinnerThumbnails()
     }
 
     //Rajma Masala
-    dinner_foodTitle = "Rajma_Masala";
+    dinner_foodTitle = "Rajma Masala";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+dinner_foodTitle+"'");
 
     if (qry.exec())
@@ -999,7 +984,7 @@ void CustomerWindow::showDrinksThumbnails()
     QString drinks_foodTitle;
 
     //Black Tea
-    drinks_foodTitle = "Black_Tea";
+    drinks_foodTitle = "Black Tea";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1015,7 +1000,7 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     //Black Coffee
-    drinks_foodTitle = "Black_Coffee";
+    drinks_foodTitle = "Black Coffee";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1031,7 +1016,7 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     //Milk Tea
-    drinks_foodTitle = "Milk_Tea";
+    drinks_foodTitle = "Milk Tea";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1047,7 +1032,7 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     //Milk Coffee
-    drinks_foodTitle = "Milk_Coffee";
+    drinks_foodTitle = "Milk Coffee";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1111,7 +1096,7 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     //Orange Juice
-    drinks_foodTitle = "Orange_Juice";
+    drinks_foodTitle = "Orange Juice";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1143,7 +1128,7 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     //Hot Lemon
-    drinks_foodTitle = "Hot_Lemon";
+    drinks_foodTitle = "Hot Lemon";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1175,7 +1160,7 @@ void CustomerWindow::showDrinksThumbnails()
     }
 
     //Hot Chocolate
-    drinks_foodTitle = "Hot_Chocolate";
+    drinks_foodTitle = "Hot Chocolate";
     qry.prepare("SELECT * FROM Food_Item WHERE Food_Title = '"+drinks_foodTitle+"'");
 
     if (qry.exec())
@@ -1202,6 +1187,25 @@ void CustomerWindow::showOverflow()
     msg.setText("You cannot select more that 12 items");
     msg.exec();
 }
+
+void CustomerWindow::showTotalFoodAmount()
+{
+    ui->label_total->show();
+    ui->label_showTotal->show();
+
+    table_row = ui->tableWidget->rowCount();
+    total_price = 0;
+    qDebug() << "No. of rows = " << table_row;
+    for(int row = 0; row <= (table_row - 1); row++)
+    {
+        QString food_price_string = ui->tableWidget->item(row, 2)->text();
+        int food_price = food_price_string.toInt();
+
+        total_price = total_price + food_price;
+    }
+    ui->label_showTotal->setText(QString::number(total_price));
+}
+
 
 ///////////////////////////////Codes for Thumbnails/////////////////////////////////////
 
@@ -1246,22 +1250,7 @@ void CustomerWindow::on_pushButton_Toast_clicked()
         }
         while (tablerow <= 11);
     }
-
-    ui->label_total->show();
-    ui->label_showTotal->show();
-
-//    table_row = ui->tableWidget->rowCount();
-//    for(int row = 0; row <= table_row; row++)
-//    {
-
-//        QString food_price_string = ui->tableWidget->item(table_row, 2)->text();
-//        int food_price = food_price_string.toInt();
-
-//        //total_price = toastcount * price;
-//        //total_price = total_price + food_price;
-//    }
-//    ui->label_showTotal->setText(QString::number(total_price));
-
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Sandwich_clicked()
@@ -1305,6 +1294,7 @@ void CustomerWindow::on_pushButton_Sandwich_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Muffin_clicked()
@@ -1348,6 +1338,7 @@ void CustomerWindow::on_pushButton_Muffin_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Doughnut_clicked()
@@ -1391,6 +1382,7 @@ void CustomerWindow::on_pushButton_Doughnut_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Croissant_clicked()
@@ -1434,6 +1426,7 @@ void CustomerWindow::on_pushButton_Croissant_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Cereal_clicked()
@@ -1477,6 +1470,7 @@ void CustomerWindow::on_pushButton_Cereal_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Boiled_Egg_clicked()
@@ -1520,6 +1514,7 @@ void CustomerWindow::on_pushButton_Boiled_Egg_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Jerry_clicked()
@@ -1563,6 +1558,7 @@ void CustomerWindow::on_pushButton_Jerry_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Puri_Tarkari_clicked()
@@ -1606,6 +1602,7 @@ void CustomerWindow::on_pushButton_Puri_Tarkari_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Bacon_clicked()
@@ -1649,6 +1646,7 @@ void CustomerWindow::on_pushButton_Bacon_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Oatmeal_clicked()
@@ -1692,6 +1690,7 @@ void CustomerWindow::on_pushButton_Oatmeal_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Pancake_clicked()
@@ -1735,6 +1734,7 @@ void CustomerWindow::on_pushButton_Pancake_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_MoMo_clicked()
@@ -1778,6 +1778,7 @@ void CustomerWindow::on_pushButton_MoMo_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Chowmein_clicked()
@@ -1821,6 +1822,7 @@ void CustomerWindow::on_pushButton_Chowmein_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Chicken_Biryani_clicked()
@@ -1864,6 +1866,7 @@ void CustomerWindow::on_pushButton_Chicken_Biryani_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Mutton_Biryani_clicked()
@@ -1907,6 +1910,7 @@ void CustomerWindow::on_pushButton_Mutton_Biryani_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Red_Sauce_Pasta_clicked()
@@ -1950,6 +1954,7 @@ void CustomerWindow::on_pushButton_Red_Sauce_Pasta_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_White_Sauce_Pasta_clicked()
@@ -1993,6 +1998,7 @@ void CustomerWindow::on_pushButton_White_Sauce_Pasta_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Spaghetti_clicked()
@@ -2036,6 +2042,7 @@ void CustomerWindow::on_pushButton_Spaghetti_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Pizza_clicked()
@@ -2079,6 +2086,7 @@ void CustomerWindow::on_pushButton_Pizza_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Aloo_Chop_clicked()
@@ -2122,6 +2130,7 @@ void CustomerWindow::on_pushButton_Aloo_Chop_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Naan_clicked()
@@ -2165,6 +2174,7 @@ void CustomerWindow::on_pushButton_Naan_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Chat_clicked()
@@ -2208,6 +2218,7 @@ void CustomerWindow::on_pushButton_Chat_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Sausage_clicked()
@@ -2251,6 +2262,7 @@ void CustomerWindow::on_pushButton_Sausage_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Rice_Set_clicked()
@@ -2294,6 +2306,7 @@ void CustomerWindow::on_pushButton_Rice_Set_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Roti_clicked()
@@ -2337,6 +2350,7 @@ void CustomerWindow::on_pushButton_Roti_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Chicken_Curry_clicked()
@@ -2380,6 +2394,7 @@ void CustomerWindow::on_pushButton_Chicken_Curry_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Mutton_Curry_clicked()
@@ -2423,6 +2438,7 @@ void CustomerWindow::on_pushButton_Mutton_Curry_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Egg_Curry_clicked()
@@ -2466,6 +2482,7 @@ void CustomerWindow::on_pushButton_Egg_Curry_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Chicken_Roast_clicked()
@@ -2509,6 +2526,7 @@ void CustomerWindow::on_pushButton_Chicken_Roast_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Fish_Fry_clicked()
@@ -2552,6 +2570,7 @@ void CustomerWindow::on_pushButton_Fish_Fry_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Paneer_Chilli_clicked()
@@ -2595,6 +2614,7 @@ void CustomerWindow::on_pushButton_Paneer_Chilli_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Daal_Fry_clicked()
@@ -2638,6 +2658,7 @@ void CustomerWindow::on_pushButton_Daal_Fry_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Chana_Masala_clicked()
@@ -2681,6 +2702,7 @@ void CustomerWindow::on_pushButton_Chana_Masala_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Rajma_Masala_clicked()
@@ -2724,6 +2746,7 @@ void CustomerWindow::on_pushButton_Rajma_Masala_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Papad_clicked()
@@ -2767,6 +2790,7 @@ void CustomerWindow::on_pushButton_Papad_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Black_Tea_clicked()
@@ -2810,6 +2834,7 @@ void CustomerWindow::on_pushButton_Black_Tea_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Black_Coffee_clicked()
@@ -2853,6 +2878,7 @@ void CustomerWindow::on_pushButton_Black_Coffee_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Milk_Tea_clicked()
@@ -2896,6 +2922,7 @@ void CustomerWindow::on_pushButton_Milk_Tea_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Milk_Coffee_clicked()
@@ -2939,6 +2966,7 @@ void CustomerWindow::on_pushButton_Milk_Coffee_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Pepsi_clicked()
@@ -2982,6 +3010,7 @@ void CustomerWindow::on_pushButton_Pepsi_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Fanta_clicked()
@@ -3025,6 +3054,7 @@ void CustomerWindow::on_pushButton_Fanta_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Sprite_clicked()
@@ -3068,6 +3098,7 @@ void CustomerWindow::on_pushButton_Sprite_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Orange_Juice_clicked()
@@ -3111,6 +3142,7 @@ void CustomerWindow::on_pushButton_Orange_Juice_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Redbull_clicked()
@@ -3154,6 +3186,7 @@ void CustomerWindow::on_pushButton_Redbull_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Hot_Lemon_clicked()
@@ -3197,6 +3230,7 @@ void CustomerWindow::on_pushButton_Hot_Lemon_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Milkshake_clicked()
@@ -3240,6 +3274,7 @@ void CustomerWindow::on_pushButton_Milkshake_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
 void CustomerWindow::on_pushButton_Hot_Chocolate_clicked()
@@ -3283,9 +3318,48 @@ void CustomerWindow::on_pushButton_Hot_Chocolate_clicked()
         }
         while (tablerow <= 11);
     }
+    showTotalFoodAmount();
 }
 
-void CustomerWindow::updateBalance()
+void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBalance, int UserID)
+{
+    MainWindow connect_database;
+
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    int newBalance;
+    newBalance = UserBalance - foodamount;
+
+
+    if (UserType == "student")
+    {
+            qry.prepare("UPDATE Student_Balance SET Balance = (:balance) WHERE Student_ID = (:StudentID)");
+            qry.bindValue(":balance", newBalance);
+            qry.bindValue(":StudentID", UserID);
+
+            if (qry.exec())
+            {
+                ui->label_showBalance->setText(QString::number(newBalance));
+            }
+    }
+
+    if (UserType == "staff")
+    {
+            qry.prepare("UPDATE Staff_Balance SET Balance = (:balance) WHERE Staff_ID = (:StaffID)");
+            qry.bindValue(":Staff_ID", UserID);
+
+            if (qry.exec())
+            {
+                ui->label_showBalance->setText(QString::number(newBalance));
+            }
+    }
+    connect_database.sqlClose();
+}
+
+void CustomerWindow::showUpdatedBalance(int balance)
 {
 
+    ui->label_showBalance->setText(QString::number(balance));
 }

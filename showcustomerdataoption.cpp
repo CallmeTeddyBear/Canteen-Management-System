@@ -22,21 +22,25 @@ ShowCustomerDataOption::ShowCustomerDataOption(QWidget *parent) :
 
     QSqlQuery* qry_student = new QSqlQuery(connect_database.mydb);
     QSqlQuery* qry_staff = new QSqlQuery(connect_database.mydb);
-//    QSqlTableModel* qry_staff = new QSqlTableModel();
 
     qry_student->prepare("SELECT Name, Faculty, Gender, Address, Contact_No, Username FROM Student");
     qry_student->exec();
     modal_student->setQuery(*qry_student);
     ui->tableView_student->setModel(modal_student);
 
+    ui->tableView_student->setColumnWidth(0, 225);
+    ui->tableView_student->setColumnWidth(1, 200);
+    ui->tableView_student->setColumnWidth(2, 75);
+
+
     qry_staff->prepare("SELECT Name, Department, Gender, Address, Contact_No, Username FROM Staff");
     qry_staff->exec();
     modal_staff->setQuery(*qry_staff);
     ui->tableView_staff->setModel(modal_staff);
 
-//    qry_staff->setTable("Staff");
-//    qry_staff->select();
-//    ui->tableView_2->setModel(qry_staff);
+    ui->tableView_staff->setColumnWidth(0, 225);
+    ui->tableView_staff->setColumnWidth(1, 200);
+    ui->tableView_staff->setColumnWidth(2, 75);
 
     connect_database.sqlClose();
     qDebug() << (modal_student->rowCount());
