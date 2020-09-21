@@ -13,12 +13,11 @@ AddBalance::AddBalance(QWidget *parent) :
     setWindowFlag(Qt::WindowContextHelpButtonHint,false);
 }
 
-//void AddBalance::receive_details(QString customerType, QString username, QString password)
-void AddBalance::receive_details(QString customerType, QString username)
+void AddBalance::receive_details(QString customerType, QString username, QString password)
 {
     Type = customerType;
     Username = username;
-    //Password = password;
+    Password = password;
     MainWindow connect_database;
 
     if (!connect_database.sqlOpen())
@@ -33,8 +32,7 @@ void AddBalance::receive_details(QString customerType, QString username)
 
     if (Type == "student")
     {
-        //qry.prepare("SELECT * FROM Student WHERE Username = '"+Username+"' AND Password = '"+Password+"'");
-        qry.prepare("SELECT * FROM Student WHERE Username = '"+Username+"'");
+        qry.prepare("SELECT * FROM Student WHERE Username = '"+Username+"' AND Password = '"+Password+"'");
 
         if (qry.exec())
         {
@@ -64,8 +62,7 @@ void AddBalance::receive_details(QString customerType, QString username)
 
     if (Type == "staff")
     {
-        //qry.prepare("SELECT * FROM Staff WHERE Username = '"+Username+"' AND Password = '"+Password+"'");
-        qry.prepare("SELECT * FROM Staff WHERE Username = '"+Username+"'");
+        qry.prepare("SELECT * FROM Staff WHERE Username = '"+Username+"' AND Password = '"+Password+"'");
 
         if (qry.exec())
         {

@@ -71,11 +71,37 @@ QComboBox QAbstractItemView
 	color: rgb(255, 255, 255);
 }</string>
   </property>
+  <widget class="QPushButton" name="pushButton_addDiscountoffer">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>0</y>
+     <width>221</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add Discount Offer</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_removeDiscountoffer">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>0</y>
+     <width>241</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Remove Discount Offer</string>
+   </property>
+  </widget>
   <widget class="QStackedWidget" name="stackedWidget_addremove">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>60</y>
+     <y>100</y>
      <width>431</width>
      <height>491</height>
     </rect>
@@ -142,7 +168,7 @@ QComboBox QAbstractItemView
        <string>Add Discount Offer</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -168,7 +194,7 @@ QComboBox QAbstractItemView
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>51</x>
@@ -228,7 +254,7 @@ QComboBox QAbstractItemView
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>590</y>
+     <y>604</y>
      <width>80</width>
      <height>31</height>
     </rect>

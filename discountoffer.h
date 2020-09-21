@@ -20,6 +20,10 @@ private slots:
 
     void on_pushButton_select_clicked();
 
+    void on_pushButton_addDiscountoffer_clicked();
+
+    void on_pushButton_removeDiscountoffer_clicked();
+
     void on_pushButton_addOffer_clicked();
 
 private:

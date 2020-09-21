@@ -28,14 +28,17 @@ void AddStaff::on_pushButton_add_staff_clicked()
 {
     MainWindow connect_database;
 
-    QString name, department, gender, address, contact, username, password;
+    QString name, department, gender, address, contact, username, raw_password, password;
 
     name = ui->lineEdit_name->text();
     department = ui->comboBox_department->currentText();
     address = ui->lineEdit_address->text();
     contact = ui->lineEdit_contact->text();
     username = ui->lineEdit_username->text();
-    password = ui->lineEdit_password->text();
+    raw_password = ui->lineEdit_password->text();
+
+    QByteArray BA_password = raw_password.toUtf8(); //Changing Raw input of password to byteArray
+    password = QByteArray(QCryptographicHash::hash(BA_password, QCryptographicHash::Md5).toHex());
 
     if (ui->radioButton_male->isChecked())
     {

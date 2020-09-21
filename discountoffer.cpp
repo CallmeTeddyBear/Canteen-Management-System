@@ -33,6 +33,17 @@ DiscountOffer::DiscountOffer(QWidget *parent) :
     qDebug() << (modal_fooditem->rowCount());
 }
 
+void DiscountOffer::on_pushButton_addDiscountoffer_clicked()
+{
+    ui->stackedWidget_addremove->setCurrentIndex(0);
+}
+
+void DiscountOffer::on_pushButton_removeDiscountoffer_clicked()
+{
+    ui->groupBox_addDiscountoffer->hide();
+    ui->stackedWidget_addremove->setCurrentIndex(1);
+}
+
 void DiscountOffer::on_pushButton_cancel_clicked()
 {
     this->hide();

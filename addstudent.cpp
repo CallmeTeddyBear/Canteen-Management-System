@@ -28,14 +28,17 @@ void AddStudent::on_pushButton_add_student_clicked()
 {
     MainWindow connect_database;
 
-    QString name, faculty, gender, address, contact, username, password;
+    QString name, faculty, gender, address, contact, username, raw_password, password;
 
     name = ui->lineEdit_name->text();
     faculty = ui->comboBox_faculty->currentText();
     address = ui->lineEdit_address->text();
     contact = ui->lineEdit_contact->text();
     username = ui->lineEdit_username->text();
-    password = ui->lineEdit_password->text();
+    raw_password = ui->lineEdit_password->text();
+
+    QByteArray BA_password = raw_password.toUtf8(); //Changing Raw input of password to byteArray
+    password = QByteArray(QCryptographicHash::hash(BA_password, QCryptographicHash::Md5).toHex());
 
     if (ui->radioButton_male->isChecked())
     {

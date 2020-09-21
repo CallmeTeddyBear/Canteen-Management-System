@@ -21,15 +21,13 @@ private slots:
     void on_pushButton_addBalance_clicked();
 
 public slots:
-    //void receive_details(QString customerType, QString username, QString password);
-    void receive_details(QString customerType, QString username);
+    void receive_details(QString customerType, QString username, QString password);
 
 private:
     Ui::AddBalance *ui;
     int currentBalance;
     int ID;
-    //QString Type, Username, Password;
-    QString Type, Username;
+    QString Type, Username, Password;
 };
 
 #endif // BALANCE_H

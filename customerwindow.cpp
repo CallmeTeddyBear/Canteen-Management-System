@@ -323,7 +323,7 @@ void CustomerWindow::on_pushButton_checkout_clicked()
 {
     QString items[12][3];
     table_row = ui->tableWidget->rowCount();
-    qDebug() << "No.of row is" << table_row;
+
     for(int row = 0; row <= (table_row - 1); row++)
     {
         for(int column = 0; column <= 2; column++)
@@ -339,7 +339,6 @@ void CustomerWindow::on_pushButton_checkout_clicked()
         int price = price_string.toInt();
         total_price = total_price + price;
     }
-    qDebug() << "Total Price is " << total_price;
 
     if (userbalance >= total_price)
     {
@@ -3323,6 +3322,7 @@ void CustomerWindow::on_pushButton_Hot_Chocolate_clicked()
 
 void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBalance, int UserID)
 {
+
     MainWindow connect_database;
 
     connect_database.sqlOpen();
@@ -3332,7 +3332,6 @@ void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBal
     int newBalance;
     newBalance = UserBalance - foodamount;
 
-
     if (UserType == "student")
     {
             qry.prepare("UPDATE Student_Balance SET Balance = (:balance) WHERE Student_ID = (:StudentID)");
@@ -3341,13 +3340,17 @@ void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBal
 
             if (qry.exec())
             {
-                ui->label_showBalance->setText(QString::number(newBalance));
+                qDebug() << "New Balance = " << newBalance;
+                qDebug() << "User Type = " << UserType;
+                MainWindow *mainwin = new MainWindow;
+                mainwin->customerwindow->ui->label_showBalance->setText(QString::number(newBalance));
             }
     }
 
     if (UserType == "staff")
     {
             qry.prepare("UPDATE Staff_Balance SET Balance = (:balance) WHERE Staff_ID = (:StaffID)");
+            qry.bindValue(":balance", newBalance);
             qry.bindValue(":Staff_ID", UserID);
 
             if (qry.exec())
@@ -3356,10 +3359,4 @@ void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBal
             }
     }
     connect_database.sqlClose();
-}
-
-void CustomerWindow::showUpdatedBalance(int balance)
-{
-
-    ui->label_showBalance->setText(QString::number(balance));
 }

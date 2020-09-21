@@ -159,8 +159,6 @@ private slots:
 public:
     void updateBalance(int, QString, int, int);
 
-    void showUpdatedBalance(int);
-
     void showTotalFoodAmount();
 
 private:

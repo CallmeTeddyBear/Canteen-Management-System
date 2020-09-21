@@ -2,6 +2,7 @@
 #include "ui_checkout.h"
 
 #include "customerwindow.h"
+#include "mainwindow.h"
 
 #include <QDebug>
 
@@ -54,7 +55,6 @@ void Checkout::showTotal(int table_row)
     int price = 0;
     total_price = 0;
 
-    qDebug() << "Number of row is " << table_row;
     for(int row = 0; row <= (table_row - 1); row++)
     {
         QString price_string = ui->tableWidget->item(row, 2)->text();
@@ -72,6 +72,10 @@ void Checkout::on_pushButton_cancel_clicked()
 
 void Checkout::on_pushButton_checkout_clicked()
 {
+    this->hide();
+//    MainWindow *mainwindow = new MainWindow();
+//    mainwindow->customerwindow->updateBalance(total_price, UserType, UserBalance, UserID);
+//    mainwindow->customerwindow->show();
     CustomerWindow customerwindow;
     customerwindow.updateBalance(total_price, UserType, UserBalance, UserID);
     this->hide();
