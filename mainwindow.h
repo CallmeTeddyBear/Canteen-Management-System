@@ -34,9 +34,9 @@ public:
     bool sqlOpen()
     {
         mydb = QSqlDatabase::QSqlDatabase::addDatabase("QSQLITE");
-        mydb.setDatabaseName("C:/Users/User/Desktop/CanteenManagementSystem/canteen_database.db");
-//        QString dbPath = QCoreApplication::applicationDirPath() + "/canteen_database.db";
-//        mydb.setDatabaseName(dbPath);
+        //mydb.setDatabaseName("C:/Users/User/Desktop/CanteenManagementSystem/canteen_database.db");
+        QString dbPath = QCoreApplication::applicationDirPath() + "/canteen_database.db";
+        mydb.setDatabaseName(dbPath);
 
         if (!mydb.open())
         {
