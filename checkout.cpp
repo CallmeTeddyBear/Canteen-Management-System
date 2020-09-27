@@ -22,16 +22,16 @@ Checkout::Checkout(QWidget *parent) :
     ui->tableWidget->setColumnWidth(0, 500);
     ui->tableWidget->setColumnWidth(1, 200);
     ui->tableWidget->setColumnWidth(2, 269);
-
-
 }
 
 Checkout::~Checkout()
 {
     delete ui;
 }
-void Checkout::receive_items(QString items[12][3], int table_row, QString Usertype, int userbalance, int ID)//receives item from customer and displays those items selected
+CustomerWindow *windowAddress;
+void Checkout::receive_items(QString items[12][3], int table_row, QString Usertype, int ID, CustomerWindow *customerwindow)//receives item from customer and displays those items selected
 {
+    windowAddress = customerwindow;
     for(int row = 0; row <= (table_row - 1); row++)
     {
         ui->tableWidget->insertRow(ui->tableWidget->rowCount());
@@ -45,7 +45,6 @@ void Checkout::receive_items(QString items[12][3], int table_row, QString Userty
     showTotal(table_row);
 
     UserType = Usertype;
-    UserBalance = userbalance;
     UserID = ID;
 
 }
@@ -73,11 +72,9 @@ void Checkout::on_pushButton_cancel_clicked()
 void Checkout::on_pushButton_checkout_clicked()
 {
     this->hide();
-//    MainWindow *mainwindow = new MainWindow();
-//    mainwindow->customerwindow->updateBalance(total_price, UserType, UserBalance, UserID);
-//    mainwindow->customerwindow->show();
-    CustomerWindow customerwindow;
-    customerwindow.updateBalance(total_price, UserType, UserBalance, UserID);
-    this->hide();
+
+    windowAddress->updateBalance(total_price, UserType, UserID);
+
+
 
 }

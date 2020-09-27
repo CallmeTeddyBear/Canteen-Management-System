@@ -44,6 +44,8 @@ private slots:
 
     void showList();
 
+    void getFoodPrice(int);
+
     void on_pushButton_Sandwich_clicked();
 
     void on_pushButton_Toast_clicked();
@@ -157,7 +159,7 @@ private slots:
     void on_pushButton_Hot_Chocolate_clicked();
 
 public:
-    void updateBalance(int, QString, int, int);
+    void updateBalance(int, QString, int);
 
     void showTotalFoodAmount();
 
@@ -169,6 +171,10 @@ private:
     int userbalance;
     int table_row;
     int total_price;
+
+    int price = 0;
+
+    int foodID;
 
     int toastcount = 0;
     int sandwichcount = 0;

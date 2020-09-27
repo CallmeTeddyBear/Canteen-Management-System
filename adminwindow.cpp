@@ -27,6 +27,8 @@ AdminWindow::AdminWindow(QWidget *parent) :
     timer_1s = new QTimer(this);
     QObject::connect(timer_1s, SIGNAL(timeout()), this, SLOT(showTime()));
     timer_1s->start(1000);
+
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void AdminWindow::showTime()
@@ -156,5 +158,3 @@ AdminWindow::~AdminWindow()
 {
     delete ui;
 }
-
-

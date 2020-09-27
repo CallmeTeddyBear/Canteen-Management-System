@@ -332,28 +332,38 @@ void CustomerWindow::on_pushButton_checkout_clicked()
         }
     }
 
-    for(int row = 0; row <= (table_row - 1); row++)
-    {
-        QString price_string = ui->tableWidget->item(row, 2)->text();
+//    for(int row = 0; row <= (table_row - 1); row++)
+//    {
+//        QString price_string = ui->tableWidget->item(row, 2)->text();
 
-        int price = price_string.toInt();
-        total_price = total_price + price;
-    }
+//        int price = price_string.toInt();
+//        total_price = total_price + price;
 
-    if (userbalance >= total_price)
+//    }
+
+    if (total_price == 0)
     {
-        Checkout checkout;
-        checkout.setModal(true);
-        checkout.receive_items(items, table_row, Usertype, userbalance, ID);
-        checkout.exec();
+        QMessageBox msg(this);
+        msg.setStyleSheet("border-image: none");
+        msg.setIcon(QMessageBox::Icon::Warning);
+        msg.setText("You have not selected anything yet.");
+        msg.exec();
     }
-    else
+    else if (userbalance < total_price)
     {
         QMessageBox msg(this);
         msg.setStyleSheet("border-image: none");
         msg.setIcon(QMessageBox::Icon::Warning);
         msg.setText("You have insufficient balance");
         msg.exec();
+    }
+    else
+    {
+        Checkout checkout;
+        checkout.setModal(true);
+        checkout.receive_items(items, table_row, Usertype, ID, this);
+        checkout.exec();
+
     }
 }
 
@@ -1205,13 +1215,38 @@ void CustomerWindow::showTotalFoodAmount()
     ui->label_showTotal->setText(QString::number(total_price));
 }
 
+void CustomerWindow::getFoodPrice(int foodID)
+{
+    MainWindow connect_database;
 
+    connect_database.sqlOpen();
+
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM Food_Item WHERE FoodID = (:FoodId)");
+    qry.bindValue(":FoodId", foodID);
+
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            price = qry.value(3).toInt();
+        }
+    }
+
+    connect_database.sqlClose();
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////Codes for Thumbnails/////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 
 void CustomerWindow::on_pushButton_Toast_clicked()
 {
-    int price = 20;
     toastcount++;
+
+    foodID = 11111;
+    getFoodPrice(foodID);
 
     if (toastcount == 1)
     {
@@ -1254,8 +1289,10 @@ void CustomerWindow::on_pushButton_Toast_clicked()
 
 void CustomerWindow::on_pushButton_Sandwich_clicked()
 {
-    int price = 40;
     sandwichcount++;
+
+    foodID = 11112;
+    getFoodPrice(foodID);
 
     if (sandwichcount == 1)
     {
@@ -1298,8 +1335,10 @@ void CustomerWindow::on_pushButton_Sandwich_clicked()
 
 void CustomerWindow::on_pushButton_Muffin_clicked()
 {
-    int price = 25;
     muffincount++;
+
+    foodID = 11113;
+    getFoodPrice(foodID);
 
     if (muffincount == 1)
     {
@@ -1342,8 +1381,10 @@ void CustomerWindow::on_pushButton_Muffin_clicked()
 
 void CustomerWindow::on_pushButton_Doughnut_clicked()
 {
-    int price = 25;
     doughnutcount++;
+
+    foodID = 11114;
+    getFoodPrice(foodID);
 
     if (doughnutcount == 1)
     {
@@ -1386,8 +1427,10 @@ void CustomerWindow::on_pushButton_Doughnut_clicked()
 
 void CustomerWindow::on_pushButton_Croissant_clicked()
 {
-    int price = 25;
     croissantcount++;
+
+    foodID = 11115;
+    getFoodPrice(foodID);
 
     if (croissantcount == 1)
     {
@@ -1430,8 +1473,9 @@ void CustomerWindow::on_pushButton_Croissant_clicked()
 
 void CustomerWindow::on_pushButton_Cereal_clicked()
 {
-    int price = 25;
     cerealcount++;
+    foodID = 11116;
+    getFoodPrice(foodID);
 
     if (cerealcount == 1)
     {
@@ -1474,8 +1518,10 @@ void CustomerWindow::on_pushButton_Cereal_clicked()
 
 void CustomerWindow::on_pushButton_Boiled_Egg_clicked()
 {
-    int price = 25;
     boiled_eggcount++;
+
+    foodID = 11117;
+    getFoodPrice(foodID);
 
     if (boiled_eggcount == 1)
     {
@@ -1518,8 +1564,10 @@ void CustomerWindow::on_pushButton_Boiled_Egg_clicked()
 
 void CustomerWindow::on_pushButton_Jerry_clicked()
 {
-    int price = 25;
     jerrycount++;
+
+    foodID = 11118;
+    getFoodPrice(foodID);
 
     if (jerrycount == 1)
     {
@@ -1562,8 +1610,10 @@ void CustomerWindow::on_pushButton_Jerry_clicked()
 
 void CustomerWindow::on_pushButton_Puri_Tarkari_clicked()
 {
-    int price = 25;
     puri_tarkaricount++;
+
+    foodID = 11119;
+    getFoodPrice(foodID);
 
     if (puri_tarkaricount == 1)
     {
@@ -1606,8 +1656,10 @@ void CustomerWindow::on_pushButton_Puri_Tarkari_clicked()
 
 void CustomerWindow::on_pushButton_Bacon_clicked()
 {
-    int price = 25;
     baconcount++;
+
+    foodID = 11120;
+    getFoodPrice(foodID);
 
     if (baconcount == 1)
     {
@@ -1650,8 +1702,10 @@ void CustomerWindow::on_pushButton_Bacon_clicked()
 
 void CustomerWindow::on_pushButton_Oatmeal_clicked()
 {
-    int price = 25;
     oatmealcount++;
+
+    foodID = 11121;
+    getFoodPrice(foodID);
 
     if (oatmealcount == 1)
     {
@@ -1694,8 +1748,10 @@ void CustomerWindow::on_pushButton_Oatmeal_clicked()
 
 void CustomerWindow::on_pushButton_Pancake_clicked()
 {
-    int price = 25;
     pancakecount++;
+
+    foodID = 11122;
+    getFoodPrice(foodID);
 
     if (pancakecount == 1)
     {
@@ -1738,8 +1794,10 @@ void CustomerWindow::on_pushButton_Pancake_clicked()
 
 void CustomerWindow::on_pushButton_MoMo_clicked()
 {
-    int price = 25;
     momocount++;
+
+    foodID = 11123;
+    getFoodPrice(foodID);
 
     if (momocount == 1)
     {
@@ -1782,8 +1840,10 @@ void CustomerWindow::on_pushButton_MoMo_clicked()
 
 void CustomerWindow::on_pushButton_Chowmein_clicked()
 {
-    int price = 25;
     chowmeincount++;
+
+    foodID = 11124;
+    getFoodPrice(foodID);
 
     if (chowmeincount == 1)
     {
@@ -1826,8 +1886,10 @@ void CustomerWindow::on_pushButton_Chowmein_clicked()
 
 void CustomerWindow::on_pushButton_Chicken_Biryani_clicked()
 {
-    int price = 25;
     chicken_biryanicount++;
+
+    foodID = 11125;
+    getFoodPrice(foodID);
 
     if (chicken_biryanicount == 1)
     {
@@ -1870,8 +1932,10 @@ void CustomerWindow::on_pushButton_Chicken_Biryani_clicked()
 
 void CustomerWindow::on_pushButton_Mutton_Biryani_clicked()
 {
-    int price = 25;
     mutton_biryanicount++;
+
+    foodID = 11126;
+    getFoodPrice(foodID);
 
     if (mutton_biryanicount == 1)
     {
@@ -1914,8 +1978,10 @@ void CustomerWindow::on_pushButton_Mutton_Biryani_clicked()
 
 void CustomerWindow::on_pushButton_Red_Sauce_Pasta_clicked()
 {
-    int price = 25;
     red_sauce_pastacount++;
+
+    foodID = 11127;
+    getFoodPrice(foodID);
 
     if (red_sauce_pastacount == 1)
     {
@@ -1958,8 +2024,10 @@ void CustomerWindow::on_pushButton_Red_Sauce_Pasta_clicked()
 
 void CustomerWindow::on_pushButton_White_Sauce_Pasta_clicked()
 {
-    int price = 25;
     white_sauce_pastacount++;
+
+    foodID = 11128;
+    getFoodPrice(foodID);
 
     if (white_sauce_pastacount == 1)
     {
@@ -2002,8 +2070,10 @@ void CustomerWindow::on_pushButton_White_Sauce_Pasta_clicked()
 
 void CustomerWindow::on_pushButton_Spaghetti_clicked()
 {
-    int price = 25;
     spaghetticount++;
+
+    foodID = 11129;
+    getFoodPrice(foodID);
 
     if (spaghetticount == 1)
     {
@@ -2046,8 +2116,10 @@ void CustomerWindow::on_pushButton_Spaghetti_clicked()
 
 void CustomerWindow::on_pushButton_Pizza_clicked()
 {
-    int price = 25;
     pizzacount++;
+
+    foodID = 11130;
+    getFoodPrice(foodID);
 
     if (pizzacount == 1)
     {
@@ -2090,8 +2162,10 @@ void CustomerWindow::on_pushButton_Pizza_clicked()
 
 void CustomerWindow::on_pushButton_Aloo_Chop_clicked()
 {
-    int price = 25;
     aloo_chopcount++;
+
+    foodID = 11131;
+    getFoodPrice(foodID);
 
     if (aloo_chopcount == 1)
     {
@@ -2134,8 +2208,10 @@ void CustomerWindow::on_pushButton_Aloo_Chop_clicked()
 
 void CustomerWindow::on_pushButton_Naan_clicked()
 {
-    int price = 25;
     naancount++;
+
+    foodID = 11132;
+    getFoodPrice(foodID);
 
     if (naancount == 1)
     {
@@ -2178,8 +2254,10 @@ void CustomerWindow::on_pushButton_Naan_clicked()
 
 void CustomerWindow::on_pushButton_Chat_clicked()
 {
-    int price = 25;
     chatcount++;
+
+    foodID = 11133;
+    getFoodPrice(foodID);
 
     if (chatcount == 1)
     {
@@ -2222,8 +2300,10 @@ void CustomerWindow::on_pushButton_Chat_clicked()
 
 void CustomerWindow::on_pushButton_Sausage_clicked()
 {
-    int price = 25;
     sausagecount++;
+
+    foodID = 11134;
+    getFoodPrice(foodID);
 
     if (sausagecount == 1)
     {
@@ -2266,8 +2346,10 @@ void CustomerWindow::on_pushButton_Sausage_clicked()
 
 void CustomerWindow::on_pushButton_Rice_Set_clicked()
 {
-    int price = 25;
     rice_setcount++;
+
+    foodID = 11135;
+    getFoodPrice(foodID);
 
     if (rice_setcount == 1)
     {
@@ -2310,8 +2392,10 @@ void CustomerWindow::on_pushButton_Rice_Set_clicked()
 
 void CustomerWindow::on_pushButton_Roti_clicked()
 {
-    int price = 25;
     roticount++;
+
+    foodID = 11136;
+    getFoodPrice(foodID);
 
     if (roticount == 1)
     {
@@ -2354,8 +2438,10 @@ void CustomerWindow::on_pushButton_Roti_clicked()
 
 void CustomerWindow::on_pushButton_Chicken_Curry_clicked()
 {
-    int price = 25;
     chicken_currycount++;
+
+    foodID = 11137;
+    getFoodPrice(foodID);
 
     if (chicken_currycount == 1)
     {
@@ -2398,8 +2484,10 @@ void CustomerWindow::on_pushButton_Chicken_Curry_clicked()
 
 void CustomerWindow::on_pushButton_Mutton_Curry_clicked()
 {
-    int price = 25;
     mutton_currycount++;
+
+    foodID = 11138;
+    getFoodPrice(foodID);
 
     if (mutton_currycount == 1)
     {
@@ -2442,8 +2530,10 @@ void CustomerWindow::on_pushButton_Mutton_Curry_clicked()
 
 void CustomerWindow::on_pushButton_Egg_Curry_clicked()
 {
-    int price = 25;
     egg_currycount++;
+
+    foodID = 11139;
+    getFoodPrice(foodID);
 
     if (egg_currycount == 1)
     {
@@ -2486,8 +2576,10 @@ void CustomerWindow::on_pushButton_Egg_Curry_clicked()
 
 void CustomerWindow::on_pushButton_Chicken_Roast_clicked()
 {
-    int price = 25;
     chicken_roastcount++;
+
+    foodID = 11140;
+    getFoodPrice(foodID);
 
     if (chicken_roastcount == 1)
     {
@@ -2530,8 +2622,10 @@ void CustomerWindow::on_pushButton_Chicken_Roast_clicked()
 
 void CustomerWindow::on_pushButton_Fish_Fry_clicked()
 {
-    int price = 25;
     fish_frycount++;
+
+    foodID = 11141;
+    getFoodPrice(foodID);
 
     if (fish_frycount == 1)
     {
@@ -2574,8 +2668,10 @@ void CustomerWindow::on_pushButton_Fish_Fry_clicked()
 
 void CustomerWindow::on_pushButton_Paneer_Chilli_clicked()
 {
-    int price = 25;
     paneer_chillicount++;
+
+    foodID = 11142;
+    getFoodPrice(foodID);
 
     if (paneer_chillicount == 1)
     {
@@ -2618,8 +2714,10 @@ void CustomerWindow::on_pushButton_Paneer_Chilli_clicked()
 
 void CustomerWindow::on_pushButton_Daal_Fry_clicked()
 {
-    int price = 25;
     daal_frycount++;
+
+    foodID = 11143;
+    getFoodPrice(foodID);
 
     if (daal_frycount == 1)
     {
@@ -2662,8 +2760,10 @@ void CustomerWindow::on_pushButton_Daal_Fry_clicked()
 
 void CustomerWindow::on_pushButton_Chana_Masala_clicked()
 {
-    int price = 25;
     chana_masalacount++;
+
+    foodID = 11144;
+    getFoodPrice(foodID);
 
     if (chana_masalacount == 1)
     {
@@ -2706,8 +2806,10 @@ void CustomerWindow::on_pushButton_Chana_Masala_clicked()
 
 void CustomerWindow::on_pushButton_Rajma_Masala_clicked()
 {
-    int price = 25;
     rajma_masalacount++;
+
+    foodID = 11145;
+    getFoodPrice(foodID);
 
     if (rajma_masalacount == 1)
     {
@@ -2750,8 +2852,10 @@ void CustomerWindow::on_pushButton_Rajma_Masala_clicked()
 
 void CustomerWindow::on_pushButton_Papad_clicked()
 {
-    int price = 25;
     papadcount++;
+
+    foodID = 11146;
+    getFoodPrice(foodID);
 
     if (papadcount == 1)
     {
@@ -2794,8 +2898,10 @@ void CustomerWindow::on_pushButton_Papad_clicked()
 
 void CustomerWindow::on_pushButton_Black_Tea_clicked()
 {
-    int price = 25;
     black_teacount++;
+
+    foodID = 11147;
+    getFoodPrice(foodID);
 
     if (black_teacount == 1)
     {
@@ -2838,8 +2944,10 @@ void CustomerWindow::on_pushButton_Black_Tea_clicked()
 
 void CustomerWindow::on_pushButton_Black_Coffee_clicked()
 {
-    int price = 25;
     black_coffeecount++;
+
+    foodID = 11148;
+    getFoodPrice(foodID);
 
     if (black_coffeecount == 1)
     {
@@ -2882,8 +2990,10 @@ void CustomerWindow::on_pushButton_Black_Coffee_clicked()
 
 void CustomerWindow::on_pushButton_Milk_Tea_clicked()
 {
-    int price = 25;
     milk_teacount++;
+
+    foodID = 11149;
+    getFoodPrice(foodID);
 
     if (milk_teacount == 1)
     {
@@ -2926,8 +3036,10 @@ void CustomerWindow::on_pushButton_Milk_Tea_clicked()
 
 void CustomerWindow::on_pushButton_Milk_Coffee_clicked()
 {
-    int price = 25;
     milk_coffeecount++;
+
+    foodID = 11150;
+    getFoodPrice(foodID);
 
     if (milk_coffeecount == 1)
     {
@@ -2970,8 +3082,10 @@ void CustomerWindow::on_pushButton_Milk_Coffee_clicked()
 
 void CustomerWindow::on_pushButton_Pepsi_clicked()
 {
-    int price = 25;
     pepsicount++;
+
+    foodID = 11151;
+    getFoodPrice(foodID);
 
     if (pepsicount == 1)
     {
@@ -3014,8 +3128,10 @@ void CustomerWindow::on_pushButton_Pepsi_clicked()
 
 void CustomerWindow::on_pushButton_Fanta_clicked()
 {
-    int price = 25;
     fantacount++;
+
+    foodID = 11152;
+    getFoodPrice(foodID);
 
     if (fantacount == 1)
     {
@@ -3058,8 +3174,10 @@ void CustomerWindow::on_pushButton_Fanta_clicked()
 
 void CustomerWindow::on_pushButton_Sprite_clicked()
 {
-    int price = 25;
     spritecount++;
+
+    foodID = 11153;
+    getFoodPrice(foodID);
 
     if (spritecount == 1)
     {
@@ -3102,8 +3220,10 @@ void CustomerWindow::on_pushButton_Sprite_clicked()
 
 void CustomerWindow::on_pushButton_Orange_Juice_clicked()
 {
-    int price = 25;
     orange_juicecount++;
+
+    foodID = 11154;
+    getFoodPrice(foodID);
 
     if (orange_juicecount == 1)
     {
@@ -3146,8 +3266,10 @@ void CustomerWindow::on_pushButton_Orange_Juice_clicked()
 
 void CustomerWindow::on_pushButton_Redbull_clicked()
 {
-    int price = 25;
     redbullcount++;
+
+    foodID = 11155;
+    getFoodPrice(foodID);
 
     if (redbullcount == 1)
     {
@@ -3190,8 +3312,10 @@ void CustomerWindow::on_pushButton_Redbull_clicked()
 
 void CustomerWindow::on_pushButton_Hot_Lemon_clicked()
 {
-    int price = 25;
     hot_lemoncount++;
+
+    foodID = 11156;
+    getFoodPrice(foodID);
 
     if (hot_lemoncount == 1)
     {
@@ -3234,8 +3358,10 @@ void CustomerWindow::on_pushButton_Hot_Lemon_clicked()
 
 void CustomerWindow::on_pushButton_Milkshake_clicked()
 {
-    int price = 25;
     milkshakecount++;
+
+    foodID = 11157;
+    getFoodPrice(foodID);
 
     if (milkshakecount == 1)
     {
@@ -3278,8 +3404,10 @@ void CustomerWindow::on_pushButton_Milkshake_clicked()
 
 void CustomerWindow::on_pushButton_Hot_Chocolate_clicked()
 {
-    int price = 25;
     hot_chocolatecount++;
+
+    foodID = 11158;
+    getFoodPrice(foodID);
 
     if (hot_chocolatecount == 1)
     {
@@ -3320,17 +3448,47 @@ void CustomerWindow::on_pushButton_Hot_Chocolate_clicked()
     showTotalFoodAmount();
 }
 
-void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBalance, int UserID)
+void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserID)
 {
+    on_pushButton_discardAll_clicked();
 
+    int currentuserbalance;
     MainWindow connect_database;
 
     connect_database.sqlOpen();
 
     QSqlQuery qry;
 
+    if (UserType == "student")
+    {
+            qry.prepare("SELECT * FROM Student_Balance WHERE Student_ID = (:StudentID)");
+            qry.bindValue(":StudentID", UserID);
+
+            if (qry.exec())
+            {
+                while(qry.next())
+                {
+                    currentuserbalance = qry.value(2).toInt();
+                }
+            }
+    }
+
+    if(UserType == "staff")
+    {
+            qry.prepare("SELECT * FROM Staff_Balance WHERE Staff_ID = (:Staff_ID)");
+            qry.bindValue(":Staff_ID", UserID);
+
+            if (qry.exec())
+            {
+                while(qry.next())
+                {
+                    currentuserbalance = qry.value(2).toInt();
+                }
+            }
+    }
+
     int newBalance;
-    newBalance = UserBalance - foodamount;
+    newBalance = currentuserbalance - foodamount;
 
     if (UserType == "student")
     {
@@ -3342,8 +3500,8 @@ void CustomerWindow::updateBalance(int foodamount, QString UserType, int UserBal
             {
                 qDebug() << "New Balance = " << newBalance;
                 qDebug() << "User Type = " << UserType;
-                MainWindow *mainwin = new MainWindow;
-                mainwin->customerwindow->ui->label_showBalance->setText(QString::number(newBalance));
+
+                ui->label_showBalance->setText(QString::number(newBalance));
             }
     }
 

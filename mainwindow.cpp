@@ -59,8 +59,6 @@ void MainWindow::on_pushButton_login_clicked()
             connect(this, SIGNAL(send_customer(const QString, const QString, const QString)), customerwindow, SLOT(receive_customer(const QString, const QString, const QString)));
             emit send_customer(UserType, username, password);
             customerwindow->show();
-
-
         }
         else
         {

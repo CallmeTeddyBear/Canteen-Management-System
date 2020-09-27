@@ -2,6 +2,7 @@
 #define CHECKOUT_H
 
 #include <QDialog>
+#include "customerwindow.h"
 
 namespace Ui {
 class Checkout;
@@ -22,7 +23,7 @@ private slots:
 
 public:
 
-    void receive_items(QString items[12][3], int table_row, QString Usertype, int userbalance, int ID);
+    void receive_items(QString items[12][3], int table_row, QString Usertype, int ID, CustomerWindow *customerwindow);
     void showTotal(int);
 
 
@@ -30,7 +31,6 @@ private:
     Ui::Checkout *ui;
     int total_price;
     QString UserType;
-    int UserBalance;
     int UserID;
 };
 
